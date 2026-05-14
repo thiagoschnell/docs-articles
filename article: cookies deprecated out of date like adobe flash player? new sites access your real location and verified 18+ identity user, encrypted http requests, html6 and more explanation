@@ -1,0 +1,81 @@
+In the past, browsers adapted to cookies, but today they need to be adapt for innovative things.
+
+I once did a project where the software communicated with the server using encryption identical to the server's encryption, but I didn't want to pass the key for this encryption over the internet, so I embedded the key in the software.
+One day someone decompiled or analyzed the executable's memory and found the key.
+
+One day I was thinking about this theory; it's extremely secure, but the key would be entered by the user, and furthermore, there would be a blockchain to detect until someone interrupts it, alerting the user of this interruption.
+
+Once, my computer stopped working and I couldn't remember the passwords for the websites in my browser. I disassembled the broken computer, removed the hard drive, connected it to an external case, copied all the browser files from there, and transferred them to the new computer. The browser opened, and everything was back to normal, with all my sessions and work restored, since I didn't remember the password.
+
+This was a lifesaver for me, but for someone else in the wrong hands it could have been a tragedy, and that cannot happen again.
+
+Cookies are already obsolete; see how easy it is to grab a user's session token and reuse it for other purposes. There are also tracking cookies, and a cookie saying it expires doesn't seem very secure to me.
+
+maybe not to simple and sufficient; generic options to replace cookies.
+
+lets See what this new model to replace cookies would look like.
+
+We will have two types: a public session to enter on site (login not required), and a private site session to enter on authenticated areas (login and password or other third-party authentication such as Google Sign-In required). It will be necessary to create encryption every time, This will begin the first time you access the desired website, or until the session's blockchain is interrupted, notifying the user to make a decision. This encryption and authentication process will then be repeated until the session's blockchain is interrupted. This request may take a few seconds for the public session, which will be automatic, and for the private session, which will require the user to enter or confirm the information, a few more seconds will be needed before it's all set.
+
+Well, there's a catch: to prevent the key from traveling through the user's network connection, we'll need a third player, which here will be called a site manager.
+
+See some details about the site manager; every user will have a public key, every user will have a secret key, and an ID key for the provider or the person responsible for the site manager, which includes their name/domain and may be standardized or some other type not yet defined for this purpose of identifying the provider.
+
+
+In the browser, adapting to this case, the user enters their browser and will need to enter their public key and secret key, which will be inside their site manager.
+
+This requires a browser PIN to make these settings, or a Windows PIN to keep it more secure.
+
+
+Concept of a public session:
+
+To connect to a specific website or URL, the user's browser adds some parameters to the request:
+
+- User's public key
+- Site manager name/domain
+
+On the server where the website is hosted, when it receives this request, it will establish a connection to the site manager server, passing these same parameters and data, perhaps related to a configuration or other desired settings. The site manager then encrypts this data using the user's secret key, which only the user and the browser possess. Finally, it returns the encrypted data and the salt in the established connection from the website server.
+
+After the website server receives the response with the salt and encrypted data from the site manager, the website server will create and store a session ID blockchain for this request, identifying the user's public key that is in the request parameter.
+
+So now the site returns the session's blockchain ID linked to the salt and the encrypted data as a response to the request made by the user's browser.
+
+In the user's browser, as soon as it receives the response to the request, the browser will decrypt the data using the secret key that the user configured in the browser, as shown above. Now the browser has the decrypted and secure data for the website to read.
+
+Considering ecology, this session process only occurs once. However, in this method, the session blockchain is exposed, making it easy for anyone else to make a request using the last ID of the session blockchain. Then, when the real browser tries to make the request, it will be interrupted because someone previously used the session blockchain ID and received a different one. This ID will no longer be valid, and the session encryption and blockchain process must be restarted.
+
+In a second method, the session process is continuous for all requests. When a request arrives at the website server, a search is performed to find this parameter in the received encrypted data, and also with the user's public key parameter received. The website server will check in some database. After finding and confirming that it has found it, the process continues, creating a new session blockchain and encrypting it along with the data on the site manager server. In this method, the session blockchain is placed within the encrypted data, and only the salt and encrypted data are returned in response to the connection made to the site manager. Only the user's browser will be able to decrypt it, and with each request, the encrypted data is renewed. It is important to remember that with each request of this method, the browser encrypts the last session blockchain within the encrypted data. If the website server does not find it, it can interrupt, alert the user, and restart the session process.
+
+This second method may be a little slower due to the interval time and processing time required for all requests to renew the encrypted data, doing so from a connection to the site manager.
+
+Thanks to the user's secret key, this happens securely, starting with encrypting the data within the browser and decrypting it within the site's server.
+
+
+Private session concept:
+
+You can opt for the same concept as the public session, but I didn't want the process to be automatic, and even more so I didn't want the salt generation to be automatic, especially in this part that requires the most attention, which is the login.
+
+So, for this, we'll do the opposite. When you reach the login area, a popup will appear in the center of the browser screen to inform you of this process.
+A GET method can be used on this popup screen to send this information to the user's site manager app, or better yet, a QR code method can be used. The OAuth reference code encrypts this code within the site manager server, and the salt is manually entered within the app screen, possibly using mobile data connection or a VPN so that this information does not travel on the same network as the user.
+
+Then, the user manually confirms and enters the salt in the browser. If it's a complex or long salt, it goes through the QR code or GET method, not manually. This encrypts the data, which can be sensitive data such as the user's age and location. Finally, to complete this process, the user clicks the submit button on the popup, and the encrypted OAuth is sent for confirmation to the website server, where it will be stored. authentication previously performed by the user in the app.
+
+
+Positive points:
+
+Access control for 18+ users and websites for non-minors, exact location from the app, to enter this site manager app, it requires accounts such as Google, Microsoft, Apple, they can use identity verification methods to know exactly if an account is verified, using an identity verification process like the one from Google Play Developers which works very well, some websites could require or demand this identity verification confirming if the user is verified, to enter a website it might be requiring age and also requiring your exact location directly from the app.
+
+
+Negative points:
+
+Multiple connections can increase the complexity of the session management concept. Since this concept only applies to one blockchain channel, it could be problematic and require the website creator to rework the engineering for multiple blockchain channels.
+
+Google itself could start offering a site manager service, or maybe others might be more interested in sponsoring it, such as DNS providers like Cloudflare, etc.
+
+
+Final notes:
+
+I would like to inform services like Google, Microsoft, and Apple as mentionable above examples of companies with popular that could provide accounts  identity verification services for each user, even if it requires a fee or payment. These are reliable and internationally known sources, a crucial factor in identifying and restricting access to websites for minors. This capability could be extended to platforms and social networks, etc.
+
+However, for all this to become a reality, we need example websites. maybe HTML6 will adopt this idea to make it a reality.
+
