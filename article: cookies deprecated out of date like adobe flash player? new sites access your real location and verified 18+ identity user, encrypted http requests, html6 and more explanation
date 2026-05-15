@@ -79,3 +79,5 @@ I would like to inform services like Google, Microsoft, and Apple as mentionable
 
 However, for all this to become a reality, we need example websites. maybe HTML6 will adopt this idea to make it a reality.
 
+I almost forgot, a important variable inside the encrypted data, a secret key from the browser, a unique key identifying the browser user profile and installation browser, register these keys in the site manager app
+so that the browser confirms that the data is really yours, maintaining the integrity and legitimacy of the sender for reading only the data that belongs to them.
