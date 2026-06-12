@@ -1,5 +1,13 @@
 # Docs-Articles
 
+## Article #3
+<h3>
+
+AI is real?
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20AI%20is%20real%3F)</h3>
+
+
 ## Article #2
 <h3>
 
