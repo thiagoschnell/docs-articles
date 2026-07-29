@@ -1,5 +1,13 @@
 # Docs-Articles
 
+## Article #4
+<h3>
+
+Personal Agent Card
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Personal%20Agent%20Card)</h3>
+
+
 ## Article #3
 <h3>
 
