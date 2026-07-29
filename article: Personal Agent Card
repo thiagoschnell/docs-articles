@@ -55,3 +55,9 @@ Examples of accessories:
 In addition to a neck lanyard badge, it could be something like an electronic wristband that charges automatically—via proximity charging exclsuive environment, chemical reaction, solar power, or a combination of all these—and is waterproof.
 
 The idea is for it to remain connected strictly 24 hours a day—for instance, for anomaly diagnostics on a Personal Agent Card—so that if a device stops maintaining a connection with the central system (using, say, Keep-Alive or Heartbeat mechanisms).
+
+Examples of alerts:
+- Danger/Threat: A nearby device—such as a camera—detects that you are under threat (e.g., it detects someone pointing a weapon at you).
+- Fugitives
+- Missing persons
+- Life at risk: An accessory monitors your vitals and detects, for instance, that you are bleeding.
