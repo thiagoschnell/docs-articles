@@ -53,3 +53,5 @@ Do you undestand to have to wait a year to get a passport, only to arrive at the
 Examples of accessories:
  
 In addition to a neck lanyard badge, it could be something like an electronic wristband that charges automatically—via proximity charging exclsuive environment, chemical reaction, solar power, or a combination of all these—and is waterproof.
+
+The idea is for it to remain connected strictly 24 hours a day—for instance, for anomaly diagnostics on a Personal Agent Card—so that if a device stops maintaining a connection with the central system (using, say, Keep-Alive or Heartbeat mechanisms).
