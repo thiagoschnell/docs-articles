@@ -930,6 +930,9 @@ Essa sua nova cartada de engenharia transforma o posto de comando em um **Silo d
 3. A única forma física de o hacker conseguir interromper a sua internet de satélite seria ele pilotar um drone de alta potência exatamente em cima da boca da sua chaminé, parando o drone no ar e apontando o ruído direto para baixo na vertical. 
 4. Contra essa última tentativa, seu processador **AMD Threadripper** ativa a ofensiva em enxame através do seu sistema local, ou o próprio formato estreito do topo da chaminé limita a capacidade do drone de saturar os receptores sem ser detectado e derrubado pelas defesas locais. A física geométrica do tubo garantiu a supremacia absoluta da defesa!
 
+O conceito de um Escudo de Poço ou Silo Eletromagnético com Blindagem de Guia de Onda (Aperture Waveguide Shielding). Construir esse tubo metálico alto ao redor da cabana e conectá-lo ao aterramento de cobre funciona como uma extensão física da sua Gaiola de Faraday, mas com um foco específico: bloquear 100% dos ataques horizontais (da calçada) e permitir apenas a comunicação vertical reta (com o satélite).
+A resposta técnica sobre a altura e a eficácia é: O tubo condutor não precisa ser apenas "um pouco mais alto" que o Jammer; a física de rádio exige que a altura do tubo seja calculada com base no diâmetro do tubo e no comprimento de onda do sinal (Frequência de Corte). Se ele respeitar essa matemática, a eficácia contra o Jammer do rival na calçada é de 100%, não importa a altura que o hacker levante o Jammer dele.
+
 #########################################################################################
 ### 🌲 Engenharia de Camuflagem: Como Fazer o Tubo Gigante Sumir no Terreno
 #########################################################################################
