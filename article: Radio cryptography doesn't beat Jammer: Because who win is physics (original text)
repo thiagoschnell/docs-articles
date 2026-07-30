@@ -12,8 +12,8 @@ conceito gigante chamado Spread Spectrum (Espectro de Difusão).
 
 ######################################################################################################################
 #
-#		Veja a linha do tempo técnica de como a patente de 1942 moldaram o mundo em que vivemos hoje:					
-#
+#		Veja a linha do tempo técnica de como a patente de 1942 moldaram o mundo em que vivemos hoje					
+#  See the technical timeline of how the 1942 patent shaped the world we live in today.
 #
 #######################################################################################################################
 
@@ -58,7 +58,7 @@ Projetado para o mercado com foco em estabilidade absoluta, o Wi-Fi 8 (IEEE 802.
 ######################################################################################################################
 #
 #		Simulação de Torrent de canais (não é o mesmo de torrent de bandas)			
-#		
+#		Channel torrent simulation (not the same as band torrents)
 #
 #######################################################################################################################
 
@@ -168,7 +168,7 @@ Se o painel do hacker capturar esse bloco isolado no Canal 11 e tentar abrir o a
 
 ### 🔐 Integração da Criptografia Simétrica de Elite (AES-GCM)
 
-Para transformar o seu "Torrent de Canais Reais" em uma fortaleza militar inexpugnável, os dados úteis (Payload) não podem viajar em texto puro. Nós vamos envelopá-los usando o protocolo **AES-GCM de 256 bits** antes de injetar os blocos no rádio.
+Para transformar o seu "Torrent de Canais" em uma fortaleza militar inexpugnável, os dados úteis (Payload) não podem viajar em texto puro. Nós vamos envelopá-los usando o protocolo **AES-GCM de 256 bits** antes de injetar os blocos no rádio.
 
 O grande trunfo do modo **GCM** é que ele é um algoritmo de **Criptografia Autenticada (AEAD)**. Se o hacker na calçada tentar capturar um bloco e alterar um único bit dele para tentar quebrar a sua mensagem, o receptor detecta a fraude e descarta o pacote na hora [2.1].
 
@@ -199,7 +199,7 @@ Com a introdução do AES-GCM, o cenário do painel de espionagem do hacker desm
 3. **Imunidade contra Injeção de Código:** Se o hacker tentar clonar o pacote e alterar os bytes criptografados para tentar injetar uma mensagem falsa (ex: tentar mudar "29" para "30"), o cálculo da **Tag GCM de 16 bytes** falha no receptor. O chip do seu receptor detecta a alteração na Camada 2, descarta o bloco e registra a tentativa de ataque nos logs [2.1].
 
 
-Essa integração matemática do AES-GCM colocou uma blindagem de nível militar por cima do seu Torrent de canais reais!
+Essa integração matemática do AES-GCM colocou uma blindagem de nível militar por cima do seu Torrent de canais!
 Agora possui a documentação completa e definitiva de arquitetura de software, física de rádio e criptografia avançada unificadas no mesmo manual
 
 
@@ -207,7 +207,7 @@ Agora possui a documentação completa e definitiva de arquitetura de software, 
 ######################################################################################################################
 #
 #		Teoria e simulação (Por que Jammer não ganha da física)
-#		
+#		Theory and simulation (Why Jammer doesn't beat physics)
 #
 #######################################################################################################################
 
@@ -255,7 +255,7 @@ Essa arquitetura de "Torrent de Bandas" destrói a capacidade de interceptação
 
 
 #########################################################################################
-### 🎛️ Tabela Comparativa: O Seu Projeto (Militar) vs. O Mercado Civil (Wi-Fi 7/8)
+### 🎛️ Tabela Comparativa: O Seu Projeto "Torrent de Canais" vs. O Mercado Civil (Wi-Fi 7/8)
 #########################################################################################
 
 Abaixo está a distinção exata de infraestrutura que separa a lógica de rádio comercial de curto alcance da engenharia de comunicações táticas de campo de batalha.
@@ -430,7 +430,7 @@ Na cabana móvel, o comandante não possui apenas um rádio comum; ele está pro
 No segundo em que o rival é obrigado a trazer um caminhão de guerra eletrônica pesado para perto da cabana para conseguir vencer a sua malha de receptores, ele **perde o fator surpresa**. O posto de comando móvel detecta a assinatura térmica e de rádio gigante do Jammer à distância, triangula a posição do atacante e altera a sua rota ou ativa defesas cinéticas antes mesmo de a internet da cabana ser afetada.
 
 #########################################################################################
-### 🛡️ O Escudo Supremo: A Gaiola de Faraday Aterrada vs. O Jammer do Rival
+### 🚀 A Faca pelas Costas: A Gaiola de Faraday Aterrada vs. O Jammer do Rival
 #########################################################################################
 
 Ao envelopar a cabana do comando móvel com uma Gaiola de Faraday estruturada em malha condutora e barras de cobre cravadas profundamente na terra, você altera as leis de propagação de ondas no perímetro. O espaço interno vira uma "Zona de Silêncio Externo Protegida".
