@@ -1,5 +1,12 @@
 # Docs-Articles
 
+## Article #7
+<h3>
+
+Beyond Windows - 5 reasons to try another operating system
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Beyond%20Windows%20-%205%20reasons%20to%20try%20another%20operating%20system)</h3>
+
 ## Article #5
 <h3>
 
