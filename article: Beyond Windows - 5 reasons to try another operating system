@@ -1,0 +1,17 @@
+1. Factory Reset Protection, there are intermediate methods—not overly complex, yet functional—using the same Windows that allow you to reset your Windows computer's password.
+
+2. BitLocker, It’s the "most secure" aspect of Windows that actually isn't secure. When you consider that Windows might not be encrypted—exposing a key that ought to be the most secure in the world, sending it over the internet, and storing it in plain text in a Microsoft database—I’m honestly at a loss for words.
+That said, there are still certificates—specifically file encryption using certificates—though at this point, I really couldn't say how secure it would be to adopt that method now or to keep using it if you already have it set up.
+
+3. Security vulnerabilities for law enforcement, you know that to detect criminals using the system, you have to be able to distinguish a bad actor from among a billion users. Doing this in the worst possible way—exposing the other billion users just to find that one bad actor—is not the best solution.
+
+4. Backdoor, the internet combined with devices that have outlived their useful life—devices that are part of the network management for your home, office, etc. Often, these network management devices are poorly configured by service providers—or sometimes not configured at all, left with factory default settings. And in case you didn't know, outdated devices are prime targets for hackers looking to break into your system.
+
+5. The end of privacy, not even Appl escaped this! It’s hard to find anything truly secure and private these days; the best approach is to do it yourself and build your own secure setup. If you handle a lot of office or company files,
+I’d suggest Dedicated and Specialized NAS Systems—though nothing beats building your own home lab!
+
+Windows 11 is nearing the end of its life cycle 14 of march 2028; even if a free upgrade to the next version of Windows is offered, I think now is the time to consider other options!
+
+Windows isn't bad—quite the opposite, actually; it's excellent and handles hackers very well when properly configured. The issue is that Windows is designed for everyone, so it has to work for everyone, Windows is filled with bloatware / feature bloaty.
+
+Linux is now getting a taste of what it's like to be number one, with various reports of security flaws surfacing. That’s normal—vulnerabilities are bound to appear sooner or later, because anyone truly determined to hack you will find a way into your system, whether it's Windows or Linux.
