@@ -20,7 +20,7 @@ Beyond Windows - 5 reasons to try another operating system
 
 Radio cryptography doesn't beat Jammer: Because who win is physics (original text)
 
-[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Radio%20cryptography%20doesn't%20beat%20Jammer%3A%20Because%20who%20win%20is%20physics%20(original%20text))</h3>
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Radio%20cryptography%20doesn't%20beat%20Jammer%20-%20Because%20who%20win%20is%20physics%20(original%20text))</h3>
 
 
 ## Article #3
