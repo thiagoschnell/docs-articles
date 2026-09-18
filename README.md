@@ -1,5 +1,50 @@
 # Docs-Articles
 
+## Article #8
+<h3>
+
+## The Next-Generation Network Firewall: Harmonizing WPA4 Kyber and Dilithium Protocols with RISC-V PMP/LXC Silicon Hardening plus IEEE 802.11 IE 221 Frame Injection
+
+## [ENGLISH]
+
+Attention: only Part 1 is available (Technical Summary); Part 2 and the complete PoC document remain encrypted.
+ 
+
+ What I am publishing now is only Part 1 of the documents, the result of many years of research,
+ I have prepared a technical summary for engineers, which is available here at the [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ You may not know it, but 5 years from now, the quantum arrival could happen at any 
+ moment and will make obsolete all the current security we have as of today in September 2026.
+ Faced with this threat, this document introduces a disruptive post-
+ quantum concept that shields Wi-Fi, delivering a definitive solution to keep your connections 100% fully secure with Wi-Fi Enterprise Authentication Built-in models,
+ that Embedded across all hardware tiers—from IoT and routing devices to consumer electronics—bypassing the need for a dedicated server environment.
+ 
+ In this same document master_framework.txt, I also briefly address solutions for monolithic and sustainable operations, focusing on 
+ preventing your device from turning into e-waste right after reaching 5 years of sales on 
+ the market. To stop it from ending up in the trash bin, I bring an alternative that solves 
+ 90% of the problem just by remanufacturing the main culprits, such as the chips, by
+ forming strategic alliances with national companies.
+ 
+ ## [PORTUGUÊS]
+ 
+ Atenção: apenas a Parte 1 está disponível (Resumo Técnico); a Parte 2 e o documento
+ completo da prova de conceito permanecem criptografados.
+ 
+ O que trago é apenas a ponta do iceberg e, depois de muitos anos de pesquisa, 
+ elaborei um resumo técnico para engenheiros, que está disponível aqui no [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ Talvez você não saiba, mas daqui a 5 anos a chegada quântica
+ pode acontecer a qualquer momento e tornará obsoleta toda a segurança atual que 
+ temos no dia de hoje em setembro de 2026. Diante dessa ameaça, este documento 
+ introduz um conceito pós-quântico disruptivo Desenvolvido como sistema embarcado para qualquer dispositivo, desde IoTs e roteadores até eletrônicos comuns, operando sem a necessidade de um servidor dedicado
+ que blinda o Wi-Fi, entregando uma solução definitiva para manter as conexões 100% do seu Wi-Fi totalmente seguras, e
+ talvez você já queira começar a treinar desde já a criar senhas grandes de 30 a 40
+ caracteres mesmo que Wi-Fi enterprise não precise de senha!
+ 
+ Neste mesmo documento master_framework.txt, também abordo em resumo soluções para Sistemas Monolíticos e 
+ Operação Sustentável, focando em evitar que o seu dispositivo vire lixo eletrônico logo após atingir 
+ 5 anos de venda no mercado. Para impedir que ele pare na lata do lixo, trago uma 
+ alternativa que resolve 90% do problem apenas remanufaturando os principais 
+ causadores, como os chips, fazendo alianças estratégicas com empresas nacionais.
+
 ## Article #7
 <h3>
 
