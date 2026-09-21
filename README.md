@@ -47,9 +47,9 @@
 ## [ENGLISH] 
 The foundation of the system replaces the virtualization model based on logical containers (LXC) — which share the same Kernel and expose the ecosystem to Zero-Day exploits via injection and buffer overflows — with a Separation Kernel (MILS). The physical execution hierarchy divides the CPU into four rings strictly regulated by the silicon: M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
-The simulated device abandons the static, single-system design and distributes the computational load across a triangular topology of 4 independent VMs operating under a Zero Trust and Consensual Quorum regime: VM1 (Android OS),VM4 (Interlocutor  Enclave),VM2 (Micro-Linux),VM3 (The Predictive Telemetry Mechanism)
+The simulated device abandons the static, single-system design and distributes the computational load across a triangular topology of 4 independent VMs operating under a Zero Trust and Consensual Quorum regime: VM1 (Android OS / Web2),VM4 (Interlocutor  Enclave / Execute-Only Mode),VM2 (Micro-Linux / Web3),VM3 (The Predictive Telemetry Mechanism)
 
-Instead of clearing the data with every request, VM4’s working RAM is configured as a Local Immutable Cryptographic Ledger.
+Instead of clearing the data with every request, VM4’s working RAM is configured as a Local Immutable Cryptographic Ledger (Mini-Blockchain in RAM).
 
 The Second Barrier and the double-checking: Each command sent by Android is signed with asymmetric cryptography and compressed into a SHA-256 hash, processed directly by the CPU's physical instructions (RISC-V Zkn Extension). The current block (N) links to the previous block (N-1). If a hacker tries to alter a single bit in the shared memory, the signature breaks.If the mini-blockchain link is broken (either by an attack or hardware failure), the Hypervisor instantly cuts off connections and activates Alert Mode.
 
@@ -62,9 +62,9 @@ THE INVULNERABLE CHIP: With this TRNG-powered Key Rotation script, if someone sp
 ## [PORTUGUÊS]
 A fundação do sistema substitui o modelo de virtualização por contêineres lógicos (LXC) — que compartilham o mesmo Kernel e expõem o ecossistema a exploits de Dia Zero por injeção e estouro de buffer — por um Kernel de Separação (MILS). A hierarquia de execução física divide a CPU em quatro anéis regulados estritamente pelo silício:M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
-O dispositivo simulado abandona o design estático de sistema único e distribui a carga computacional em uma topologia triangular de 4 VMs independentes que operam sob um regime de Confiança Zero e Quórum Consensual: VM1 (Android OS),VM4 (Interlocutora Enclave),VM2 (Micro-Linux),VM3 (O Mecanismo de Telemetria Preditiva).
+O dispositivo simulado abandona o design estático de sistema único e distribui a carga computacional em uma topologia triangular de 4 VMs independentes que operam sob um regime de Confiança Zero e Quórum Consensual: VM1 (Android OS / Web2),VM4 (Interlocutora Enclave / Modo Execute-Only),VM2 (Micro-Linux / Web3),VM3 (O Mecanismo de Telemetria Preditiva).
 
-Em vez de apagar os dados a cada requisição, a memória RAM de trabalho da VM4 é configurada como um Ledger Criptográfico Imutável Local.
+Em vez de apagar os dados a cada requisição, a memória RAM de trabalho da VM4 é configurada como um Ledger Criptográfico Imutável Local (Mini-Blockchain na RAM).
 
 A Segunda Barreira e a Dupla Checagem:   Cada comando enviado pelo Android é assinado com criptografia assimétrica e comprimido em um hash SHA-256 processado diretamente 
 pelas instruções físicas da CPU (Extensão Zkn do RISC-V). O bloco atual (N) amarra-se ao bloco anterior (N-1). 
