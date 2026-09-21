@@ -1,17 +1,14 @@
 # Docs-Articles
 
-## Article #8
+## Article #9
 <h3>
 
 ## The Next-Generation Network Firewall: Harmonizing WPA4 Kyber and Dilithium Protocols with RISC-V PMP/LXC Silicon Hardening plus IEEE 802.11 IE 221 Frame Injection
 
-## [ENGLISH]
+## [ENGLISH] 
 
-Attention: only Part 1 is available (Technical Summary); Part 2 and the complete PoC document remain encrypted.
- 
-
- What I am publishing now is only Part 1 of the documents, the result of many years of research,
- I have prepared a technical summary for engineers, which is available here at the [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ What I bring is the result parcial of a fragmented puzzle of many years of research, structured in two parts: Part 1 (Article 9) and Part 2 (Article 8).
+ I have prepared a technical summary for engineers, You can access the first part here: [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
  You may not know it, but 5 years from now, the quantum arrival could happen at any 
  moment and will make obsolete all the current security we have as of today in September 2026.
  Faced with this threat, this document introduces a disruptive post-
@@ -26,11 +23,8 @@ Attention: only Part 1 is available (Technical Summary); Part 2 and the complete
  
  ## [PORTUGUÊS]
  
- Atenção: apenas a Parte 1 está disponível (Resumo Técnico); a Parte 2 e o documento
- completo da prova de conceito permanecem criptografados.
- 
- O que trago é apenas a ponta do iceberg e, depois de muitos anos de pesquisa, 
- elaborei um resumo técnico para engenheiros, que está disponível aqui no [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ O que trago é o resultado parcial de um quebra-cabeça fragmentado de muitos anos de pesquisa, estruturado em duas partes: Parte 1 (Artigo 9) e Parte 2 (Artigo 8).
+ Eu elaborei um resumo técnico para engenheiros, onde você pode acessar a primeira parte aqui: [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
  Talvez você não saiba, mas daqui a 5 anos a chegada quântica
  pode acontecer a qualquer momento e tornará obsoleta toda a segurança atual que 
  temos no dia de hoje em setembro de 2026. Diante dessa ameaça, este documento 
@@ -44,6 +38,45 @@ Attention: only Part 1 is available (Technical Summary); Part 2 and the complete
  5 anos de venda no mercado. Para impedir que ele pare na lata do lixo, trago uma 
  alternativa que resolve 90% do problem apenas remanufaturando os principais 
  causadores, como os chips, fazendo alianças estratégicas com empresas nacionais.
+
+## Article #8
+<h3>
+
+## SILICON CRYPTOGRAPHIC FORTRESS: Hardware-Enforced Fault Containment, In-Memory Ledgers, and Execute-Only Architecture Against Physical Exploits for Universal RISC-V Platforms
+
+## [ENGLISH] 
+The foundation of the system replaces the virtualization model based on logical containers (LXC) — which share the same Kernel and expose the ecosystem to Zero-Day exploits via injection and buffer overflows — with a Separation Kernel (MILS). The physical execution hierarchy divides the CPU into four rings strictly regulated by the silicon: M-Mode,HS-Mode,VS-Mode,VU-Mode.
+
+The simulated device abandons the static, single-system design and distributes the computational load across a triangular topology of 4 independent VMs operating under a Zero Trust and Consensual Quorum regime: VM1 (Android OS),VM4 (Interlocutor  Enclave),VM2 (Micro-Linux),VM3 (The Predictive Telemetry Mechanism)
+
+Instead of clearing the data with every request, VM4’s working RAM is configured as a Local Immutable Cryptographic Ledger.
+
+The Second Barrier and the double-checking: Each command sent by Android is signed with asymmetric cryptography and compressed into a SHA-256 hash, processed directly by the CPU's physical instructions (RISC-V Zkn Extension). The current block (N) links to the previous block (N-1). If a hacker tries to alter a single bit in the shared memory, the signature breaks.If the mini-blockchain link is broken (either by an attack or hardware failure), the Hypervisor instantly cuts off connections and activates Alert Mode.
+
+The concept of Temporal Polymorphism combined with Execute-Only (X-Only) Memory shatters the two pillars they need to build a successful exploit: time and predictability.
+
+THE INVULNERABLE CHIP: With this TRNG-powered Key Rotation script, if someone spends 6 months trying to hack the device using Differential Power Analysis (DPA) to extract the seed of the current key... just as they are about to succeed, the monotonic clock hits the deadline, the Gowin chip captures the thermal noise of the electrons, the ratchet turns, and the key changes completely, throwing all the hacker's work straight into the trash.
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
+
+## [PORTUGUÊS]
+A fundação do sistema substitui o modelo de virtualização por contêineres lógicos (LXC) — que compartilham o mesmo Kernel e expõem o ecossistema a exploits de Dia Zero por injeção e estouro de buffer — por um Kernel de Separação (MILS). A hierarquia de execução física divide a CPU em quatro anéis regulados estritamente pelo silício:M-Mode,HS-Mode,VS-Mode,VU-Mode.
+
+O dispositivo simulado abandona o design estático de sistema único e distribui a carga computacional em uma topologia triangular de 4 VMs independentes que operam sob um regime de Confiança Zero e Quórum Consensual: VM1 (Android OS),VM4 (Interlocutora Enclave),VM2 (Micro-Linux),VM3 (O Mecanismo de Telemetria Preditiva).
+
+Em vez de apagar os dados a cada requisição, a memória RAM de trabalho da VM4 é configurada como um Ledger Criptográfico Imutável Local.
+
+A Segunda Barreira e a Dupla Checagem:   Cada comando enviado pelo Android é assinado com criptografia assimétrica e comprimido em um hash SHA-256 processado diretamente 
+pelas instruções físicas da CPU (Extensão Zkn do RISC-V). O bloco atual (N) amarra-se ao bloco anterior (N-1). 
+Se um hacker tentar alterar um único bit na memória compartilhada, a assinatura quebra.
+Caso o elo da mini-blockchain seja rompido (por ataque ou falha de hardware), o Hypervisor corta instantaneamente conexões e ativando o Modo Alerta.
+
+
+O conceito do Polimorfismo Temporal aliado à Memória Execute-Only (X-Only) quebra os dois pilares que eles precisam para construir um exploit de sucesso: tempo e previsibilidade.
+
+O CHIP INVIOLÁVEL: Com esse script de Key Rotation alimentado por TRNG, Se algumem passar 6 meses tentando hackear o dispositivo por análise de consumo de energia (DPA - Differential Power Analysis) para descobrir a semente da chave atual... no momento em que ele estiver quase conseguindo, o relógio monotônico bate o prazo, o chip da Gowin captura o ruído térmico dos elétrons, a catraca gira e muda a chave completamente, jogando todo o trabalho do hacker no lixo.
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
 
 ## Article #7
 <h3>
