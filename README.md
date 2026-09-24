@@ -48,6 +48,7 @@
 The foundation of the system replaces the virtualization model based on logical containers (LXC) — which share the same Kernel and expose the ecosystem to Zero-Day exploits via injection and buffer overflows — with a Separation Kernel (MILS). The physical execution hierarchy divides the CPU into four rings strictly regulated by the silicon: M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
 The simulated device abandons the static, single-system design and distributes the computational load across a triangular topology of 4 independent VMs operating under a Zero Trust and Consensual Quorum regime: VM1 (Android OS / Web2),VM4 (Interlocutor  Enclave / Execute-Only Mode),VM2 (Micro-Linux / Web3),VM3 (The Predictive Telemetry Mechanism)
+The interlocutor is responsible for ensuring the encryption check on both sides, unlike blind encryption methods that only check one side.
 
 Instead of clearing the data with every request, VM4’s working RAM is configured as a Local Immutable Cryptographic Ledger (Mini-Blockchain in RAM).
 
@@ -63,6 +64,7 @@ THE INVULNERABLE CHIP: With this TRNG-powered Key Rotation script, if someone sp
 A fundação do sistema substitui o modelo de virtualização por contêineres lógicos (LXC) — que compartilham o mesmo Kernel e expõem o ecossistema a exploits de Dia Zero por injeção e estouro de buffer — por um Kernel de Separação (MILS). A hierarquia de execução física divide a CPU em quatro anéis regulados estritamente pelo silício:M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
 O dispositivo simulado abandona o design estático de sistema único e distribui a carga computacional em uma topologia triangular de 4 VMs independentes que operam sob um regime de Confiança Zero e Quórum Consensual: VM1 (Android OS / Web2),VM4 (Interlocutora Enclave / Modo Execute-Only),VM2 (Micro-Linux / Web3),VM3 (O Mecanismo de Telemetria Preditiva).
+O interlocutor é responsável para garantir a checagem da criptografia dos dois lados, diferente dos métodos de criptografia cegos que só fazem a checagem de um dos lados.
 
 Em vez de apagar os dados a cada requisição, a memória RAM de trabalho da VM4 é configurada como um Ledger Criptográfico Imutável Local (Mini-Blockchain na RAM).
 
