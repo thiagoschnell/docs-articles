@@ -175,6 +175,9 @@ ensuring the proposed configuration and execution without performance restrictio
   The architecture executes a dual-stage runtime verification loop: it validates the cryptographic certificate stored within the hardware's Secure Element and establishes
   an mTLS connection with the local authentication server (isolated LXC/Radius) via a standalone, by self-hosted RADIUS server running FreeRADIUS on an LXC container on your RISC-V / ARM, with zero external dependencies, partitioning the wireless fabric into independent encrypted logical channels for each connected user.
 
+  The CPU limiter is not for cooling; RISC-V eliminates cooling by design. The 20% refers to attack prevention. If a hacker wins the attack, only the handshake will be down; the rest of the device will function normally.
+  This 20% is a simple example; the limitation needs to be changed according to the current amount of user authentication needs.
+
 - Focus:
   * End-to-end mutual authentication (mTLS) based on hardware certificates (Root of Trust).
   * Native integration with enterprise identity servers and Public Key Infrastructures (PKI).
