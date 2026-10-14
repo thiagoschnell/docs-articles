@@ -32,6 +32,8 @@ Understanding Computational AI: Definition and Key Concepts
  philosophy by adopting a physical socket design. By marrying the concept of a socketed processor (desktop-style) with a removable HSM (YubiKey-style), 
  we achieve the ultimate engineering synergy: the integration of a Socketed Processor and a Removable HSM.
  
+ This architecture would create an everlasting modular device; the hardware would last for decades (Zero E-Waste).
+ 
  ## [PORTUGUÊS]
  
  O que trago é o resultado parcial de um quebra-cabeça fragmentado de muitos anos de pesquisa, estruturado em duas partes: Parte 1 (Artigo 9) e Parte 2 (Artigo 8).
@@ -52,7 +54,9 @@ Understanding Computational AI: Definition and Key Concepts
 
  Mesmo que a implementação de um padrão de solda manual econômico ou aceitável se mostre inviável, outra alternativa viável é adotar a filosofia do "Direito ao Reparo" 
  por meio da adoção de um design de soquete físico. se juntarmos a ideia de um processador em soquete (estilo desktop) com um HSM removível (estilo YubiKey), 
- tornando O Casamento Perfeito da Engenharia junção Processador em Soquete + HSM Removível.
+ tornando O Casamento Perfeito da Engenharia junção Processador em Soquete + HSM Removível. 
+ 
+ Essa arquitetura criaria um dispositivo modular eterno, O Aparelho duraria décadas (Lixo Eletrônico Zero).
 
 ## Article #8
 <h3>
