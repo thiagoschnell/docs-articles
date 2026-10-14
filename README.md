@@ -27,6 +27,10 @@ Understanding Computational AI: Definition and Key Concepts
  the market. To stop it from ending up in the trash bin, I bring an alternative that solves 
  90% of the problem just by remanufacturing the main culprits, such as the chips, by
  forming strategic alliances with national companies.
+
+ Even if implementing a cost-effective or acceptable manual soldering standard proves unfeasible, another viable alternative is to embrace the "Right to Repair" 
+ philosophy by adopting a physical socket design. By marrying the concept of a socketed processor (desktop-style) with a removable HSM (YubiKey-style), 
+ we achieve the ultimate engineering synergy: the integration of a Socketed Processor and a Removable HSM.
  
  ## [PORTUGUÊS]
  
@@ -45,6 +49,10 @@ Understanding Computational AI: Definition and Key Concepts
  5 anos de venda no mercado. Para impedir que ele pare na lata do lixo, trago uma 
  alternativa que resolve 90% do problem apenas remanufaturando os principais 
  causadores, como os chips, fazendo alianças estratégicas com empresas nacionais.
+
+ Mesmo que a implementação de um padrão de solda manual econômico ou aceitável se mostre inviável, outra alternativa viável é adotar a filosofia do "Direito ao Reparo" 
+ por meio da adoção de um design de soquete físico. se juntarmos a ideia de um processador em soquete (estilo desktop) com um HSM removível (estilo YubiKey), 
+ tornando O Casamento Perfeito da Engenharia junção Processador em Soquete + HSM Removível.
 
 ## Article #8
 <h3>
