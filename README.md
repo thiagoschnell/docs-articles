@@ -1,5 +1,12 @@
 # Docs-Articles
 
+## Article #10
+
+Understanding Computational AI: Definition and Key Concepts
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Understanding%20Computational%20AI%20-%20Definition%20and%20Key%20Concepts)</h3>
+
+
 ## Article #9
 <h3>
 
@@ -86,14 +93,12 @@ Além da troca de chips ecológica em Operação Sustentável, outra introduçã
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
 
 ## Article #7
-<h3>
 
 Personal Agent Card
 
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20Personal%20Agent%20Card)</h3>
 
 ## Article #5
-<h3>
 
 Beyond Windows - 5 reasons to try another operating system
 
@@ -101,7 +106,6 @@ Beyond Windows - 5 reasons to try another operating system
 
 
 ## Article #4
-<h3>
 
 Radio cryptography doesn't beat Jammer: Because who win is physics (original text)
 
@@ -109,7 +113,6 @@ Radio cryptography doesn't beat Jammer: Because who win is physics (original tex
 
 
 ## Article #3
-<h3>
 
 AI is real?
 
@@ -117,7 +120,6 @@ AI is real?
 
 
 ## Article #2
-<h3>
 
 Cookies deprecated out of date like adobe flash player?
 
@@ -131,7 +133,6 @@ html6 and more explanation
 
 
 ## Article #1
-<h3>
 
 Plan to save Windows?
 
