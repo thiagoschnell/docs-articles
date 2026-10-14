@@ -58,6 +58,9 @@ The concept of Temporal Polymorphism combined with Execute-Only (X-Only) Memory 
 
 THE INVULNERABLE CHIP: With this TRNG-powered Key Rotation script, if someone spends 6 months trying to hack the device using Differential Power Analysis (DPA) to extract the seed of the current key... just as they are about to succeed, the monotonic clock hits the deadline, the Gowin chip captures the thermal noise of the electrons, the ratchet turns, and the key changes completely, throwing all the hacker's work straight into the trash.
 
+
+Alongside eco-friendly chip-replacement in sustainable operations, another innovative sustainable solution involves decoupling the Hardware Security Module (HSM) from the mainboard, rendering it a detachable and portable peripheral. Consequently, instead of decommissioning a compromised or legacy device entirely, hardware remediation is achieved simply by hot-swapping the removable HSM. Although implementing this architecture requires meticulous low-level engineering and robust infrastructure, it prevents total device loss. In a scenario featuring a $55 device, the user can retain the primary hardware asset, discarding only the compromised $5 USB security token and replacing it with a new unit programmed on-demand at the factory.
+
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
 
 ## [PORTUGUÊS]
@@ -77,6 +80,8 @@ Caso o elo da mini-blockchain seja rompido (por ataque ou falha de hardware), o 
 O conceito do Polimorfismo Temporal aliado à Memória Execute-Only (X-Only) quebra os dois pilares que eles precisam para construir um exploit de sucesso: tempo e previsibilidade.
 
 O CHIP INVIOLÁVEL: Com esse script de Key Rotation alimentado por TRNG, Se algumem passar 6 meses tentando hackear o dispositivo por análise de consumo de energia (DPA - Differential Power Analysis) para descobrir a semente da chave atual... no momento em que ele estiver quase conseguindo, o relógio monotônico bate o prazo, o chip da Gowin captura o ruído térmico dos elétrons, a catraca gira e muda a chave completamente, jogando todo o trabalho do hacker no lixo.
+
+Além da troca de chips ecológica em Operação Sustentável, outra introdução a uma solução ecológica é separar o HSM (Hardware Security Module) da placa principal, transformando-o em um dispositivo destacável (removível) e portátil. Assim, em vez de descartar o dispositivo antigo ou comprometido por completo, realiza-se o reparo simplesmente trocando esse HSM removível. Mesmo exigindo uma estrutura e engenharia complexas nos mínimos detalhes para funcionar na prática, o usuário não perde o dispositivo (como no exemplo de $55); basta descartar a chave USB de $5 e comprar uma nova, programada sob demanda na fábrica.
 
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
 
