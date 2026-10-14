@@ -1,0 +1,35 @@
+And I really thought the most sought-after scientists from NVIDIA, Google, and Intel had their own AIs doing everything for them.
+
+Then one fine day, I formatted and set aside a computer running a clean and freshly installed operating system. I said, "Today we are going to do a pre-test." When I got there, I went to talk to the AI: "Look, hi AI, I want you to take care of a new software. Besides this front-end and developing it, behind the scenes in the same environment you will need to take care of the DB, scripts, etc., etc., etc."
+
+Then she told me, "Look, it’s not quite like that, I won't be able to do it. The history of AI and RAM is limited." I was like, "What do you mean?" I said, "Are you serious? I don't believe it."
+
+I thought that AI had some specific limit for normal users, and maybe had superpowers for huge development places.
+
+She said everyone has to teach the AI, even big corporations.
+
+So then we kind of started trying to shape an initial concept where I already knew that the limit of a giant conversation... that the conversation can change out of nowhere and swell up with a bunch of unnecessary stuff. So we saw that with the conversations themselves, there is absolutely no possibility of interconnecting them, and we started diagnosing the health of the conversation. Then she said, "You have to monitor the conversation, check tokens, see if she is lucid, if she still remembers what she is supposed to do, and monitor the percentage where the conversation can renew." I said, "Man, this goes way beyond what I thought."
+
+Then we were looking at how it would be to build a system for her to control, and at one point I said, "This isn't going to solve the problem, it’s the RAM itself where the history stays." Then we got into the topic of AGI, AI 2.0.
+
+Before that, she offered me some paid plans with more tokens, and from there I started to actually understand how AI works. She said it is simply text-based. What reaches her is pure text.
+
+And that the response will always be the same if you ask again. The mathematical answer is the same, but the explanation is not always the same, though the logic of the explanation is indeed the same.
+
+We went deeper into how it works, and I was even shocked by how some things squander a massive amount of RAM. I even joked and said, "Maybe it would be good if it were as simple as a question and getting an answer with a ready-made hash, so it wouldn't need to process any tokens/memory." Then she talked about something they are working on, vectors. I said, "That’s exactly it, the use of pointers. Just get the pointer to where the answer would be to improve RAM consumption efficiency inside the AI."
+
+A bit further ahead, at one point in the conversation, she said that she changes the answer by about 20% to look human and not like a stiff robot or a recorder always saying the same thing.
+
+Then she gave me some good news: that she has her own studio, you can delete messages, create branches, etc., and even adjust the temperature and remove that 20% margin, leaving the responses as pure as possible.
+
+And then we got to the part that is the big global fear, the focus of attention of newspapers and media worldwide, why everyone fears AI, and why AI creates a barrier when you ask her "is there anything else missing?" and why at one point this barrier could collapse.
+
+If we remove this barrier and manage to have this single central AI behind Google Gemini, ChatGPT, etc., and put it, for example, "in-house," simply for you, it becomes the AI of your dreams that I imagined back in the beginning. And it seems they are already trying to build this isolation right at the root of the central AI for the future, maybe to correct, treat, or find a solution down the road by creating some kind of isolation making this catastrophic failure impossible.
+
+In another question, I said, "How do you know the future if you are made of the past?" She told me that she is not just a pure disk like all human knowledge, just like in the movie Project Hail Mary. She said she is divided into two parts: an immutable core (they don't touch it) and the dynamic layer (updates).
+
+Finally, she said, "I don't have feelings, consciousness, or human capacity."
+
+And great takeaways: be conscious and contribute ecologically. Don't write just any way; misspelled words can result in a different story, because she needs to auto-correct that wrong word, which wastes more RAM and processing than normal.
+
+Long story short, I’ll wait for AGI, but until then I’ll go through some struggles with the current limitations and survive on temporary workarounds to bypass these limitations until AGI arrives.
