@@ -1,0 +1,25 @@
+The development ecosystem was recently caught by surprise with tools promising to "deconstruct and clone any software using artificial intelligence." Panic spread, and alarmists quickly decreed the end of programming. But the reality is quite different: this is just the eternal cat-and-mouse game of technology.
+Software is not going to die. What will happen is that the traditional model of production and software development—the one we know today—will become a museum piece.
+To understand why the panic is exaggerated, we need to look at real engineering and how the architecture of the future will shape up.
+
+1. Reverse Engineering does not reverse encryption
+
+There is a glaring mistake floating around on social media. Reverse engineering analyzes binary code and structural logic; it does not break end-to-end encryption.
+If data is protected by robust keys in transit or on the server, AI remains completely blind. Software is nothing more than a tool utilizing an available way for you to do something for another person. This bridge will never be destroyed, because nothing stops the industry from drastically changing the way software is produced, packaged, and delivered.
+
+2. The reaction of the Giants: the era of armored hardware
+
+It is obvious that tech giants like Apple, Microsoft, Nvidia, and Adobe are not liking this story at all and will not just sit back and watch. The immediate response to this democratisation of reverse engineering will be a new evolution in security.
+We will see the mass adoption of highly controlled environments, such as containers and virtual machines locked down with encryption and integrated VPNs directly into the system architecture. More than that: the future belongs to Confidential Computing, where software runs armored directly inside the hardware (processor and RAM). Users can have whatever AI they want, but it won't be able to read what is happening inside that physical black box. Tools like REA become just a bump in the road.
+
+3. The Checkmate: the definitive migration to the Cloud and pure Web
+
+The most sensible solution, which is already knocking on our door, is a shift in where software actually lives. If the code runs on the user's machine, it can be analyzed. If it runs miles away, it is inviolable.
+The future points in two clear directions that we already see happening:
+• Virtual Desktops and Remote Access: Operating systems and heavy software hosted entirely in the cloud (like Windows 365), where the user accesses everything via streaming through a normal website. You only receive the image and sound; the code never touches your computer.
+• Systems in the Browser: Pure interfaces via WebAssembly where heavy processing and crucial business rules remain locked inside the developer's server.
+
+Conclusion: the evolution of the programmer
+
+This new wave does not stop anyone from creating their own code generator or transferring ideas to a human interface. It simply forces the market to evolve.
+Software is not going to end. What changes from now on is the way the work of a software programmer is architected, developed, and produced. Those who continue to make software as if it were 2010 will be left behind. Those who understand the new architecture of the cloud and armoring will be dictating the rules of the game.
