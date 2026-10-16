@@ -6,7 +6,9 @@ Para entender por que o pânico é exagerado, precisamos olhar para a engenharia
 1. Engenharia Reversa não reverte criptografia
 
 Há um erro crasso flutuando nas redes sociais. Engenharia reversa analisa código binário e lógica estrutural, ela não quebra criptografia de ponta a ponta.
-Se os dados estão protegidos por chaves robustas em trânsito ou no servidor, a IA continua completamente cega. O software nada mais é do que uma ferramenta que utiliza uma maneira disponível para você fazer algo para outra pessoa. Essa ponte nunca vai ser destruída, porque nada impede a indústria de mudar drasticamente a forma como o software é produzido, envelopado e entregue.
+Se os dados estão protegidos por chaves robustas em trânsito ou no servidor, a IA continua completamente cega. 
+O software nada mais é do que uma ferramenta que utiliza uma maneira disponível para você fazer algo para outra pessoa. 
+Essa ponte nunca vai ser destruída, porque nada impede a indústria de mudar drasticamente a forma como o software é produzido, envelopado e entregue.
 
 2. A reação das Gigantes: a era do hardware blindado
 
