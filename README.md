@@ -1,5 +1,30 @@
 # Docs-Articles
 
+## Article #11
+
+<h3> The end of software because of REA? Obviously not - reverse engineering does not reverse encryption!!!!!!!!!!!</h3>
+ 
+<b>[ENGLISH]</b>
+
+The traditional software development model will become a museum piece.
+
+Robust encryption and hardware-level confidential computing will serve as shields against automated reverse engineering. Furthermore, the definitive migration to the cloud and remote processing will render local code inaccessible, making the current distribution model completely obsolete.
+
+Programming itself will not disappear in the face of new artificial intelligence tools. However, the impact will be devastating for closed-source software and traditional proprietary models that previously protected themselves solely by hiding their source code. Giants with historically locked ecosystems now face an unprecedented disruption, forcing them to completely redesign how they protect their intellectual property.
+ 
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20The%20end%20of%20software%20because%20of%20REA%3F%20Obviously%20not%20-%20reverse%20engineering%20does%20not%20reverse%20encryption!!!!!!!!!!!)</h3>
+
+<b>[PORTUGUÊS]</b>
+
+O modelo tradicional de desenvolvimento de software vai virar museu.
+
+A criptografia robusta e a computação confidencial a nível de hardware servirão como escudos contra a engenharia reversa automatizada. Além disso, a migração definitiva para a nuvem e o processamento remoto tornarão o código local inacessível e obsoletão o modelo atual de distribuição.
+
+A programação em si não vai desaparecer diante das novas ferramentas de inteligência artificial. No entanto, o impacto será devastador para softwares de código fechado e modelos proprietários tradicionais que antes se protegiam apenas ocultando seu código-fonte. Gigantes com ecossistemas historicamente trancados agora enfrentam uma disrupção sem precedentes, sendo forçadas a redesenhar como protegem sua propriedade intelectual.
+
+[Link](https://github.com/thiagoschnell/docs-articles/blob/main/artigo%3A%20O%20fim%20do%20software%20por%20causa%20da%20REA%3F%20%C3%93bvio%20que%20n%C3%A3o%20-%20a%20engenharia%20reversa%20n%C3%A3o%20reverte%20criptografia!!!!!!!!!!!)</h3>
+
+
 ## Article #10
 
 Understanding Computational AI: Definition and Key Concepts
@@ -8,14 +33,14 @@ Understanding Computational AI: Definition and Key Concepts
 
 
 ## Article #9
-<h3>
 
-## The Next-Generation Network Firewall: Harmonizing WPA4 Kyber and Dilithium Protocols with RISC-V PMP/LXC Silicon Hardening plus IEEE 802.11 IE 221 Frame Injection
+<h3>The Next-Generation Network Firewall: Harmonizing WPA4 Kyber and Dilithium Protocols with RISC-V PMP/LXC Silicon Hardening plus IEEE 802.11 IE 221 Frame Injection</h3>
 
-## [ENGLISH] 
+<b>[ENGLISH]</b>
 
  What I bring is the result parcial of a fragmented puzzle of many years of research, structured in two parts: Part 1 (Article 9) and Part 2 (Article 8).
  I have prepared a technical summary for engineers, You can access the first part here: [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ 
  You may not know it, but 5 years from now, the quantum arrival could happen at any 
  moment and will make obsolete all the current security we have as of today in September 2026.
  Faced with this threat, this document introduces a disruptive post-
@@ -34,10 +59,11 @@ Understanding Computational AI: Definition and Key Concepts
  
  This architecture would create an everlasting modular device; the hardware would last for decades (Zero E-Waste).
  
- ## [PORTUGUÊS]
+<b>[PORTUGUÊS]</b>
  
  O que trago é o resultado parcial de um quebra-cabeça fragmentado de muitos anos de pesquisa, estruturado em duas partes: Parte 1 (Artigo 9) e Parte 2 (Artigo 8).
- Eu elaborei um resumo técnico para engenheiros, onde você pode acessar a primeira parte aqui: [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt). 
+ Eu elaborei um resumo técnico para engenheiros, onde você pode acessar a primeira parte aqui: [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework.txt).
+ 
  Talvez você não saiba, mas daqui a 5 anos a chegada quântica
  pode acontecer a qualquer momento e tornará obsoleta toda a segurança atual que 
  temos no dia de hoje em setembro de 2026. Diante dessa ameaça, este documento 
@@ -59,11 +85,11 @@ Understanding Computational AI: Definition and Key Concepts
  Essa arquitetura criaria um dispositivo modular eterno, O Aparelho duraria décadas (Lixo Eletrônico Zero).
 
 ## Article #8
-<h3>
 
-## SILICON CRYPTOGRAPHIC FORTRESS: Hardware-Enforced Fault Containment, In-Memory Ledgers, and Execute-Only Architecture Against Physical Exploits for Universal RISC-V Platforms
+<h3>SILICON CRYPTOGRAPHIC FORTRESS: Hardware-Enforced Fault Containment, In-Memory Ledgers, and Execute-Only Architecture Against Physical Exploits for Universal RISC-V Platforms</h3>
 
-## [ENGLISH] 
+<b>[ENGLISH]</b>
+
 The foundation of the system replaces the virtualization model based on logical containers (LXC) — which share the same Kernel and expose the ecosystem to Zero-Day exploits via injection and buffer overflows — with a Separation Kernel (MILS). The physical execution hierarchy divides the CPU into four rings strictly regulated by the silicon: M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
 The simulated device abandons the static, single-system design and distributes the computational load across a topology of 4 independent VMs operating under a Zero Trust and Consensual Quorum regime: VM1 (Android OS / Web2),VM4 (Interlocutor  Enclave / Execute-Only Mode),VM2 (Micro-Linux / Web3),VM3 (The Predictive Telemetry Mechanism)
@@ -82,7 +108,8 @@ Alongside eco-friendly chip-replacement in sustainable operations, another innov
 
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/MULTI-LAYERED%20STRUCTURAL%20IMMUNITY%20FRAMEWORK/master_framework_part2.txt)
 
-## [PORTUGUÊS]
+<b>[PORTUGUÊS]</b>
+
 A fundação do sistema substitui o modelo de virtualização por contêineres lógicos (LXC) — que compartilham o mesmo Kernel e expõem o ecossistema a exploits de Dia Zero por injeção e estouro de buffer — por um Kernel de Separação (MILS). A hierarquia de execução física divide a CPU em quatro anéis regulados estritamente pelo silício:M-Mode,HS-Mode,VS-Mode,VU-Mode.
 
 O dispositivo simulado abandona o design estático de sistema único e distribui a carga computacional em uma topologia de 4 VMs independentes que operam sob um regime de Confiança Zero e Quórum Consensual: VM1 (Android OS / Web2),VM4 (Interlocutora Enclave / Modo Execute-Only),VM2 (Micro-Linux / Web3),VM3 (O Mecanismo de Telemetria Preditiva).
