@@ -14,7 +14,7 @@ Programming itself will not disappear in the face of new artificial intelligence
 
 The market seems to be forced down the right path. The current software distribution model is dead. 
 Instead of the traditional format of downloading vulnerable executable files — such as .exe on Windows, .dmg on macOS, or .deb and .rpm packages on Linux —, 
-the future demands natively encrypted operating systems based on containerization.
+the future demands <b>natively encrypted operating systems based on containerization</b>.
 
 (An important parenthesis here: unlike Android, which still runs software locally within the device's own environment and must manage everything through centralized permissions, 
 this external containerization model elevates security to a whole new level).
@@ -35,7 +35,7 @@ A programação em si não vai desaparecer diante das novas ferramentas de intel
 
 O mercado parece estar sendo forçado a seguir o caminho correto. O modelo atual de distribuição de software morreu. 
 Em vez do formato tradicional de baixar arquivos executáveis vulneráveis — como o .exe no Windows, o .dmg no macOS ou os pacotes .deb e .rpm no Linux —, 
-o futuro exige sistemas operacionais nativamente criptografados e baseados em conteinerização.
+o futuro exige <b>sistemas operacionais nativamente criptografados e baseados em conteinerização</b>.
 
 (Aqui entra um parêntese importante: ao contrário do Android, que ainda roda o software localmente no mesmo ambiente do dispositivo e precisa gerenciar tudo via permissões centralizadas, 
 esse modelo de conteinerização externa eleva o nível de segurança).
