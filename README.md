@@ -11,7 +11,18 @@ The traditional software development model will become a museum piece.
 Robust encryption and hardware-level confidential computing will serve as shields against automated reverse engineering. Furthermore, the definitive migration to the cloud and remote processing will render local code inaccessible, making the current distribution model completely obsolete.
 
 Programming itself will not disappear in the face of new artificial intelligence tools. However, the impact will be devastating for closed-source software and traditional proprietary models that previously protected themselves solely by hiding their source code. Giants with historically locked ecosystems now face an unprecedented disruption, forcing them to completely redesign how they protect their intellectual property.
- 
+
+The market seems to be forced down the right path. The current software distribution model is dead. 
+Instead of the traditional format of downloading vulnerable executable files — such as .exe on Windows, .dmg on macOS, or .deb and .rpm packages on Linux —, 
+the future demands natively encrypted operating systems based on containerization.
+
+(An important parenthesis here: unlike Android, which still runs software locally within the device's own environment and must manage everything through centralized permissions, 
+this external containerization model elevates security to a whole new level).
+
+In this remote architecture, the system ensures that an app failure never breaks or exposes your core operating system, because the code does not even run on your physical machine. 
+If a software encounters an issue, you simply delete it or terminate the session without leaving a trace. The evolution of development is not just about protecting code with AI, 
+but about finally adopting this armored, disposable structure that should have been the standard since the Windows XP era.
+
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/article%3A%20The%20end%20of%20software%20because%20of%20REA%3F%20Obviously%20not%20-%20reverse%20engineering%20does%20not%20reverse%20encryption!!!!!!!!!!!)</h3>
 
 <b>[PORTUGUÊS]</b>
@@ -21,6 +32,17 @@ O modelo tradicional de desenvolvimento de software vai virar museu.
 A criptografia robusta e a computação confidencial a nível de hardware servirão como escudos contra a engenharia reversa automatizada. Além disso, a migração definitiva para a nuvem e o processamento remoto tornarão o código local inacessível e obsoletão o modelo atual de distribuição.
 
 A programação em si não vai desaparecer diante das novas ferramentas de inteligência artificial. No entanto, o impacto será devastador para softwares de código fechado e modelos proprietários tradicionais que antes se protegiam apenas ocultando seu código-fonte. Gigantes com ecossistemas historicamente trancados agora enfrentam uma disrupção sem precedentes, sendo forçadas a redesenhar como protegem sua propriedade intelectual.
+
+O mercado parece estar sendo forçado a seguir o caminho correto. O modelo atual de distribuição de software morreu. 
+Em vez do formato tradicional de baixar arquivos executáveis vulneráveis — como o .exe no Windows, o .dmg no macOS ou os pacotes .deb e .rpm no Linux —, 
+o futuro exige sistemas operacionais nativamente criptografados e baseados em conteinerização.
+
+(Aqui entra um parêntese importante: ao contrário do Android, que ainda roda o software localmente no mesmo ambiente do dispositivo e precisa gerenciar tudo via permissões centralizadas, 
+esse modelo de conteinerização externa eleva o nível de segurança).
+
+Nessa arquitetura remota, o sistema garante que uma falha no app nunca estrague ou exponha o seu sistema operacional central, 
+pois o código sequer roda na sua máquina física. Se um software der problema, você simplesmente o deleta ou encerra a sessão sem deixar rastros. 
+A evolução do desenvolvimento não é apenas sobre proteger o código com IA, mas sobre adotar de vez essa estrutura blindada e descartável que deveria ser o padrão desde a era do Windows XP.
 
 [Link](https://github.com/thiagoschnell/docs-articles/blob/main/artigo%3A%20O%20fim%20do%20software%20por%20causa%20da%20REA%3F%20%C3%93bvio%20que%20n%C3%A3o%20-%20a%20engenharia%20reversa%20n%C3%A3o%20reverte%20criptografia!!!!!!!!!!!)</h3>
 
