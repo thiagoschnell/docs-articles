@@ -43,7 +43,7 @@ Este sandbox obrigatório impede a leitura cruzada de memória, a modificação 
 
 Ao combinar um ambiente de execução imutável e protegido por hardware com lógica distribuída, a arquitetura de 4 VMs desmantela sistematicamente os últimos vetores de ameaça teóricos capazes de visar um ambiente de execução isolado ou conectado via P2P.
 
-### Vetor 1: O Hipervisor Cego (Ataque de Eclipse e Negação de Serviço)
+### Vetor 1: O Hipervisor Cego (Ataque de Eclipse e Negação de Serviço [DoS]) e Desidratação Monolítica de SO de Função Única
 
 **A Ação da Ameaça:** Mesmo quando a memória RAM está totalmente criptografada via enclaves de hardware (ex: AMD SEV-SNP/Intel SGX), um SO hospedeiro comprometido ou um hipervisor físico malicioso mantém o controle sobre os ciclos de clock do hardware e a rede física de saída. 
 Um adversário pode analisar passivamente a cadência do tráfego e introduzir microatrasos nos pacotes (Ataque de Eclipse) para dessincronizar deliberadamente um nó, criando um deadlock de consenso localizado sem nunca quebrar a camada de criptografia.
@@ -53,7 +53,7 @@ a superfície de ataque é completamente desidratada. Operando em um nível extr
 Se o hipervisor forçar uma anomalia de latência artificial, o Quórum de Consenso sinaliza instantaneamente o nó que não responde, expurga toda a instância da memória física e provisiona um clone limpo em milissegundos, neutralizando tentativas persistentes de negação de serviço.
 
 
-### Vetor 2: Envenenamento de Estado (Ataque de Replay Criptográfico)
+### Vetor 2: Envenenamento de Estado (Ataque de Replay Criptográfico) e Monotonicidade Temporal Baseada em Consenso
 
 **A Ação da Ameaça:** Em uma arquitetura efêmera onde as VMs peer-to-peer são criadas e destruídas dinamicamente, um invasor que intercepte despejos de memória RAM física histórica ou tráfego de rede pode capturar um estado criptográfico legítimo, 
 assinado de fábrica, de uma sessão anterior (Tempo $T_1$). Quando um nó de VM novo e limpo nasce no Tempo $T_2$, um par malicioso na rede P2P injeta esse bloco antigo (mas validamente assinado) de volta para o novo nó, enganando-o para aceitar instruções obsoletas ou reverter seu histórico lógico.
