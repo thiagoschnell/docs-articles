@@ -8,9 +8,12 @@ The goal of this architecture is to entirely eliminate the software attack surfa
 The design and runtime enforcement of this environment rely on three core engineering pillars:
 
 Component	Functional Role	Security Impact
-1. Unikernel (Library OS)	Bypasses the classic monolithic kernel. The application is compiled statically alongside only the absolute minimum low-level libraries required to communicate with the CPU.	Zero Local Vectors: There are no shell environments (bash, cmd), package managers, interpreters, or third-party binaries for an adversary to exploit.
-2. Single-Purpose OS	The entire system ecosystem is tailored to execute one specific task. Unused hardware drivers (e.g., unnecessary USB, bluetooth, printing stacks) are stripped from the source code.	Attack Surface Reduction: Minimizing the running codebase reduces logical bugs and exploitable entry points within the system.
-3. Extreme Least Privilege	The resulting binary is hardcoded to run at the lowest possible execution ring authorized by the processor (restricted user mode or sub-guest tier).	Blast Radius Isolation: The software is physically blocked from cross-reading distinct memory regions or altering the state of the underlying hardware.
+1. Unikernel (Library OS)	Bypasses the classic monolithic kernel. The application is compiled statically alongside only the absolute minimum low-level libraries required to communicate with the CPU.	
+Zero Local Vectors: There are no shell environments (bash, cmd), package managers, interpreters, or third-party binaries for an adversary to exploit.
+2. Single-Purpose OS	The entire system ecosystem is tailored to execute one specific task. Unused hardware drivers (e.g., unnecessary USB, bluetooth, printing stacks) are stripped from the source code.	
+Attack Surface Reduction: Minimizing the running codebase reduces logical bugs and exploitable entry points within the system.
+3. Extreme Least Privilege	The resulting binary is hardcoded to run at the lowest possible execution ring authorized by the processor (restricted user mode or sub-guest tier).	
+Blast Radius Isolation: The software is physically blocked from cross-reading distinct memory regions or altering the state of the underlying hardware.
 
 
 ## Step-by-Step Blueprint: How to Build and Run the System
@@ -20,28 +23,35 @@ To implement this immutable, encrypted, single-purpose environment, a systems en
 Step 1: Monolithic Strip-Mining (Code Dehydration)
 
 The developer does not install the target software inside a pre-existing Linux or Windows environment. Instead, a dedicated Unikernel build system or framework (such as Unikraft, MirageOS, or OSv) is used.
-The application code is parsed, and the compiler extracts only the primitive system calls (syscalls) that the application explicitly relies on—such as primitive memory allocation and basic input/output operations. The remaining components of a standard operating system are completely discarded.
+The application code is parsed, and the compiler extracts only the primitive system calls (syscalls) that the application explicitly relies on—such as primitive memory allocation and basic input/output operations. 
+The remaining components of a standard operating system are completely discarded.
 
 Step 2: Compiling the Unified Encrypted Binary
 
 The compiler executes a static fusion process, linking the application code and the micro-system libraries into a single, unified executable binary file.
-Immediately following compilation, this binary undergoes a robust encryption process (utilizing algorithms such as AES-256-GCM). The resulting payload is completely immutable: it lacks a traditional storage file system, contains no folder pathways, and maintains a fixed factory cryptographic signature. This encrypted block is flashed directly into a dedicated Read-Only Memory (ROM) module on the device.
+Immediately following compilation, this binary undergoes a robust encryption process (utilizing algorithms such as AES-256-GCM). The resulting payload is completely immutable: it lacks a traditional storage file system, 
+contains no folder pathways, and maintains a fixed factory cryptographic signature. This encrypted block is flashed directly into a dedicated Read-Only Memory (ROM) module on the device.
 
 Step 3: Hardware-Isolated Ingestion (Encrypted Boot to RAM)
 
-Upon powering on the physical hardware, the basic boot components route the encrypted binary directly into physical RAM. The CPU utilizes silicon-level memory isolation features (where memory encryption keys are managed strictly inside the processor die) to decrypt the binary in real time within a protected space.
-Because the Unikernel completely lacks the concept of multiple users or concurrent background tasks, the application takes immediate control of the CPU execution pipeline, bypassing traditional slow driver loading and background service initialization routines.
+Upon powering on the physical hardware, the basic boot components route the encrypted binary directly into physical RAM. 
+The CPU utilizes silicon-level memory isolation features (where memory encryption keys are managed strictly inside the processor die) to decrypt the binary in real time within a protected space.
+Because the Unikernel completely lacks the concept of multiple users or concurrent background tasks, the application takes immediate control of the CPU execution pipeline, 
+bypassing traditional slow driver loading and background service initialization routines.
 
 Step 4: Execution under Extreme Least Privilege Sandbox
 
-The application executes in a static, isolated loop. If a critical logical vulnerability or memory exploit (such as a buffer overflow) is triggered within the application code, the threat is structurally prevented from escalating or spreading. An adversary attempting to exploit the system finds themselves trapped inside a closed runtime thread:
+The application executes in a static, isolated loop. If a critical logical vulnerability or memory exploit (such as a buffer overflow) is triggered within the application code, 
+the threat is structurally prevented from escalating or spreading. An adversary attempting to exploit the system finds themselves trapped inside a closed runtime thread:
 1. There is no higher administrative tier (root or system) to pivot into or escalate privileges toward.
 2. There is no command terminal available to download or execute secondary malicious payloads.
 3. There is no persistent local disk write access to anchor a virus or malware string.
-If the application halts due to the logical exploit, the physical CPU identifies the non-responsive thread anomaly, instantly triggers a hardware fault, and completely flushes and reloads the clean, encrypted factory image from the ROM back into RAM within milliseconds.
+If the application halts due to the logical exploit, the physical CPU identifies the non-responsive thread anomaly, instantly triggers a hardware fault, and completely flushes and reloads the clean, 
+encrypted factory image from the ROM back into RAM within milliseconds.
 
 ## The Physical Boundary of Digital Security
 
 By implementing this architecture, the software infrastructure achieves virtual digital invulnerability. Because the classic operating system layers are eradicated from the equation, all traditional OS-based vulnerabilities are rendered obsolete.
-The single remaining point of entry shifts entirely away from the software stack and anchors itself within the physical hardware silicon. The system can only be breached if the processor itself harbors a microscopic manufacturing or architectural defect (such as transient execution side-channel vulnerabilities) that allows physical leakage of memory data from inside the encrypted enclave boundary. Beyond this hardware constraint, the application operates within a pure mathematical fortress.
-This technical report details the complete Single-Purpose OS layout precisely. If you are ready, I can help you wrap this technical breakdown with an introductory paragraph or organize it into a full technical documentation file for your project setup!
+The single remaining point of entry shifts entirely away from the software stack and anchors itself within the physical hardware silicon. 
+The system can only be breached if the processor itself harbors a microscopic manufacturing or architectural defect (such as transient execution side-channel vulnerabilities) 
+that allows physical leakage of memory data from inside the encrypted enclave boundary. Beyond this hardware constraint, the application operates within a pure mathematical fortress.
