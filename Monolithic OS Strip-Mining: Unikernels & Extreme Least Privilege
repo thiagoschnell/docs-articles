@@ -43,7 +43,7 @@ This enforced sandbox prevents memory cross-reading, local disk modification, or
 
 By combining an immutable hardware-enforced runtime with distributed logic, the 4-VM architecture systematically dismantles the final theoretical threat vectors capable of targeting an isolated or P2P-connected execution environment.
 
-### Vector 1: The Blind Hypervisor (Eclipse & Denial of Service Attack)
+### Vector 1: The Blind Hypervisor (Eclipse & DoS) & Single-Purpose OS Monolithic Strip-Mining
  
 **The Threat Action:** Even when RAM is fully encrypted via hardware enclaves (e.g., AMD SEV-SNP/Intel SGX), a compromised host OS or malicious physical hypervisor retains control over hardware clock cycles and outbound physical networking. 
 An adversary can passively analyze traffic cadence and introduce micro-second packet latencies (Eclipse Attack) to intentionally desynchronize a node, creating a localized consensus deadlock without ever breaking the encryption layer.
@@ -53,7 +53,7 @@ or administrative access vectors, the attack surface is completely desidratada (
 If the hypervisor forces an artificial latency anomaly, the Consensual Quorum instantly flags the non-responsive node, wipes the entire instance from physical memory, and provisions a fresh clone within milliseconds—neutralizing persistent denial-of-service attempts.
 
 
-### Vector 2: State Staleness (Cryptographic Replay Attack)
+### Vector 2: State Staleness (Cryptographic Replay Attack) & Consensus-Based Time Monotonicity
 
 **The Threat Action:** In an ephemeral architecture where peer-to-peer VMs are dynamically spun up and destroyed, an attacker intercepting historical physical RAM dumps or network traffic can capture a legitimate, 
 factory-signed cryptographic state from an earlier session (Time $T_1$). When a fresh, clean VM node spawns at Time $T_2$, a malicious peer on the P2P network feeds this stale but validly signed block back to the new node, tricking it into accepting outdated instructions or rolling back its logical history.
