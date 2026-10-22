@@ -41,3 +41,8 @@ Quando o seu dispositivo liga hoje (Tempo \(T_{2}\)) e as VMs nascem limpas na R
 2. A Validação por Altura de Bloco: A nova VM2 nascente se conecta ao torrent P2P e pergunta para a rede: "Qual é a altura atual da nossa blockchain em RAM?". A rede P2P responde em quórum: "Estamos no bloco número 500.000".
 3. O Descarte Matemático: O hacker injeta o pacote criptografado de ontem. O Unikernel descriptografa o pacote com sucesso dentro do enclave (porque a assinatura criptográfica de fábrica está perfeita). Porém, ao ler o conteúdo do dado puramente lógico, o software vê: "Este dado pertence ao bloco número 480.000".
 4. A barreira da Monotonicidade: Como o software imutável de fábrica possui a regra de Monotonicidade Temporal, ele sabe que o tempo e os blocos só podem andar para frente. O Unikernel olha para o bloco 480.000 enviado pelo hacker, vê que ele é menor que o bloco atual 500.000 da rede, e descarta o pacote instantaneamente como lixo, sem executar nenhuma ação. O nó do hacker que enviou o pacote antigo é banido da lista de peers confiáveis do torrent.
+
+Conclusão do Cenário
+
+Como o sistema operacional clássico foi extinto e substituído por lógica matemática pura compilada dentro de enclaves imutáveis, o hacker não tem um sistema para invadir, não tem privilégios de administrador para roubar, e não consegue enganar a rede com dados do passado.
+A única falha física que resta é se o próprio silício do processador da AMD ou da Intel tiver um erro de fabricação microscópico que permita ler dados de dentro do enclave por interferência elétrica direta no chip. Fora isso, o software tornou-se uma fortaleza matemática intocável.
