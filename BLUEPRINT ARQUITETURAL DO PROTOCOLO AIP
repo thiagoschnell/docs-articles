@@ -1,16 +1,16 @@
 ===================================================================================================
-                                      FLUXO GERAL DO ECOSSISTEMA AIP
+                                FLUXO GERAL DE DADOS DO ECOSSISTEMA AIP
 ===================================================================================================
 
- [Fase 1: Cadastro] -> Dono registra o DNA do Servidor na Interlocutora Global (Central)
+ [Fase 1: Cadastro] -> Dono registra o Perfil de DNA do Servidor na Interlocutora Global
                              |
- [Fase 2: Rotina]   -> Interlocutora gera o Bloco de Certificados Diários e espalha via Anel/Replicadoras
+ [Fase 2: Rotina]   -> Interlocutora gera Blocos de Certificados Diários e espalha via Borda/Mesh
                              |
- [Fase 3: Acesso]   -> Cliente tenta acessar o Servidor do Dono
+ [Fase 3: Acesso]   -> Cliente tenta conexão com o Servidor do Dono
                              |
-                             +---> [Cenário A: ONLINE] ---> Validação em tempo real (Central/Anel)
+                             +---> [Cenário A: ONLINE] ---> Validação em tempo real via Consenso do Anel
                              |
-                             +---> [Cenário B: OFFLINE] --> Validação via Replicadora + Metadados ADS
+                             +---> [Cenário B: OFFLINE] --> Modo Escuro: Transporte Mesh + Metadados ADS
                                                                   |
                                       +---------------------------+---------------------------+
 
@@ -18,49 +18,49 @@
                              [Usuário Comum]                                          [Administrador (Admin)]
 
                                       |                                                       |
-                        Modo Read-Only Permanente                           Sessão Única (One-Shot) -> Lock de Firmware
+                        Modo Apenas Leitura Permanente                     Sessão Única -> Lockout de Firmware
 
-PASSO 1: O CADASTRAMENTO DO DISPOSITIVO (O NASCIMENTO)
+FASE 1: CADASTRO DO DISPOSITIVO (A CONCEPÇÃO)
 
-Todo servidor que deseja operar sob o protocolo AIP precisa passar por uma ancoragem inicial de identidade e tecnologia.
-1. Geração das Chaves Locais: O hardware seguro do Dono (o servidor) gera um par de chaves assimétricas pós-quânticas. A chave privada nunca sai do chip imutável (wafer).
-2. Coleta do DNA Tecnológico: O servidor varre seu próprio sistema e monta um manifesto exato: Versão do Sistema Operacional, Versão do Interpretador (ex: PHP 5.4), serviços ativos e portas de comunicação.
-3. Registro na Interlocutora Central: O Dono envia a sua Chave Pública e o Manifesto de DNA para a Interlocutora Central do Mundo.
-4. Ancoragem de Fábrica: A Interlocutora Central assina esse manifesto e devolve um ID único global. Esse ID é gravado na ROM de Apenas Leitura do dispositivo do Dono. A partir desse momento, a rede mundial sabe exatamente qual tecnologia deve estar rodando ali.
+Todo host ou servidor que opera sob o protocolo AIP deve passar por uma vinculação inicial obrigatória e mandatória entre hardware e software.
+1. Geração de Chaves Locais: O hardware de silício inviolável do servidor hospedeiro (Núcleo do Wafer de Silício) gera um par de chaves assimétricas pós-quânticas. A chave privada nunca sai da camada de hardware imutável.
+2. Perfilamento de DNA Tecnológico: O servidor varre todo o seu ecossistema local para compilar um manifesto criptográfico estrito: versão do Sistema Operacional, estado do compilador/interpretador (ex: PHP 5.4), binários ativos do sistema e configurações de portas.
+3. Registro na Interlocutora Global: O proprietário transmite esta Chave Pública e o Manifesto de DNA para o Anel Central da Interlocutora Global.
+4. Ancoragem de Máscara de Fábrica: O Anel Central assina criptograficamente este perfil e retorna um ID Global exclusivo. Este ID é permanentemente gravado na ROM de Máscara de Apenas Leitura do Host. A rede mundial agora sabe exatamente qual stack deve estar rodando neste nó específico.
 
-PASSO 2: O FUNCIONAMENTO DA INTERLOCUTORA E DO ANEL
+FASE 2: ANEL DE CONSENSO E AGENDAMENTO DA INTERLOCUTORA
 
-A Interlocutora não é um servidor único da Amazon ou Google; ela é uma rede viva baseada em consenso.
-1. Topologia em Anel Ativo: Múltiplos nós centrais (Américas, Europa, Ásia) comunicam-se via protocolo de consenso de altíssima velocidade.
-2. Varredura Diária de Vulnerabilidades: A Interlocutora cruza continuamente os Manifestos de DNA de todos os servidores cadastrados com os bancos mundiais de ameaças (CVEs).
-3. Geração do Bloco Diário: Uma vez a cada 24 horas, a Interlocutora gera um pacote compactado contendo os alvarás de saúde (certificados) de todos os servidores para o dia seguinte.
-4. Distribuição para Replicadoras: Esse bloco diário é empurrado para a borda da rede (Replicadoras regionais, satélites Starlink, caches de provedores). O sistema não trabalha com requisições em tempo real para cada acesso; ele distribui a "vacina do dia" de forma massiva e antecipada.
+A Interlocutora não é uma instância única em nuvem; ela é uma malha viva de consenso geodistribuída.
+1. Topologia de Anel Ativo: Nós centrais continentais se comunicam através de um loop de consenso de altíssima velocidade (Paxos/Raft otimizado para latência em escala planetária).
+2. Ingestão Diária de Vulnerabilidades: A Interlocutora cruza continuamente todos os Perfis de DNA de servidores cadastrados com os índices globais de ameaças e vulnerabilidades em tempo real (CVEs com pontuação crítica 9/10 ou 10/10).
+3. Geração do Bloco Diário: Uma vez a cada 24 horas, a Interlocutora compila e emite um bloco altamente compactado de tokens de liberação sanitária (Certificados Diários) válidos estritamente para a janela subsequente de 24 horas.
+4. Distribuição para a Borda: Essa carga de dados diária é enviada preventivamente para cache nas Replicadoras de Borda, constelações de satélites de órbita baixa e gateways de provedores regionais. A arquitetura rejeita totalmente consultas em tempo real durante sessões ativas, operando por meio de imunização proativa distribuída em massa.
 
-PASSO 3: A ESTRUTURA DO ARQUIVO DE CERTIFICADO (O CONCEITO ADS)
+FASE 3: ESTRUTURA DO PACOTE DE CERTIFICADO (DESIGN ADS ESTILO NTFS)
 
-Para não quebrar a criptografia padrão do arquivo, o AIP usa a estrutura baseada em fluxos de dados alternativos (ADS). O arquivo físico trafega como um único binário estruturado assim:
+Para evitar a quebra dos pipelines tradicionais de verificação criptográfica, o protocolo AIP estrutura sua carga útil usando um conceito homólogo aos Fluxos de Dados Alternativos (ADS). O arquivo físico é tratado como um binário unificado contendo dois fluxos de dados divididos:
 +-----------------------------------------------------------------------+
 
-| FLUXO PRINCIPAL (Identidade Estática)                                 |
-| - ID do Servidor: 0x8F92...                                           |
-| - Chave Pública do Dono                                                |
-| - Assinatura Digital da Interlocutora Central                         |
-| - Validade Temporal Estrita (Data: 29/10/2026 - 00:00 às 23:59)       |
+| FLUXO PRINCIPAL (Camada de Identidade Estática)                       |
+| - ID Global do Servidor: 0x8F92...                                    |
+| - Chave Pública do Host Proprietário                                  |
+| - Assinatura Central da Interlocutora Global                          |
+| - Limites Temporais Rígidos (Validade: 29/10/2026 - 00:00 às 23:59 UTC)|
 +-----------------------------------------------------------------------+
 
-| FLUXO ALTERNATIVO / METADADO ANEXO (O "Post-it" Criptográfico)        |
-| - Status de Integridade: [SAUDÁVEL / CRÍTICO / APAGÃO]                |
-| - Assinatura do Verificador (Central ou Replicadora Regional)         |
-| - Flag de Restrição: [ACESSO_TOTAL / READ_ONLY_ONLY / LOCKOUT]        |
+| FLUXO DE DADOS ALTERNATIVO / METADADOS OCULTOS (Envelope de Contexto) |
+| - Status do Vetor de Saúde do Sistema: [SAUDÁVEL / CRÍTICO / APAGÃO]  |
+| - Assinatura do Verificador Emissor (Anel Central ou Replicadora)      |
+| - Flag de Restrição de Execução: [ACESSO_TOTAL / READ_ONLY_ONLY / LOCK]|
 +-----------------------------------------------------------------------+
 
-PASSO 4: A AUTENTICAÇÃO NORMAL (ONLINE)
+FASE 4: AUTENTICAÇÃO ONLINE PADRÃO
 
-Quando a internet do mundo está funcionando perfeitamente:
-1. A Requisição: O Usuário Comum digita o endereço do site. O navegador dele intercepta a conexão usando o protocolo AIP.
-2. A Captura do Certificado: O navegador baixa o Certificado Diário do servidor do Dono.
-3. A Checagem do Relógio: O chip imutável do servidor do Dono lê o relógio físico da sua ROM de fábrica e valida: "O certificado apresentado bate com o dia de hoje instalado no meu silício".
-4. A Validação pelo Cliente: O navegador do usuário abre o fluxo principal do certificado e confirma a assinatura da Interlocutora Central. Em seguida, lê o Fluxo Alternativo (ADS). Se o status estiver SAUDÁVEL, a conexão HTTP normal é liberada com privilégios totais.
+Quando o roteamento e a infraestrutura da rede global estão totalmente operacionais:
+1. A Requisição: Um Usuário Comum abre um aplicativo cliente ou navegador apontando para o servidor. O interceptador local do cliente gerencia o handshake da conexão usando o protocolo AIP.
+2. Coleta do Certificado: O cliente puxa o Certificado Diário atual do servidor.
+3. Auditoria de Tempo por Hardware: O relógio interno imutável de ROM de Máscara do proprietário roda de forma autônoma no substrato de silício, validando a entrada: "A linha do tempo do bloco apresentado corresponde à data física rastreada no meu silício".
+4. Aplicação no Lado do Cliente: O dispositivo do usuário decodifica o fluxo principal, validando a assinatura raiz do Anel Central. Em seguida, lê o Fluxo de Dados Alternativo (ADS). Se a flag do vetor de saúde apontar SAUDÁVEL, privilégios totais de conexão são concedidos.
 
 FASE 5: O MODO ESCURO (OFFLINE TOTAL / ISOLAMENTO CATASTRÓFICO)
 
