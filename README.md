@@ -34,9 +34,9 @@ AIP is engineered under a strict military Fail-Secure doctrine. If an entire reg
 
 AIP's temporal counters and core quorum validation tick independently inside a physical factory-hardened Mask ROM (wafer) manufactured with zero write-primitives, rendering logical clock-replay attacks physically impossible. If an intruder attempts to force entry in the dark using a compromised edge node, the silicon substrate detects the chronological discrepancy, fires a localized voltage surge, and melts an internal Zeroization eFuse, instantly vaporizing root keys and turning target data into useless static noise before a single file can be breached.
 
-The Administrator Ultimatum: Mandatory Hardware Quarantine
+The Administrator Ultimatum: Strictly Local Access & Mandatory Hardware Quarantine
 
-For administrative endpoints, AIP yields exactly one single system session (One-Shot) per emergency token. The precise millisecond the session terminates, the chip's firmware throws a permanent logical deadbolt, rejecting even standard online certificates once connectivity returns. AIP completely eradicates remote logical backdoors mandated by state actors or exploited by threat groups: to restore operational baseline status, an engineer must perform on-site, physical chassis maintenance to locally flash raw firmware, enforcing absolute physical auditing post-collapse.
+For administrative endpoints, AIP yields exactly one single system session (One-Shot) per emergency token, mandating that authentication occurs exclusively via a direct, physical local connection to the machine's chassis (summarily blocking any remote network or RF-based access attempts). The precise millisecond this local session terminates, the chip's firmware throws an irreversible physical deadbolt, rejecting even standard online certificates once power and connectivity return. AIP completely eradicates remote logical backdoors mandated by state actors: to restore operational baseline status, the legitimate owner must be physically present at the machine chassis to locally flash raw firmware, enforcing absolute human sovereignty and physical auditing post-crisis.
 
 <b>[PORTUGUÊS]</b>
 
