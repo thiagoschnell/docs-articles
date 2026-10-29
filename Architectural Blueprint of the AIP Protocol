@@ -1,5 +1,5 @@
 ===================================================================================================
-                                  AIP ECOSYSTEM GENERAL DATA FLOW
+                                   AIP ECOSYSTEM GENERAL DATA FLOW
 ===================================================================================================
 
  [Phase 1: Registration] -> Owner registers Server DNA Profile with the Global Interlocutor
@@ -30,7 +30,7 @@ Every host or server operating under the AIP protocol must undergo a mandatory i
 
 PHASE 2: CONSENSUS RING AND INTERLOCUTOR SCHEDULING
 
-The Interlocutor is not a single cloud instances; it is a live, geodistributed consensus mesh.
+The Interlocutor is not a single cloud instance; it is a live, geodistributed consensus mesh.
 1. Active Ring Topology: Continental core nodes communicate via an ultra-high-speed consensus loop (optimized Paxos/Raft).
 2. Daily Vulnerability Ingestion: The Interlocutor continuously cross-references all registered server DNA Profiles against live planetary threat and vulnerability indices (CVEs scoring critical 9/10 or 10/10).
 3. Daily Block Generation: Once every 24 hours, the Interlocutor compiles and outputs a highly compressed block of health clearance tokens (Daily Certificates) valid for the subsequent 24-hour window.
@@ -99,8 +99,8 @@ When a localized, regional, or continental grid failure occurs, dropping all ext
 
 PHASE 6: DECODING AND DEGRADATION LOGIC (THE DOUBLE-WAY DECISION)
 
-When an HTTI packet is fed into the owner's secure parsing substrate in an air-gapped scenario, the processing logic executes along the following hardware pathways:
-                       [ INPUT: HTTI OFFLINE PACKET ]
+When an AIP packet is fed into the owner's secure parsing substrate in an air-gapped scenario, the processing logic executes along the following hardware pathways:
+                       [ INPUT: AIP OFFLINE PACKET ]
                                      |
                1. Parse & Decode Primary Stream (Root Signature)
                                      |
@@ -112,7 +112,7 @@ When an HTTI packet is fed into the owner's secure parsing substrate in an air-g
                    /                               \
        [ Yield Standard Access ]          { Is the token signed by an Edge Replicator? }
                                               /                      \
-                                        (Sim) /                        \ (Não)
+                                        (Yes) /                        \ (No)
                                              /                           \
                              3. Audit Replicator Signature         [ REJECT IMMEDIATELY ]
                                              |
@@ -121,7 +121,7 @@ When an HTTI packet is fed into the owner's secure parsing substrate in an air-g
                                  (Yes) /                \ (No)
                                       /                  \
                     [ EFUSE CRITICAL CORROSION ]      4. Decode Alternate Stream (ADS)
-                    (Instant Key Zeroization)                    |
+                     (Instant Key Zeroization)                    |
                                                    { Evaluate Enveloped ADS Flag }
                                                       /                      \
                                         [ READ_ONLY_ONLY ]               [ LOCKOUT / ADMIN ]
