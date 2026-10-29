@@ -66,9 +66,9 @@ O AIP foi desenhado sob a filosofia militar Fail-Secure (Falhar Fechado). Se um 
 
 O controle de tempo e as chaves de quórum do AIP rodam de forma independente em uma ROM de máscara física (wafer) fabricada sem linhas de escrita, erradicando ataques de adulteração de relógio (Clock-Replay). Se um invasor tentar injetar credenciais clonadas no escuro usando um nó de borda capturado, o chip de silício detecta a incongruência temporal, dispara uma sobrecarga elétrica interna e queima um eFuse de autodestruição, executando o wipe instantâneo das chaves mestras e transformando os dados locais em estática inútil antes do acesso do hacker.
 
- O Ultimato do Administrador: Quarentena Obrigatória de Hardware
+O Ultimato do Administrador: Acesso Estritamente Local e Quarentena de Hardware
 
-Para sistemas administrativos, o AIP concede uma única sessão de uso único (One-Shot) por certificado de emergência. No milissegundo em que a sessão expira, o firmware do chip entra em estado de bloqueio físico irreversível, rejeitando inclusive chaves normais quando a internet voltar. O AIP desabilita backdoors lógicos e remotos exigidos por governos: para o servidor voltar à vida, o proprietário legítimo deve estar fisicamente em frente ao chassi da máquina para aplicar uma atualização de firmware local, garantindo soberania e auditoria humana absoluta pós-crise.
+Para sistemas administrativos, o AIP concede uma única sessão de uso único (One-Shot) por certificado de emergência, exigindo obrigatoriamente que a autenticação ocorra via conexão física local direta no chassi do dispositivo (bloqueando qualquer tentativa de acesso remoto por rede ou rádio). No milissegundo em que essa sessão local expira, o firmware do chip entra em estado de bloqueio físico irreversível, rejeitando inclusive chaves normais quando o fornecimento de energia e a internet voltarem. O AIP desabilita completamente backdoors lógicos e remotos exigidos por governos: para o servidor voltar à vida, o proprietário legítimo deve estar fisicamente em frente à máquina para aplicar uma atualização de firmware local, garantindo soberania e auditoria humana absoluta pós-crise.
 
 ## Article #11
 
