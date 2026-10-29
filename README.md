@@ -24,7 +24,7 @@ The Three Pillars of AIP Immunization
 
 1. The Death of Blind Certificates (On-Demand DNA Vaccines)
 
-AIP permanently eradicates static annual validation. The owner registers the host system's Technological DNA profile only once. From that point onward, operating fully autonomously, the Interlocutor Ring scans this profile daily against emerging global threats, generating a fresh cryptographic health token every 24 hours, hora a hora. If a critical vulnerability is discovered globally, AIP injects an infection flag into a hidden Alternate Data Stream (ADS) within the token header. The user's client app parses this metadata and aborts the connection at the source (Client-Side Enforcement). If the destination node is compromised, the network immunizes it autonomously.
+AIP permanently eradicates static annual validation. The owner registers the host system's Technological DNA profile only once. From that point onward, operating fully autonomously, the Interlocutor Ring scans this profile continuously against emerging global threats, generating dynamic cryptographic health tokens every 24 hours, or even on an hourly basis, depending on the criticality level required by the infrastructure. If a critical vulnerability is discovered globally, AIP injects an infection flag into a hidden Alternate Data Stream (ADS) within the token header. The user's client app parses this metadata and aborts the connection at the source (Client-Side Enforcement). If the destination node is compromised, the network immunizes it autonomously.
 
 2. Extreme Resilience in Dark Mode (Post-Collapse Operations)
 
@@ -56,7 +56,7 @@ Seja o servidor de uma grande corporação comprometido por um exploit PHP-to-Sh
 
  1. Morte aos Certificados Cegos (Vacinas de DNA On-Demand)
 
-O AIP elimina a foto estática anual dos certificados comuns. O proprietário cadastra o DNA Tecnológico da aplicação hospedeira apenas uma vez. A partir daí, de forma totalmente autônoma, o Anel de Interlocutores realiza a varredura diária desse DNA contra novas ameaças mundiais e gera, a cada 24 horas, o bloco criptográfico de saúde do dia. Se uma falha crítica for descoberta no mundo, o AIP injeta um alerta em um fluxo de dados alternativo oculto (ADS) do token. O próprio dispositivo do cliente lê esse metadado e aborta a conexão na origem (Client-Side Enforcement). Se o destino estiver doente, a rede o isola antes que o dono perceba.
+O AIP elimina a foto estática anual dos certificados comuns. O proprietário cadastra o DNA Tecnológico da aplicação hospedeira apenas uma vez. A partir daí, de forma totalmente autônoma, o Anel de Interlocutores realiza a varredura contínua desse DNA contra novas ameaças mundiais, gerando blocos criptográficos de saúde dinâmicos a cada 24 horas, ou até mesmo de hora em hora, dependendo do nível de criticidade exigido pela infraestrutura. Se uma falha crítica for descoberta no mundo, o AIP injeta um alerta em um fluxo de dados alternativo oculto (ADS) do token. O próprio dispositivo do cliente lê esse metadado e aborta a conexão na origem (Client-Side Enforcement). Se o destino estiver doente, a rede o isola antes que o dono perceba.
 
  2. Resiliência Extrema em Modo Escuro (Operações Pós-Colapso)
 
