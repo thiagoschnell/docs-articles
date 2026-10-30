@@ -173,3 +173,88 @@ is entirely severed, preventing the host server from reaching the Central Ring.
    - Graciously degrades permissions to a secure Read-Only state or opens 
      the Audited Admin Sandbox if the local PIN + Vault Code are supplied.
 ===============================================================================
+
+===============================================================================
+  AIP MECHANICS: RIGID HARDWARE-SPECIFIC CERTIFICATE BINDING
+===============================================================================
+
+This design enforcement guarantees that every dynamic or emergency certificate 
+remains cryptographically dead outside its targeted host hardware origin.
+
+[ THE BINDING PROCESS: FROM REGISTRATION TO BLACKOUT ]
+-------------------------------------------------------------------------------
+1. THE FACTORY SILICON DIGITAL PRINT (PHASE 1: SINGLE REGISTRATION):
+   During the single registration window with the Interlocutor Ring, the host's 
+   tamper-proof substrate transmits its unique hardware Global ID and its Public 
+   Key [7a3593f8a3cee4ca895774ab1574919f]. This identity profile is permanently 
+   sealed into the core lithography lines.
+
+2. THE TARGETED PAYLOAD ISSUANCE:
+   Whether the web is operational or a catastrophic grid collapse has occurred 
+   and the token is issued by an Edge Replicator: the compiled file always 
+   embeds within its primary header field:
+   `TARGET_HARDWARE_ID = [SERVER_A_ID]`
+   The entire cryptographic structure and Alternate Data Stream (ADS) are 
+   enveloped and signed explicitly leveraging that targeted server's public key.
+
+3. THE STOLEN TOKEN ATTACK VECTOR (ONLINE OR OFFLINE):
+   Imagine an attacker infiltrates a corporate branch facility (Server B) in 
+   the dark, intercepting a physical Data Mule to steal a valid emergency 
+   token generated for the corporate main headquarters (Server A).
+
+4. THE SUBSTRATE MECHANICAL REJECTION:
+   The attacker injects the stolen certificate into Server B and clicks 
+   [ LOAD OFFLINE CERTIFICATE ]. Server B's immutable chip parses the header:
+   - It decodes the `TARGET_HARDWARE_ID` field and flags the value as "Server A".
+   - The chip cross-references its own factory-etched Global ID Mask ROM, 
+     which reads "Server B".
+   - The hardware flags the string mismatch, denying the payload instantly.
+   - Zero system routines are executed. The air-gapped system remains shielded.
+
+===============================================================================
+               WHY THIS DISRUPTS CYBERCRIMINAL ECONOMICS
+===============================================================================
+
+* ERADICATION OF BATCH REPLAY ATTACKS:
+  Under legacy HTTPS, if a threat group compromises a blind CA or leaks a wildcard 
+  key, they can easily hijack and authenticate onto thousands of disparate 
+  servers simultaneously using the exact same stolen asset.
+
+* RADICAL CONTAINMENT PERIMETER:
+  With AIP, the token is a guided missile bound to a single piece of silicon. 
+  If a Data Mule is hijacked or an Edge Replicator outpost falls under enemy 
+  control, the generated contingency blocks are useless everywhere else. The 
+  intruder acquires no "universal skeleton key" to compromise neighboring 
+  hospitals or infrastructure nodes; they acquire dead binary noise.
+===============================================================================
+
+===============================================================================
+ AIP PROTOCOL: SURVIVAL CERTIFICATE REQUEST (SCR) PROXY HANDSHAKE
+===============================================================================
+
+This protocol details how a 100% air-gapped and disconnected host generates 
+a secure export artifact, enabling a Data Mule to query the cryptographic 
+vaccine from an external connected network or an active Edge Replicator.
+
+[ PHASE A: LOCAL REQUEST GENERATION (INSIDE THE DARK BUNKER) ]
+-------------------------------------------------------------------------------
+* System Trigger      -> The operator executes the offline export directive.
+* Silicon Substrate   -> The Mask ROM core reads its physical internal clock 
+                         and compiles the Survival Certificate Request (SCR).
+* SCR Payload Data    -> Contains the unique Global Hardware ID + Physical Timestamp.
+* Origin Hardening    -> The entire SCR binary package is signed utilizing the 
+                         host chip's internal Post-Quantum Private Key. This 
+                         prevents attackers from forging emergency requests.
+
+[ PHASE B: PROXY CONTEXTUAL PROCESSING ]
+-------------------------------------------------------------------------------
+* Transit Vector      -> The SCR payload travels physically via an air-gapped 
+                         USB drive or via AIP-Mesh radio on a smartphone.
+* Payload Destination -> An internet-connected node (Central Ring) or a powered 
+                         peripheral Edge Replicator outpost.
+* Verifier Routine    -> The Ring or the Replicator decrypts the SCR utilizing the 
+                         server's Public Key (registered only once at inception).
+* Token Issuance      -> Upon successful verification, the engine outputs the 
+                         contingency token rigidly bound to the requester's 
+                         Global ID, enforcing One-Time Use triggers.
+===============================================================================
