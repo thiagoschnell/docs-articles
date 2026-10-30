@@ -44,6 +44,8 @@ The Administrator Ultimatum: Strictly Local Access & Mandatory Hardware Quaranti
 
 For administrative endpoints, AIP yields exactly one single system session (One-Shot) per emergency token, mandating that authentication occurs exclusively via a direct, physical local connection to the machine's chassis (summarily blocking any remote network or RF-based access attempts). The precise millisecond this local session terminates, the chip's firmware throws an irreversible physical deadbolt, rejecting even standard online certificates once power and connectivity return. AIP completely eradicates remote logical backdoors mandated by state actors: to restore operational baseline status, the legitimate owner must be physically present at the machine chassis to locally flash raw firmware, enforcing absolute human sovereignty and physical auditing post-crisis.
 
+
+
 <b>[PORTUGUÊS]</b>
 
 <h3>Protocolo Interlocutor Autónomo (AIP)</h3>
@@ -80,7 +82,31 @@ O controle de tempo e as chaves de quórum do AIP rodam de forma independente em
 
 O Ultimato do Administrador: Acesso Estritamente Local e Quarentena de Hardware
 
-Para sistemas administrativos, o AIP concede uma única sessão de uso único (One-Shot) por certificado de emergência, exigindo obrigatoriamente que a autenticação ocorra via conexão física local direta no chassi do dispositivo (bloqueando qualquer tentativa de acesso remoto por rede ou rádio). No milissegundo em que essa sessão local expira, o firmware do chip entra em estado de bloqueio físico irreversível, rejeitando inclusive chaves normais quando o fornecimento de energia e a internet voltarem. O AIP desabilita completamente backdoors lógicos e remotos exigidos por governos: para o servidor voltar à vida, o proprietário legítimo deve estar fisicamente em frente à máquina para aplicar uma atualização de firmware local, garantindo soberania e auditoria humana absoluta pós-crise.
+Para sistemas administrativos, o AIP concede uma única sessão de uso único (One-Shot) por certificado de emergência, exigindo obrigatoriamente que a autenticação ocorra via conexão física local direta no chassi do dispositivo (bloqueando qualquer tentativa de acesso remoto por rede ou rádio). 
+
+No milissegundo em que essa sessão local expira, o firmware do chip entra em estado de bloqueio físico irreversível, rejeitando inclusive chaves normais quando o fornecimento de energia e a internet voltarem. O AIP desabilita completamente backdoors lógicos e remotos exigidos por governos: para o servidor voltar à vida, o proprietário legítimo deve estar fisicamente em frente à máquina para aplicar uma atualização de firmware local, garantindo soberania e auditoria humana absoluta pós-crise.
+
+<b>Mecânica Off-Grid: [Pedido de Socorro Criptográfico] e a Autenticação Híbrida</b>
+
+Quando o dispositivo do proprietário está completamente isolado ou Pós-Colapso 
+(Modo Escuro) e necessita de validação, a máquina offline é incapaz de acessar 
+a internet. O operador (ou uma Mula de Dados) deve realizar a coleta local do 
+sinal de socorro criptográfico gerado diretamente pelo chip de silício no escuro. 
+
+Este arquivo de requisição assinado deve ser transportado física ou digitalmente 
+até um ponto com conectividade externa (ou até uma Replicadora de Borda ativa) 
+para processar o token de contingência por procuração.
+
+Ao retornar, o arquivo é lido pelo chip. As chaves públicas já estão gravadas 
+direto no silício de fábrica (Mask ROM). Se a assinatura criptográfica bater, 
+o acesso é liberado instantaneamente:
+
+- Se for ONLINE (Anel Central): 
+  Libera acesso normal de manutenção e configurações livres do administrador.
+
+- Se for OFFLINE (Borda/Crise): 
+  Ignora o relógio corrido, ativa a regra mecânica de Uso Único (queima física 
+  de eFuse) e tranca o sistema em Modo Read-Only de segurança.
 
 ## Article #11
 
