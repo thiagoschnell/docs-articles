@@ -123,10 +123,16 @@ Ao retornar, o arquivo é lido pelo chip. As chaves públicas já estão gravada
 direto no silício de fábrica (Mask ROM). Se a assinatura criptográfica bater, 
 o acesso é liberado instantaneamente:
 
-- Se for ONLINE (Anel Central): 
+- Se for ONLINE (Anel Central):
+  O arquivo foi assinado pela Chave Privada Global do Anel de Interlocutores. 
+  O chip do Dono utiliza a Chave Pública da Central (gravada na litografia de 
+  fábrica) para descriptografar o pacote. 
   Libera acesso normal de manutenção e configurações livres do administrador.
 
-- Se for OFFLINE (Borda/Crise): 
+- Se for OFFLINE (Borda/Crise):
+  O arquivo foi assinado pela Chave Privada de Contingência de uma Replicadora 
+  de Borda. O chip do Dono utiliza a Chave Pública das Replicadoras (também 
+  gravada de fábrica na Mask ROM) para descriptografar.
   Ignora o relógio corrido, ativa a regra mecânica de Uso Único (queima física 
   de eFuse) e tranca o sistema em Modo Read-Only de segurança.
 
