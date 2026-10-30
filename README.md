@@ -29,7 +29,12 @@ AIP permanently eradicates static annual validation. The owner registers the hos
 2. Extreme Resilience in Dark Mode (Post-Collapse Operations) / Fallback: [Load Offline Certificate]
 
 AIP is engineered under a strict military Fail-Secure doctrine. If an infrastructure encounters a catastrophic power grid blackout—which, by physical consequence, annihilates the internet—the ecosystem transitions instantly into Dark Mode, and the hardware interface prompts the fallback command.
-Miles away, at the border or a remote outpost, an AIP Edge Replicator still has power and generates emergency certificates as soon as the collapse is detected. This emergency certificate carries no strict clock-based expiration date to withstand physical transit times, but it can only be used exactly once. The propagation of this file operates via Biological Data Mules over local, proximity-based RF Mesh networks. The precise millisecond the hardware parses the file through the offline loading interface and grants access, the token is permanently blacklisted via eFuse corrosion. To preserve vital public utilities without risking compromise, AIP graciously degrades common user privileges to a strict Read-Only state [7a3593f8a3cee4ca895774ab1574919f], completely paralyzing a virus or ransomware's ability to execute file writes or lateral infections.
+
+Miles away, at the border or a remote outpost, an AIP Edge Replicator still has power and generates emergency certificates as soon as the collapse is detected. 
+
+This emergency certificate carries no strict clock-based expiration date or chronological limits, allowing it to be stored and executed at any point in the distant future during an ongoing crisis. Systemic safety post-collapse relies entirely on a hardwired One-Time Execution threshold.
+
+The propagation of this file operates via Biological Data Mules over local, proximity-based RF Mesh networks, where users physically transport the token on air-gapped media or via smartphone radios. The precise millisecond the hardware parses the file through the offline loading interface and grants access, the token is permanently blacklisted via eFuse corrosion, preventing any potential replay attacks by intruders. To preserve vital public utilities without risking compromise, AIP graciously degrades common user privileges to a strict Read-Only state [7a3593f8a3cee4ca895774ab1574919f], completely paralyzing a virus or ransomware's ability to execute file writes or lateral infections.
 
 3. The Immutable Silicon Deadbolt (eFuse Crypto-Suicide Circuits)
 
