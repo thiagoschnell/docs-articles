@@ -62,7 +62,12 @@ O AIP elimina a foto estática anual dos certificados comuns. O proprietário ca
  2. Resiliência Extrema em Modo Escuro (Operações Pós-Colapso)/ Contingência: [Carregar Certificado Offline]
 
 O AIP foi desenhado sob a filosofia militar Fail-Secure (Falhar Fechado). Se uma infraestrutura sofrer um blackout energético catastrófico — o que, por consequência física, aniquila a internet —, o ecossistema migra instantaneamente para o Modo Escuro e a interface do terminal exibe o botão físico de contingência.
-A quilômetros de distância dali, na fronteira ou em um posto avançado, uma Replicadora de Borda do AIP ainda tem energia e gera os certificados de emergência assim que o colapso é detectado. Este certificado não possui um prazo de validade estrito por relógio para resistir ao tempo de transporte, mas só pode ser utilizado exatamente uma única vez. O tráfego de chaves passa a operar por Mulas de Dados Biológicas através de redes Mesh locais por proximidade. No milissegundo em que o hardware lê o arquivo via comando de carga offline e concede o acesso, o token entra em blacklist física por queima de eFuse. Para garantir a utilidade pública sem abrir brechas de segurança, o AIP degrada graciosamente o acesso de usuários comuns para o estado estrito de Read-Only (Apenas Leitura) [7a3593f8a3cee4ca895774ab1574919f], paralisando o poder de escrita e infecção de qualquer malware ou ransomware.
+
+A quilômetros de distância dali, na fronteira ou em um posto avançado, uma Replicadora de Borda do AIP ainda tem energia e gera os certificados de emergência assim que o colapso é detectado. 
+
+Este certificado de emergência não possui prazo de validade ou dependência de relógio, podendo ser armazenado e executado em qualquer momento do futuro em caso de necessidade. A segurança e a integridade da operação pós-colapso baseiam-se estritamente na regra de Uso Único (One-Time Execution).
+
+O tráfego de chaves passa a operar por Mulas de Dados Biológicas através de redes Mesh locais por proximidade. No milissegundo em que o hardware lê o arquivo via comando de carga offline e concede o acesso, o token entra em blacklist física por queima de eFuse. Para garantir a utilidade pública sem abrir brechas de segurança, o AIP degrada graciosamente o acesso de usuários comuns para o estado estrito de Read-Only (Apenas Leitura) [7a3593f8a3cee4ca895774ab1574919f], paralisando o poder de escrita e infecção de qualquer malware ou ransomware.
 
  3. A Tranca de Silício Inviolável (Suicídio Criptográfico por eFuse)
 
