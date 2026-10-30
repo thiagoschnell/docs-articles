@@ -233,6 +233,36 @@ seja criptograficamente inútil fora de seu hardware alvo de origem.
   continente; ele ganha um arquivo morto.
 ===============================================================================
 
+###############################################################################
+##                                                                           ##
+##             O Fluxo Passo a Passo da Requisição Offline / Borda           ##
+##                                                                           ##
+###############################################################################
+
+Passo 1: O Pedido de Socorro Criptográfico (No Servidor Offline)
+
+O operador vai até a máquina isolada do Dono, insere um pendrive ou dispositivo mesh e clica no botão de contingência da tela.
+1. O chip de silício (Wafer Core) lê o seu próprio relógio físico imutável de fábrica.
+2. O chip gera um arquivo de metadados levíssimo chamado RCS (Requisição de Certificado de Sobrevivência).
+3. Dentro desse arquivo RCS, o chip escreve: [ID_DO_HARDWARE] + [TIMESTAMP_ATUAL_DO_SILÍCIO].
+4. O chip assina esse arquivo usando a Chave Privada pós-quântica que nunca sai de dentro do silício. Essa assinatura prova matematicamente para o resto do mundo que aquela requisição veio de dentro da máquina legítima, e não de um clone feito por um hacker.
+
+Passo 2: O Transporte do Token de Requisição (A Mula de Dados se Move)
+
+O operador ejeta o pendrive ou armazena o arquivo RCS gerado no rádio do seu smartphone (AIP-Mesh).
+• Ele se desloca fisicamente (de moto, carro, a pé) saindo da área do apagão até encontrar o primeiro ponto com conectividade.
+• Este ponto pode ser uma cidade vizinha com internet estável (para falar com a Interlocutora Central) OU um posto avançado com uma Replicadora de Borda que tenha geradores/energia ativa.
+
+Passo 3: A Validação e Geração por Procuração (Na Internet ou na Replicadora)
+
+O operador conecta o pendrive no computador online ou aproxima o celular da Replicadora de Borda e envia o arquivo RCS.
+1. Se for na Internet Comum (Anel Central): O sistema online recebe o RCS e valida a assinatura criptográfica usando a chave pública que o Dono cadastrou uma única vez no início do projeto [7a3593f8a3cee4ca895774ab1574919f]. O Anel Central vê que a assinatura é real, cruza com o DNA do servidor contra o banco de vulnerabilidades globais (CVEs) e cospe o Certificado Diário/Horário moldado para aquela máquina [7a3593f8a3cee4ca895774ab1574919f].
+2. Se for na Replicadora de Borda (Modo Escuro Total): A Replicadora de Borda recebe o RCS. Ela não tem internet para falar com o centro, mas ela possui a Chave de Autoridade de Contingência gravada de fábrica. Ela valida a assinatura do chip do Dono, reconhece o colapso energético local, envelopa o pacote e gera um certificado com a flag STATUS = APAGÃO_GERAL / READ_ONLY_ONLY. O token gerado é marcado com o ID único e configurado como Uso Único (One-Time).
+
+Passo 4: O Retorno e a Injeção Física
+
+O operador pega o Certificado gerado (que agora está amarrado unicamente ao ID do Servidor do Dono), faz o caminho de volta até o bunker e clica em [Carregar Certificado Offline]. O silício lê, valida a autenticidade da Replicadora/Anel e abre as portas em modo seguro.
+
 ===============================================================================
  PROTOCOLO AIP: PROCESSO DE REQUISIÇÃO DE CERTIFICADO DE CONTINGÊNCIA (RCS)
 ===============================================================================
@@ -262,4 +292,56 @@ artefato de exportação seguro para que um terceiro (Mula de Dados) busque a
 * Emissão do Token    -> Se a assinatura bater, o sistema gera o certificado 
                          final de contingência amarrado estritamente ao ID do 
                          solicitante, aplicando as flags de Uso Único.
+===============================================================================
+
+###############################################################################
+##                                                                           ##
+##         Como o Chip do Dono Faz a Distinção (A Lógica de Silício)         ##
+##                                                                           ##
+###############################################################################
+
+Quando o arquivo entra no circuito de análise do chassi, o chip executa três checagens físicas em sequência:
+
+1. A Checagem da Chave de Assinatura (Quem assinou o arquivo?)
+
+• Se for um Certificado Online Normal: O arquivo foi assinado pela Chave Privada Global do Anel de Interlocutores. O chip do Dono usa a Chave Pública da Central (gravada na litografia de fábrica) para descriptografar. Se bater, o chip sabe: "Este arquivo veio do topo da cadeia mundial com a internet online".
+• Se for um Certificado de Emergência: O arquivo foi assinado pela Chave Privada de Contingência de uma Replicadora de Borda [7a3593f8a3cee4ca895774ab1574919f]. O chip do Dono usa a Chave Pública das Replicadoras (também gravada de fábrica) para descriptografar. Se bater, o chip sabe: "A internet caiu, a Central sumiu, mas uma Replicadora autorizada assinou esse passe no escuro".
+
+2. A Checagem da Flag de Estado e do Relógio
+
+• No Certificado Normal: O chip lê o cabeçalho de tempo e exige sincronia estrita com a data atual gravada no silício (janela de 24 horas ou de hora em hora) [7a3593f8a3cee4ca895774ab1574919f]. Se o relógio não bater, o acesso é negado.
+• No Certificado de Emergência: O chip lê o fluxo de dados alternativo (ADS) e encontra a flag STATUS = POWER_GRID_FAIL. Ao ler essa flag assinada pela Replicadora, o circuito lógico do chip desativa a verificação de relógio corrido (para permitir que o token funcione no futuro) [7a3593f8a3cee4ca895774ab1574919f], mas em troca, ele ativa o circuito mecânico do eFuse para a regra de Uso Único.
+
+3. A Reação do Hardware (A Tomada de Decisão)
+
+• Se o chip validou um Certificado Normal, ele libera o sistema operacional para rodar em Modo Total (Acesso de Escrita/Leitura Livre).
+• Se o chip validou um Certificado de Emergência, ele corta fisicamente as linhas de comando do barramento, forçando o kernel a montar todo o sistema estritamente em Modo Read-Only (Apenas Leitura) [7a3593f8a3cee4ca895774ab1574919f], a menos que o operador local insira o PIN + Código do Cofre para abrir a Sandbox supervisionada.
+
+===============================================================================
+ PROTOCOLO AIP: MATRIZ DE DISTINÇÃO DE CERTIFICADOS POR HARDWARE
+===============================================================================
+
+Este módulo especifica como o substrato de silício imutável do hospedeiro 
+diferencia e processa os tokens lógicos online dos tokens físicos de crise.
+
+[ MODO A: PARSING DO CERTIFICADO ONLINE NORMAL ]
+-------------------------------------------------------------------------------
+* Raiz da Assinatura -> Assinado pela Chave Privada Central (Anel Global).
+* Validação de Tempo -> EXIGÊNCIA ESTRITA. Deve bater com o relógio físico da 
+                        ROM de máscara de silício (janela diária ou horária).
+* Fluxo de Dados ADS -> Status do Vetor de Saúde = [SAUDÁVEL].
+                        Flag de Restrição        = [FULL_ACCESS].
+* Ação do Hardware   -> Libera a inicialização padrão dos serviços lógicos. 
+                        Permite escrita, leitura e modificações livres pelo admin.
+
+[ MODO B: PARSING DO CERTIFICADO DE EMERGÊNCIA (OFFLINE) ]
+-------------------------------------------------------------------------------
+* Raiz da Assinatura -> Assinado pela Chave de Contingência de uma Replicadora.
+* Validação de Tempo -> IGNORADA. O silício desativa os contadores lineares para 
+                        permitir execução atemporal em cenários pós-colapso.
+* Fluxo de Dados ADS -> Status do Vetor de Saúde = [POWER_GRID_FAIL].
+                        Flag de Restrição        = [READ_ONLY_ONLY / LOCKOUT].
+* Ação do Hardware   -> Intercepta as operações de arquivo a nível de circuito. 
+                        Força quarentena e rebaixa acessos para Apenas Leitura.
+                        Vaporiza o ID do token por eFuse no primeiro milissegundo.
 ===============================================================================
