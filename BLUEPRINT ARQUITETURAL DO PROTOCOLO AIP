@@ -177,3 +177,89 @@ impedindo o servidor do dono de se comunicar com o Anel de Interlocutores.
    - Libera o acesso de utilidade pública degradado para modo Read-Only ou, 
      se fornecido o PIN + Código do Cofre, abre a Sandbox de Administração local.
 ===============================================================================
+
+===============================================================================
+       MECÂNICA DE VINCULAÇÃO EXCLUSIVA DE CERTIFICADO POR HARDWARE (AIP)
+===============================================================================
+
+Esta regra de design garante que cada certificado dinâmico ou de emergência 
+seja criptograficamente inútil fora de seu hardware alvo de origem.
+
+[ O PROCESSO DE AMARRAÇÃO: DO CADASTRO AO APAGÃO ]
+-------------------------------------------------------------------------------
+1. O DNA DA PORTA DE FÁBRICA (FASE 1: CADASTRO ÚNICO):
+   No momento do cadastro na Interlocutora Central, o chip imutável do servidor 
+   (Servidor A) envia sua impressão digital de silício (Global ID) e sua Chave 
+   Pública [7a3593f8a3cee4ca895774ab1574919f]. Essa identidade é selada na 
+   pedra.
+
+2. A EMISSÃO DO TOKEN DIRECIONADO:
+   Quer o mundo esteja online, quer o colapso energético tenha acontecido e o 
+   token tenha sido gerado por uma Replicadora de Borda: o arquivo gerado 
+   sempre carrega no seu cabeçalho principal:
+   `TARGET_HARDWARE_ID = [ID_DO_SERVIDOR_A]` 
+   Todo o payload e o fluxo alternativo (ADS) são envelopados e assinados 
+   usando a chave pública daquele servidor específico.
+
+3. O ATAQUE DO TOKEN ROUBADO (ONLINE OU OFFLINE):
+   Imagine que um hacker invade a filial de uma empresa (Servidor B) no escuro, 
+   intercepta uma Mula de Dados na estrada e rouba o pendrive contendo o 
+   certificado de emergência legítimo que foi gerado para a sede (Servidor A).
+
+4. A REJEIÇÃO MECÂNICA NO SILÍCIO:
+   O hacker insere o certificado roubado no Servidor B e clica em [ CARREGAR ]. 
+   O chip imutável do Servidor B executa a decodificação do fluxo principal:
+   - Ele lê o campo `TARGET_HARDWARE_ID` do arquivo e vê que diz "Servidor A".
+   - O chip olha para o seu próprio Global ID gravado na Mask ROM de fábrica 
+     que diz "Servidor B".
+   - Os IDs não batem. O hardware seguro rejeita o pacote instantaneamente.
+   - Nenhuma linha de código é processada. O terminal continua blindado.
+
+===============================================================================
+                POR QUE ISSO MUDA O JOGO NA SEGURANÇA REAL?
+===============================================================================
+
+* ERRA_DICAÇÃO DE ATAQUES EM LOTE:
+  No HTTPS antigo, se um hacker rouba uma chave mestra ou um token de uma 
+  Autoridade Certificadora cega, ele consegue assinar e atacar mil sites e 
+  servidores diferentes ao mesmo tempo usando o mesmo vetor.
+
+* ISOLAMENTO TOTAL DA AMEAÇA:
+  No AIP, o token é um míssil teleguiado para um único chip de silício. Se uma 
+  Mula de Dados for assaltada ou um posto avançado de Replicadora for capturado 
+  por terroristas ou forças de Estado, os certificados de contingência gerados ali 
+  só servem para salvar as máquinas específicas mapeadas. O hacker não ganha 
+  uma "chave mestra universal" para abrir as outras indústrias ou hospitais do 
+  continente; ele ganha um arquivo morto.
+===============================================================================
+
+===============================================================================
+ PROTOCOLO AIP: PROCESSO DE REQUISIÇÃO DE CERTIFICADO DE CONTINGÊNCIA (RCS)
+===============================================================================
+
+Este protocolo detalha como um hardware 100% isolado e sem rede gera um 
+artefato de exportação seguro para que um terceiro (Mula de Dados) busque a 
+"vacina" criptográfica em um ambiente conectado ou em uma Replicadora.
+
+[ FASE A: GERAÇÃO DA SOLICITAÇÃO LOCAL (NO bunker OFFLINE) ]
+-------------------------------------------------------------------------------
+* Gatilho do Sistema  -> O operador executa o comando de exportação offline.
+* Ação do Silício     -> O chip de máscara física (Mask ROM) lê a data interna 
+                         e gera a Requisição de Certificado de Sobrevivência (RCS).
+* Payload do RCS      -> Contém o ID Global do Dispositivo + Timestamp Físico.
+* Blindagem de Origem -> Todo o pacote RCS é assinado digitalmente usando a 
+                         Chave Privada Pós-Quântica interna do chip hospedeiro.
+                         Impede que hackers forjem pedidos de socorro.
+
+[ FASE B: PROCESSAMENTO POR PROCURAÇÃO (PROXY REQUEST) ]
+-------------------------------------------------------------------------------
+* Vetor de Transporte -> O arquivo RCS viaja fisicamente via pendrive ou rádio 
+                         AIP-Mesh no smartphone da Mula de Dados.
+* Destino da Carga     -> Um terminal conectado à internet (Anel Central) ou 
+                         uma Replicadora de Borda periférica ativa.
+* Ação do Validador   -> O Anel ou a Replicadora descriptografa o RCS usando a 
+                         Chave Pública do servidor (cadastrada uma única vez).
+* Emissão do Token    -> Se a assinatura bater, o sistema gera o certificado 
+                         final de contingência amarrado estritamente ao ID do 
+                         solicitante, aplicando as flags de Uso Único.
+===============================================================================
