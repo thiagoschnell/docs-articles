@@ -61,10 +61,16 @@ Upon return, the payload is read by the chip. The public keys are already
 factory-etched directly into the silicon substrate (Mask ROM). If the 
 cryptographic signature matches, access is instantly granted:
 
-- If ONLINE (Central Ring): 
+- If ONLINE (Central Ring):
+  The payload was signed utilizing the Global Private Key of the Interlocutor 
+  Ring. The Owner's chip leverages the Central Root Public Key (factory-etched 
+  into the silicon lithography lines) to decrypt the packet. 
   Yields default open software maintenance and discretionary configuration bounds.
 
-- If OFFLINE (Edge/Crisis): 
+- If OFFLINE (Edge/Crisis):
+  The payload was signed utilizing the Contingency Private Key of an authorized 
+  Edge Replicator. The Owner's chip leverages the Replicators' Public Key 
+  (also factory-etched into the Mask ROM lithography) to decrypt the packet.
   Bypasses linear clock boundaries, engages the mechanical One-Time Use eFuse 
   trigger, and locks the storage strictly into a secure Read-Only state.
 
