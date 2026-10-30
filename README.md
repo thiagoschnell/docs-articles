@@ -42,9 +42,31 @@ AIP's temporal counters and core quorum validation tick independently inside a p
 
 The Administrator Ultimatum: Strictly Local Access & Mandatory Hardware Quarantine
 
-For administrative endpoints, AIP yields exactly one single system session (One-Shot) per emergency token, mandating that authentication occurs exclusively via a direct, physical local connection to the machine's chassis (summarily blocking any remote network or RF-based access attempts). The precise millisecond this local session terminates, the chip's firmware throws an irreversible physical deadbolt, rejecting even standard online certificates once power and connectivity return. AIP completely eradicates remote logical backdoors mandated by state actors: to restore operational baseline status, the legitimate owner must be physically present at the machine chassis to locally flash raw firmware, enforcing absolute human sovereignty and physical auditing post-crisis.
+For administrative endpoints, AIP yields exactly one single system session (One-Shot) per emergency token, mandating that authentication occurs exclusively via a direct, physical local connection to the machine's chassis (summarily blocking any remote network or RF-based access attempts). 
 
+The precise millisecond this local session terminates, the chip's firmware throws an irreversible physical deadbolt, rejecting even standard online certificates once power and connectivity return. AIP completely eradicates remote logical backdoors mandated by state actors: to restore operational baseline status, the legitimate owner must be physically present at the machine chassis to locally flash raw firmware, enforcing absolute human sovereignty and physical auditing post-crisis.
 
+<b>Off-Grid Mechanics: [Cryptographic Distress Signal] & Hybrid Authentication</b>
+
+When the owner's host deployment is completely air-gapped or Post-Collapse 
+(Dark Mode) and requires validation, the offline machine cannot query the network. 
+The operator (or Data Mule) must locally collect a cryptographic distress token 
+generated directly by the silicon core substrate in the dark. 
+
+This signed request payload is physically or digitally transported to a zone 
+retaining active backbone connection lines (or to a powered Edge Replicator) 
+to execute a proxy contingency handshake.
+
+Upon return, the payload is read by the chip. The public keys are already 
+factory-etched directly into the silicon substrate (Mask ROM). If the 
+cryptographic signature matches, access is instantly granted:
+
+- If ONLINE (Central Ring): 
+  Yields default open software maintenance and discretionary configuration bounds.
+
+- If OFFLINE (Edge/Crisis): 
+  Bypasses linear clock boundaries, engages the mechanical One-Time Use eFuse 
+  trigger, and locks the storage strictly into a secure Read-Only state.
 
 <b>[PORTUGUÊS]</b>
 
