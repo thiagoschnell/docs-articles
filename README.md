@@ -189,6 +189,21 @@ coordinately across two strict control planes:
   adapter's PCB substrate. Any administrative credential mismatch under Dark Mode 
   or physical tampering triggers an instantaneous voltage surge, vaporizing master 
   keys before the intruder gains access.
+
+[ THE FINAL FRONTIER: ADVANCED PHYSICAL COUNTERMEASURES (OPTICAL & QUANTUM LAYER) ]
+
+• ACTIVE OPTICAL ANTI-PROBING SHIELD:
+  The adapter's core is encased within an opaque resin matrix embedded with micro 
+  photon sensors. Any attempt at physical casing breach, mechanical drilling, or 
+  chemical stripping to expose copper bus lines lets in ambient light or changes 
+  material pressure, triggering an immediate internal voltage surge to blow the eFuses 
+  and chemically neutralize the silicon substrate.
+
+• ISOLATED PHOTONIC DATA PATHWAYS (OPTICAL ISOLATION):
+  The most critical quorum keys and state registers bypass metallic traces subject 
+  to electromagnetic induction scraping. The inner bus structures communicate via 
+  integrated microscopic optical waveguides, routing data via internal laser pulses, 
+  rendering physical side-channel eavesdropping a thermodynamic impossibility.
   
 <b>[PORTUGUÊS]</b>
 
@@ -374,6 +389,22 @@ módulos operam de forma coordenada através de duas camadas estritas de control
   Qualquer anomalia de credenciais sob o Modo Escuro ou tentativa de força bruta 
   dispara uma sobrecarga elétrica instantânea, inutilizando o ecossistema local 
   antes que o invasor rompa o perímetro de dados.
+
+[ FRONTEIRA FINAL: PROTEÇÃO FÍSICA AVANÇADA (CAMADA ÓPTICA E QUÂNTICA) ]
+
+• BLINDAGEM ÓPTICA ATIVA (ANTI-PROBING):
+  O núcleo do adaptador é selado em uma matriz de resina opaca com sensores de 
+  fótons integrados. Qualquer tentativa de abertura física, perfuração mecânica 
+  ou raspagem ácida para expor os barramentos de cobre permite a entrada de luz 
+  ou altera a pressão material, acionando o circuito de queima elétrica 
+  instantânea dos eFuses e a auto-neutralização química do silício.
+
+• TRÁFEGO ISOLADO POR INFRAVERMELHO/LASER (OPTICAL ISOLATION):
+  As chaves de quórum mais críticas e os registradores de estado não trafegam 
+  por trilhas metálicas comuns sujeitas à leitura por indução eletromagnética. 
+  O barramento interno opera via guias de onda ópticas microscópicas, movendo 
+  os dados na velocidade da luz e tornando qualquer tentativa de escuta física 
+  uma impossibilidade termodinâmica.
   
 ## Article #11
 
