@@ -148,9 +148,10 @@ two decoupled boundaries:
 
 To guarantee that the original security architecture of AIP remains untouched and 
 inviolable on commercial endpoints, the ecosystem introduces Physical Contingency 
-Adapters. Engineered for laptops (such as the Dell G15 via M.2/Thunderbolt slots), 
-IoT nodes, and industrial routers (via USB-C Dongles), these modules execute 
-coordinately across two strict control planes:
+Adapters powered by an On-Board HSM (Hardware Security Module) Architecture. 
+Engineered for laptops (such as the Dell G15 via M.2/Thunderbolt slots), IoT nodes, 
+and industrial routers (via USB-C Dongles), these modules execute coordinately 
+across two strict control planes:
 
 [ LAYER 1: FIRMWARE-LEVEL ENFORCEMENT (SYSTEM ORCHESTRATION) ]
 
@@ -161,7 +162,15 @@ coordinately across two strict control planes:
   It completely prevents host software from accessing or tampering with active 
   master validation registers.
 
-[ LAYER 2: HARDWARE BUS-LEVEL ENFORCEMENT (PHYSICAL LAYER) ]
+[ LAYER 2: HARDWARE BUS-LEVEL & INTEGRATED HSM ENFORCEMENT ]
+
+• HARDWARE SECURITY MODULE (HSM) MESH CO-CORE:
+  The adapter's inner engine functions as an active Hardware Security Module (HSM). 
+  The HSM core continuously scans the electric circuit mesh and impedance thresholds 
+  of all board subcomponents. If a state-level threat cell attempts component desoldering, 
+  micro-probing on physical copper lines, or flash memory spoofing, the HSM core flags 
+  the microscopic anomaly within nanoseconds and triggers an internal zeroization purge, 
+  wiping the master cryptographic seed.
 
 • BUS-LEVEL ISOLATION (DMA & IOMMU PROTECTION):
   The adapter executes below the firmware level. It commandeers and hardens a 
@@ -360,9 +369,10 @@ assimétrica e coordenada:
 
 Para garantir que a segurança do design original do AIP permaneça intocável e 
 inviolável em hardwares comerciais, o ecossistema introduz os Adaptadores de 
-Contingência Físicos. Projetados para notebooks (como via slot M.2/
-Thunderbolt), dispositivos IoT e roteadores industriais (via Dongle USB-C), esses 
-módulos operam de forma coordenada através de duas camadas estritas de controle:
+Contingência Físicos baseados em Arquitetura HSM Integrada (Hardware Security Module). 
+Projetados para notebooks (como via slot M.2/Thunderbolt), dispositivos 
+IoT e roteadores industriais (via Dongle USB-C), esses módulos operam de forma 
+coordenada através de duas camadas estritas de controle:
 
 [ CAMADA 1: CONTROLE EM NÍVEL DE FIRMWARE (ORQUESTRAÇÃO DO SISTEMA) ]
 
@@ -373,7 +383,15 @@ módulos operam de forma coordenada através de duas camadas estritas de control
   segurança quando um token de crise é injetado. Ele impede que softwares do 
   usuário tenham acesso ou manipulem as chaves de quórum e tabelas de validação.
 
-[ CAMADA 2: CONTROLE EM NÍVEL DE BARRAMENTO ELÉTRICO (FÍSICA DO HARDWARE) ]
+[ CAMADA 2: CONTROLE EM NÍVEL DE BARRAMENTO ELÉTRICO E CO-PROCESSAMENTO HSM ]
+
+• NÚCLEO HSM CRIPTO-BUNKER (ANTI-ALTERAÇÃO DE COMPONENTES):
+  O coração do adaptador opera como um Módulo de Segurança em Hardware (HSM) 
+  ativo. O HSM monitora continuamente a integridade elétrica e de malha de todos 
+  os subcomponentes da placa. Se um atacante tentar dessoldar chips, interceptar 
+  trilhas lógicas com sondas físicas ou substituir componentes de armazenamento, 
+  o HSM detecta a anomalia microscópica em nanossegundos e dispara o wipe térmico, 
+  limpando a semente criptográfica mestra.
 
 • ISOLAMENTO COMPLETO DE BARRAMENTO (DMA & IOMMU PROTECTION):
   O adaptador opera abaixo do firmware. Ele confisca e blinda uma região física 
