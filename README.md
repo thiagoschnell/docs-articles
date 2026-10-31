@@ -204,7 +204,19 @@ coordinately across two strict control planes:
   to electromagnetic induction scraping. The inner bus structures communicate via 
   integrated microscopic optical waveguides, routing data via internal laser pulses, 
   rendering physical side-channel eavesdropping a thermodynamic impossibility.
-  
+
+[ PERIMETER INVISIBILITY: IMMUNITY AGAINST RING -2 / RING -3 SCANNING ROUTINES ]
+
+• HARDWARE-LEVEL ENCLAVE BLINDING (MICROARCHITECTURAL SIGHT LOCKOUT):
+  The pluggable AIP adapter executing over the physical bus layer (ACPG) remains 
+  completely invisible to low-level memory scanning and state-management routines 
+  running inside Ring -2 (SMM) and Ring -3 (Intel ME / AMD PSP). By enforcing hard, 
+  hardware-isolated addressing profiles via native PCIe edge IOMMU/VT-d tables, 
+  the module seals its own volatile register space. Logical probe or read attempts 
+  originating from deep host CPU microcode layers hit a physical gate-level barrier, 
+  returning absolute null lines, zeroing out any potential to map, reverse-engineer, 
+  or inject malicious strings into the adapter's quorum validation registers.
+
 <b>[PORTUGUÊS]</b>
 
 <h3>Protocolo Interlocutor Autónomo (AIP)</h3>
@@ -405,6 +417,19 @@ módulos operam de forma coordenada através de duas camadas estritas de control
   O barramento interno opera via guias de onda ópticas microscópicas, movendo 
   os dados na velocidade da luz e tornando qualquer tentativa de escuta física 
   uma impossibilidade termodinâmica.
+  
+[ INVISIBILIDADE DO PERÍMETRO: IMUNIDADE CONTRA ANÁLISE EM RING -2 / RING -3 ]
+
+• CEGUEIRA DE MICROARQUITETURA (HARDWARE-LEVEL ENCLAVE BLINDING):
+  O adaptador AIP operando via barramento elétrico (ACPG) é completamente 
+  invisível para as rotinas de varredura de memória e gerenciamento de estado 
+  do Ring -2 (SMM) e Ring -3 (Intel ME / AMD PSP). Através do isolamento estrito 
+  por hardware via tabelas IOMMU/VT-d nativas aplicadas na borda do barramento PCIe, 
+  o módulo confisca seu próprio espaço de registradores voláteis de forma isolada. 
+  Tentativas de leitura ou injeção lógica vindas de camadas profundas da CPU 
+  hospedeira encontram um bloqueio de circuito elétrico, retornando nulo (null) 
+  e impossibilitando o mapeamento, mapeamento reverso ou engenharia de software 
+  contra as chaves de quórum do adaptador.
   
 ## Article #11
 
