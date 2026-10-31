@@ -145,16 +145,38 @@ two decoupled boundaries:
 
 <b>AIP PLUGGABLE SECURITY ADAPTERS Alternative: HARDWARE-LEVEL EDGE HARDENING</b>
 
+
 To guarantee that the original security architecture of AIP remains untouched and 
 inviolable on commercial endpoints, the ecosystem introduces Physical Contingency 
-Adapters. Engineered for laptops (such via M.2/Thunderbolt slots), 
-IoT nodes, and industrial routers (via USB-C Dongles), these modules execute at 
-the firmware level as an isolated Security Co-Processor (Crypto-Bunker).
+Adapters. Engineered for laptops (such as the Dell G15 via M.2/Thunderbolt slots), 
+IoT nodes, and industrial routers (via USB-C Dongles), these modules execute 
+coordinately across two strict control planes:
+
+[ LAYER 1: FIRMWARE-LEVEL ENFORCEMENT (SYSTEM ORCHESTRATION) ]
 
 • CO-PROCESSED HARDENING (ZERO SOFTWARE DEPENDENCY):
-  The adapter commands network traffic and cryptographic parsing at the physical 
-  layer (PHY Layer), completely preventing the host operating system from accessing, 
-  snooping, or tampering with active master validation registers.
+  The adapter commands network traffic and cryptographic parsing, interfacing 
+  directly with the BIOS/UEFI to force the host operating system kernel 
+  (Windows/Linux) into a strict Read-Only state when a crisis token is injected. 
+  It completely prevents host software from accessing or tampering with active 
+  master validation registers.
+
+[ LAYER 2: HARDWARE BUS-LEVEL ENFORCEMENT (PHYSICAL LAYER) ]
+
+• BUS-LEVEL ISOLATION (DMA & IOMMU PROTECTION):
+  The adapter executes below the firmware level. It commandeers and hardens a 
+  physical segment of host RAM directly over the PCIe bus, isolating cryptographic 
+  processing via hardware rings. Neither the BIOS nor the OS kernel retain logical 
+  pathways to scan, map, or intercept data within this physical memory block.
+
+• PHYSICAL LAYER GATING (PHY LAYER ENFORCEMENT):
+  Containment parameters bypass software rules entirely. The adapter acts as an 
+  electronic solid-state circuit breaker directly across the TX/RX physical data 
+  lines. Upon identifying a breach or token expiration, the module severs the 
+  electric signal, physically dropping the network or hardware interface off 
+  the host motherboard.
+
+[ NATIVE SILICON HARDENING (MODULE IMMUTABILITY) ]
 
 • INTEGRATED SILICON TIME ANCHOR (INTERNAL WAFER CLOCK):
   Every adapter embeds its own physical quartz crystal oscillator and an internal 
@@ -306,20 +328,40 @@ assimétrica e coordenada:
   (Zero-Days) e colapsos de ordem física. 
 
 
- <b>AIP PLUGGABLE SECURITY ADAPTERS Alternative: HARDWARE-LEVEL EDGE HARDENING</b>
+ <b>Alternativa de Adaptadores de Segurança Plugáveis AIP: Endurecimento de Borda em Nível de Hardware</b>
 
 
 Para garantir que a segurança do design original do AIP permaneça intocável e 
 inviolável em hardwares comerciais, o ecossistema introduz os Adaptadores de 
 Contingência Físicos. Projetados para notebooks (como via slot M.2/
 Thunderbolt), dispositivos IoT e roteadores industriais (via Dongle USB-C), esses 
-módulos operam na camada de firmware como um Co-Processador de Segurança Isolado 
-(Cripto-Bunker).
+módulos operam de forma coordenada através de duas camadas estritas de controle:
+
+[ CAMADA 1: CONTROLE EM NÍVEL DE FIRMWARE (ORQUESTRAÇÃO DO SISTEMA) ]
 
 • CO-PROCESSAMENTO ISOLADO (ZERO SOFTWARE DEPENDENCY):
-  O adaptador assume o controle total do tráfego e do parsing criptográfico na 
-  camada física (PHY Layer), impedindo que o sistema operacional hospedeiro 
-  tenha acesso ou manipule as chaves mestras e as tabelas de validação.
+  O adaptador assume o controle total do tráfego e do parsing criptográfico, 
+  comunicando-se com a BIOS/UEFI para forçar o kernel do sistema operacional 
+  hospedeiro (Windows/Linux) a operar estritamente em Modo Read-Only de 
+  segurança quando um token de crise é injetado. Ele impede que softwares do 
+  usuário tenham acesso ou manipulem as chaves de quórum e tabelas de validação.
+
+[ CAMADA 2: CONTROLE EM NÍVEL DE BARRAMENTO ELÉTRICO (FÍSICA DO HARDWARE) ]
+
+• ISOLAMENTO COMPLETO DE BARRAMENTO (DMA & IOMMU PROTECTION):
+  O adaptador opera abaixo do firmware. Ele confisca e blinda uma região física 
+  da memória RAM diretamente via barramento PCIe, isolando o processamento por 
+  hardware. Nem a BIOS, nem o sistema operacional possuem linhas lógicas capazes 
+  de ler ou interceptar os dados que passam por dentro dessa fatia de memória.
+
+• BLOQUEIO NA CAMADA FÍSICA (PHY LAYER GATING):
+  A contenção não depende de regras lógicas. O adaptador atua como um disjuntor 
+  eletrônico de estado sólido direto nas linhas elétricas de dados TX/RX. Caso 
+  uma anomalia crítica seja detectada ou o token expire, o circuito corta o 
+  sinal elétrico do barramento, fazendo a interface de rede ou o SSD desaparecerem 
+  fisicamente do chassi.
+
+[ PROTEÇÕES NATIVAS DO SILÍCIO (IMUTABILIDADE DO MÓDULO) ]
 
 • ÂNCORA TEMPORAL DE SILÍCIO INTEGRADA (INTERNAL WAFER CLOCK):
   Cada adaptador traz embutido seu próprio cristal oscilador e um wafer de 
