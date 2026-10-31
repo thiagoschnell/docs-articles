@@ -267,6 +267,40 @@ to the host motherboard's native lithography, keys and routines are decoupled:
   the HSM instantly cuts off the gate voltage arrays, triggering a localized quantum 
   tunneling drain. The binary matrix vanishes from physical existence, leaving zero 
   residual magnetic or electrical trace for laboratory forensics.
+
+<b> RE-REGISTRATION PROTOCOL: SILICON STATE-SEALING AND COMPANION AUTHENTICATOR</b>
+
+To permanently eradicate unauthorized re-registration and DNA spoofing scams by 
+remote attackers hijacking OS Root privileges, <b>AIP replaces legacy time-based MFA 
+with an atomic Static State Token that ONLY rotates when the hardware undergoes 
+a raw, physical factory reset.</b>
+
+[ THE STEP-BY-STEP OPERATION PIPELINE ]
+
+1. THE PHYSICAL ANTI-REMOTE TRIGGER:
+   The legitimate administrator manually opens the chassis and shorts the dedicated 
+   hardware jumper directly on the HSM PCB. Logical commands originating from 
+   network channels are flatly dropped. The core triggers quantum zeroization, 
+   wiping out older dynamic seeds.
+
+2. THE STATIC SEAL TOKEN DISPLAY (PUF CODE):
+   Upon rebooting into the secure blue recovery screen, the HSM core extracts a 
+   unique cryptographic value derived from atomic silicon imperfections (PUF). 
+   The interface surfaces a static numeric token (e.g., 884-921). This value 
+   DOES NOT rotate over time; it remains frozen to match the current hardware state.
+
+3. THE PAIRING VALIDATION VIA COMPANION APP:
+   The owner opens their localized AIP Authenticator smartphone app (paired exactly 
+   once at project inception). The application computes the parallel mathematical 
+   array, demanding that exact frozen on-screen code to validate and sign the 
+   new host technological DNA profile.
+
+4. SINGLE-USE eFUSE MATURATION:
+   The verification token is strictly single-use. The precise millisecond the new 
+   registration commits, the current state index is irreversibly blacklisted via 
+   internal eFuse corruption. Replay attacks are mathematically impossible. Re-scoping 
+   the parameter matrix is blocked unless a new physical reset is executed to cycle 
+   a brand-new hardware token, completely neutralizing remote attackers.
    
 <b>[PORTUGUÊS]</b>
 
@@ -406,7 +440,7 @@ assimétrica e coordenada:
   (Zero-Days) e colapsos de ordem física. 
 
 
- <b>Alternativa de Adaptadores de Segurança Plugáveis AIP: Endurecimento de Borda em Nível de Hardware</b>
+ <b>ALTERNATIVA DE ADAPTADORES DE SEGURANÇA PLUGÁVEIS AIP: ENDURECIMENTO DE BORDA EM NÍVEL DE HARDWARE</b>
 
 
 Para garantir que a segurança do design original do AIP permaneça intocável e 
@@ -533,6 +567,39 @@ da placa-mãe do cliente, as chaves e o processamento são divididos estritament
   disparando o desvanecimento quântico instantâneo por tunelamento de elétrons. 
   Os dados desaparecem da realidade material, impossibilitando análises forenses 
   remanescentes.
+
+<b>PROTOCOLO DE RECADASTRO: LACRE DE ESTADO POR SILÍCIO E AUTENTICADOR </b>
+
+Para erradicar fraudes de recadastro e falsificação de DNA por invasores que 
+obtêm privilégios de Root por software, o AIP substitui o MFA tradicional 
+(que muda a cada 30 segundos) <b>por um Código Estático de Estado que SÓ é alterado 
+quando o hardware sofre uma intervenção material bruta (Reset Físico).</b>
+
+[ O FLUXO DA PROVA PÓS-RESET PASSO A PASSO ]
+
+1. O GATILHO FÍSICO CONTRA ACESSO REMOTO:
+   O administrador legítimo abre o chassi e aciona o jumper/micro-switch direto 
+   na PCB do adaptador HSM. Comandos lógicos de rede são sumariamente ignorados. 
+   O chip executa a Purga Quântica, deleta as chaves anteriores e limpa o DNA.
+
+2. A GERAÇÃO DO LACRE DE TELA (PUF CODE):
+   Ao reiniciar na tela azul de contingência, o chip HSM extrai uma assinatura 
+   matemática baseada no caos das imperfeições atômicas do próprio silício (PUF). 
+   O sistema exibe um código numérico exclusivo e imutável na tela (Ex: 884-921). 
+   Este número fica congelado e NÃO muda com o tempo.
+
+3. A ASSINATURA BIUNÍVOCA NO APLICATIVO DO DONO:
+   O proprietário abre o aplicativo AIP Authenticator no smartphone (pareado 
+   estritamente uma única vez no início do projeto). O aplicativo calcula a 
+   função matemática assíncrona correspondente e exige exatamente o código 
+   congelado na tela para autorizar o novo Manifesto de DNA do Servidor/Note.
+
+4. CONSUMO IRREVERSÍVEL POR EFUSE:
+   Esse código é de uso único. No instante em que o recadastro é homologado, o 
+   ID do estado do silício é queimado por eFuse interno. Se um hacker interceptar 
+   o código antigo, ele se torna lixo digital inútil. O sistema só aceitará 
+   novas configurações se o invasor for lá fisicamente resetar a placa e gerar 
+   um token de silício inédito, inviabilizando 100% dos ataques remotos.
   
 ## Article #11
 
