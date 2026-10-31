@@ -149,7 +149,7 @@ two decoupled boundaries:
 To guarantee that the original security architecture of AIP remains untouched and 
 inviolable on commercial endpoints, the ecosystem introduces Physical Contingency 
 Adapters powered by an On-Board HSM (Hardware Security Module) Architecture. 
-Engineered for laptops (such as the Dell G15 via M.2/Thunderbolt slots), IoT nodes, 
+Engineered for laptops (such via M.2/Thunderbolt slots), IoT nodes, 
 and industrial routers (via USB-C Dongles), these modules execute coordinately 
 across two strict control planes:
 
