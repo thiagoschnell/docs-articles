@@ -225,7 +225,28 @@ across two strict control planes:
   originating from deep host CPU microcode layers hit a physical gate-level barrier, 
   returning absolute null lines, zeroing out any potential to map, reverse-engineer, 
   or inject malicious strings into the adapter's quorum validation registers.
+  
+[ARCHITECTURE CORRECTION: CRYPTOGRAPHIC ISOLATION INSIDE THE HSM CORE]
 
+To preserve plug-and-play modular integrity without demanding layout modifications 
+to the host motherboard's native lithography, keys and routines are decoupled:
+
+1. HOST MASK ROM & ECOSYSTEM ROLE (DEVICE / ROUTER CHASSIS):
+   The physical Mask ROM on the host motherboard is limited strictly to executing 
+   low-level secure boot logic and triggering the hardwired redirection of the 
+   electrical data bus (PCIe/USB) straight into the adapter slot. It stores zero 
+   AIP verification keys and does not parse cryptographic tokens.
+
+2. INTEGRATED ADAPTER HSM SECURE CORE ROLE (THE CRYPTO-BUNKER):
+   The Edge Replicator Root Public Key, Central Ring signatures, and the device's 
+   master cryptographic seed are housed strictly WITHIN the tamper-proof storage 
+   enclave of the pluggable HSM module itself. 
+
+   Decryption, temporal tracking via the integrated silicon clock, and target ID 
+   matching execute entirely inside the HSM envelope, shielded from the host CPU. 
+   If a signature validation fails, the HSM detonates its internal eFuses, killing 
+   all data bus communication with the host motherboard.
+   
 <b>[PORTUGUÊS]</b>
 
 <h3>Protocolo Interlocutor Autónomo (AIP)</h3>
@@ -448,6 +469,27 @@ coordenada através de duas camadas estritas de controle:
   hospedeira encontram um bloqueio de circuito elétrico, retornando nulo (null) 
   e impossibilitando o mapeamento, mapeamento reverso ou engenharia de software 
   contra as chaves de quórum do adaptador.
+
+[RETIFICAÇÃO DE ARQUITETURA: ISOLAMENTO CRIPTOGRÁFICO NO NÚCLEO HSM]
+
+Para manter a integridade do modelo plugável sem exigir modificações na litografia 
+da placa-mãe do cliente, as chaves e o processamento são divididos estritamente:
+
+1. PAPEL DA MASK ROM / ECOSSISTEMA HOSPEDEIRO (DISPOSITIVO / ROTEADOR):
+   A ROM de máscara física do chassi hospedeiro limita-se a executar rotinas de 
+   baixo nível para inicialização segura e o redirecionamento forçado do barramento 
+   elétrico de dados (PCIe/USB) para o slot do adaptador. Ela não armazena chaves 
+   de validação do AIP e não processa os tokens criptográficos.
+
+2. PAPEL DA MEMÓRIA SEGURA INTERNA DO ADAPTADOR HSM (O CRIPTO-BUNKER):
+   A Chave Pública Raiz das Replicadoras de Borda, as assinaturas do Anel Central 
+   e a semente criptográfica do dispositivo ficam armazenadas estritamente DENTRO 
+   do armazenamento criptográfico inviolável do próprio módulo HSM. 
+   
+   A descriptografia, validação temporal do relógio interno de silício e a checagem 
+   do ID único ocorrem dentro do enclave do HSM, isolado da CPU principal. Se a 
+   assinatura falhar, o HSM explode seu eFuse interno, cessando a comunicação 
+   com a placa-mãe hospedeira.
   
 ## Article #11
 
