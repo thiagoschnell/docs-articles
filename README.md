@@ -246,6 +246,27 @@ to the host motherboard's native lithography, keys and routines are decoupled:
    matching execute entirely inside the HSM envelope, shielded from the host CPU. 
    If a signature validation fails, the HSM detonates its internal eFuses, killing 
    all data bus communication with the host motherboard.
+
+[ ADVANCED STORAGE ARCHITECTURE: PUF PARADIGM & QUANTUM PURGE METRICS ]
+
+• MATERIAL IDENTITY VIA SILICON PUF (PHYSICAL UNCLONABLE FUNCTION):
+  The AIP/HSM adapter evolves past stable digital bit storage. Master validation 
+  keys and internal signatures leverage Physical Unclonable Functions (PUF). The root 
+  cryptographic secret does not reside inside flash cells or permanent eFuse registers; 
+  it is dynamically computed from the chaotic, microscopic atomic variations unique 
+  to the silicon layout during chip fabrication. Every module bears an un-clonable 
+  material DNA profile: any automated probing offensive or physical reverse-engineering 
+  alters the core physical substrate properties, modifying the underlying mathematical 
+  output, instantly rendering the secret key permanently destroyed.
+
+• QUANTUM VOLATILE EVAPORATION (ACTIVE COLD-ZEROIZATION ENGINE):
+  The volatile processing of short-lived session tokens and dynamic admin credentials 
+  executes across an unstable quantum charge-retention matrix array. Data persistence 
+  mandates continuous electrical scaffolding from the on-board micro-cell. Upon 
+  tracking a chassis breach, mesh tampering, or admin session expiration under Dark Mode, 
+  the HSM instantly cuts off the gate voltage arrays, triggering a localized quantum 
+  tunneling drain. The binary matrix vanishes from physical existence, leaving zero 
+  residual magnetic or electrical trace for laboratory forensics.
    
 <b>[PORTUGUÊS]</b>
 
@@ -490,6 +511,28 @@ da placa-mãe do cliente, as chaves e o processamento são divididos estritament
    do ID único ocorrem dentro do enclave do HSM, isolado da CPU principal. Se a 
    assinatura falhar, o HSM explode seu eFuse interno, cessando a comunicação 
    com a placa-mãe hospedeira.
+
+[ ARQUITETURA DE ARMAZENAMENTO AVANÇADO: ECOSSISTEMA PUF E PURGA QUÂNTICA ]
+
+• IDENTIDADE MATERIA POR ECOSSISTEMA PUF (PHYSICAL UNCLONABLE FUNCTION):
+  O adaptador AIP/HSM evolui além da gravação digital estável. A geração de chaves 
+  mestras e assinaturas de verificação baseia-se em Funções Físicas Não-Clonáveis (PUF). 
+  A chave não reside em células de memória flash ou registros queimados por eFuse; 
+  ela é extraída dinamicamente a partir do caos das imperfeições atômicas e estruturais 
+  do silício geradas durante a fundição do chip. Cada módulo possui um DNA material 
+  único no planeta: qualquer tentativa de microscopia reversa ou extração atômica 
+  altera as propriedades físicas do substrato, alterando o resultado matemático 
+  e aniquilando a chave na origem.
+
+• EVAPORAÇÃO POR DESVANECIMENTO ATIVO (QUANTUM COLD-ZEROIZATION):
+  O processamento volátil das chaves de quórum e dados administrativos de uso único 
+  utiliza uma matriz de armazenamento instável por retenção de carga quântica. 
+  A persistência da informação exige sustentação elétrica contínua do micro-oscilador. 
+  Constatada qualquer tentativa de bypass físico, violação de malha ou expiração 
+  da sessão sob o Modo Escuro, o HSM interrompe a alimentação das comportas, 
+  disparando o desvanecimento quântico instantâneo por tunelamento de elétrons. 
+  Os dados desaparecem da realidade material, impossibilitando análises forenses 
+  remanescentes.
   
 ## Article #11
 
