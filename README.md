@@ -571,8 +571,8 @@ da placa-mãe do cliente, as chaves e o processamento são divididos estritament
 <b>PROTOCOLO DE RECADASTRO: LACRE DE ESTADO POR SILÍCIO E AUTENTICADOR </b>
 
 Para erradicar fraudes de recadastro e falsificação de DNA por invasores que 
-obtêm privilégios de Root por software, o AIP substitui o MFA tradicional 
-(que muda a cada 30 segundos) <b>por um Código Estático de Estado que SÓ é alterado 
+obtêm privilégios de Root por software, <b>o AIP substitui o MFA tradicional 
+(que muda a cada 30 segundos) por um Código Estático de Estado que SÓ é alterado 
 quando o hardware sofre uma intervenção material bruta (Reset Físico).</b>
 
 [ O FLUXO DA PROVA PÓS-RESET PASSO A PASSO ]
