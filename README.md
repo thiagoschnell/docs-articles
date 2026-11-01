@@ -313,7 +313,7 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
 [ 1. FILE SYSTEM PROTECTION LAYER: FRAME INJECTION GATING ]
 
 • Objective: To safeguard the integrity of the host Operating System (e.g., Windows 
-  To Go / Linux) running on external media (Fideco NVMe SSD), preventing data corruption.
+  To Go / Linux) running on external media (NVMe SSD), preventing data corruption.
 • Mechanics: Upon tracking a quorum breach or perimeter violation, the HSM core 
   commandeers the signaling channels and injects phantom logical frames at Layer 2 
   (Link Layer), simulating "Device Safely Detached" or "USB Reset" status macros. 
@@ -699,7 +699,7 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
 [ 1. CAMADA DE PROTEÇÃO DO SISTEMA DE ARQUIVOS: FRAME INJECTION GATING ]
 
 • Objetivo: Proteger a integridade do Sistema Operacional (Ex: Windows To Go / Linux) 
-  rodando na mídia externa (SSD NVMe Fideco), impedindo a corrupção de dados.
+  rodando na mídia externa (SSD NVMe), impedindo a corrupção de dados.
 • Mecânica: Ao rastrear uma quebra de quórum ou violação periférica, o chip HSM 
   assume o canal de sinalização e injeta quadros lógicos fantasmas na Camada 2 
   (Link Layer), simulando eventos de "Dispositivo Removido com Segurança" ou 
