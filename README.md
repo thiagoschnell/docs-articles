@@ -312,13 +312,18 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
 
 [ 1. FILE SYSTEM PROTECTION LAYER: FRAME INJECTION GATING ]
 
-• Objective: To safeguard the integrity of the host Operating System (e.g., Windows 
-  To Go / Linux) running on external media (NVMe SSD), preventing data corruption.
+• Objective: To safeguard the structural integrity of the host Operating System and 
+  active databases across any deployment architecture (including native internal PCIe 
+  NVMe slots, SAS/SATA server arrays, or SAN/iSCSI storage lines), completely 
+  preventing system file corruption.
 • Mechanics: Upon tracking a quorum breach or perimeter violation, the HSM core 
-  commandeers the signaling channels and injects phantom logical frames at Layer 2 
-  (Link Layer), simulating "Device Safely Detached" or "USB Reset" status macros. 
-  This forces the host kernel to terminate open file descriptors and cleanly 
-  dismount data volumes prior to the final electrical blackout sequence.
+  intercepts the electrical signaling pathways and injects phantom logical frames 
+  at Layer 2 (Link Layer) native to the current hardware bus protocol. The chip 
+  spoofs low-level interface primitives (such as 'PCIe Surprise Down', 'USB Reset', 
+  or 'SCSI Device Detach Notification'). This hardware-level injection forces the 
+  host operating system kernel to immediately terminate active file descriptors 
+  and execute a clean, sanitized volume dismount milliseconds prior to the final 
+  electrical power cutoff sequence (PHY Layer Gating).
 
 [ 2. CPU PARALYSIS LAYER: INTERRUPT VECTORS & ACTIVE BUS SPOOFING ]
 
@@ -698,13 +703,17 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
 
 [ 1. CAMADA DE PROTEÇÃO DO SISTEMA DE ARQUIVOS: FRAME INJECTION GATING ]
 
-• Objetivo: Proteger a integridade do Sistema Operacional (Ex: Windows To Go / Linux) 
-  rodando na mídia externa (SSD NVMe), impedindo a corrupção de dados.
-• Mecânica: Ao rastrear uma quebra de quórum ou violação periférica, o chip HSM 
-  assume o canal de sinalização e injeta quadros lógicos fantasmas na Camada 2 
-  (Link Layer), simulando eventos de "Dispositivo Removido com Segurança" ou 
-  "USB Reset Frame". Isso força o kernel hospedeiro a fechar os descritores de 
-  arquivos e desmontar os volumes de forma limpa antes do blecaute elétrico.
+• Objetivo: Proteger a integridade do Sistema Operacional hospedeiro e dos bancos 
+  de dados ativos em qualquer ambiente de armazenamento (SSD NVMe interno, matrizes 
+  SAS/SATA ou links SAN/iSCSI), eliminando riscos de corrupção lógica de arquivos.
+• Mecânica: Ao rastrear uma quebra de quórum ou violação periférica, o núcleo HSM 
+  assume os canais de sinalização elétrica e injeta quadros lógicos fantasmas na 
+  Camada 2 (Link Layer) nativa do barramento em execução. O chip emula primitivas 
+  especificas de protocolo (como 'PCIe Surprise Down', 'USB Reset Frame' ou 'SCSI 
+  Device Detach Notification'). Esta injeção de baixo nível intercepta a comunicação 
+  e obriga o kernel do sistema operacional a encerrar imediatamente os descritores 
+  de arquivos abertos, executando o desmonte limpo e seguro dos volumes de dados 
+  milissegundos antes do blecaute elétrico definitivo (PHY Layer Gating).
 
 [ 2. CAMADA DE PARALISAÇÃO DA CPU: VETORES DE INTERRUPÇÃO E BUS SPOOFING ]
 
