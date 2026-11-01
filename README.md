@@ -647,17 +647,18 @@ quando o hardware sofre uma intervenção material bruta (Reset Físico).</b>
    novas configurações se o invasor for lá fisicamente resetar a placa e gerar 
    um token de silício inédito, inviabilizando 100% dos ataques remotos.
 
-<b> AIP HARDWARE PERIMETER: SISTEMA DE INTERCEPTAÇÃO PROFUNDA E IMUNIDADE DRM </b>
+<b>AIP HARDWARE PERIMETER: SISTEMA DE INTERCEPTAÇÃO PROFUNDA E IMUNIDADE GLOBAL</b>
 
 Este módulo especifica a matriz de defesa ativa do adaptador AIP/ACPG operando 
 na camada física do barramento (PCIe/USB-C). O sistema combina manipulação de 
 sinalização eletrônica com imunidade material absoluta para anular explorações 
-de software e ataques físicos destrutivos de nível militar (DRM/Glitching).
+de software, utilitários lógicos de fabricantes, hacks de firmware (BIOS/UEFI), 
+adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Glitching).
 
 [ 1. CAMADA DE PROTEÇÃO DO SISTEMA DE ARQUIVOS: FRAME INJECTION GATING ]
 
-• Objetivo: Proteger a integridade do Sistema Operacional (Ex: Windows / Linux) 
-  rodando na mídia externa (SSD NVMe Fideco), impedindo a corrupção de dados.
+• Objetivo: Proteger a integridade do Sistema Operacional (Ex: Windows To Go / Linux) 
+  rodando na mídia externa (SSD NVMe), impedindo a corrupção de dados.
 • Mecânica: Ao rastrear uma quebra de quórum ou violação periférica, o chip HSM 
   assume o canal de sinalização e injeta quadros lógicos fantasmas na Camada 2 
   (Link Layer), simulando eventos de "Dispositivo Removido com Segurança" ou 
@@ -676,24 +677,49 @@ de software e ataques físicos destrutivos de nível militar (DRM/Glitching).
 • Mecânica B (Active Bus Spoofing): Se o microcódigo da CPU tentar inspecionar os 
   registradores via DMA, o chip AIP falsifica dinamicamente os descritores de 
   hardware do protocolo, respondendo handshakes válidos, mas alterando o mapa de 
-  blocos para retornar capacidade zero (0 bytes) ou estática de registradores.
+  blocos para retornar capacidade zero (0 bytes) ou estática de registradores (0xFFFFFFFF).
 
-[ 3. CAMADA DE IMUNIDADE MATERIAL: MATRIZ ANTI-GLITCHING E EXTRAÇÃO DRM ]
+[ 3. CAMADA DE INVIOLABILIDADE DE FIRMWARE: ISOLAMENTO CRIPTOGRÁFICO DE INFRAESTRUTURA ]
 
-• Objetivo: Garantir a inviolabilidade do adaptador contra técnicas de hardware 
-  utilizadas na quebra de perímetros criptográficos e DRM de consoles industriais.
+• Objetivo: Garantir a resiliência absoluta caso a máquina hospedeira (PC ou 
+  roteador) sofra um flash forçado de firmware adulterado ou um backdoor na UEFI/BIOS.
+• Mecânica: O adaptador AIP opera como um Co-Processador isolado. Suas chaves de 
+  validação e semente mestra residem estritamente dentro do enclave físico do HSM, 
+  cujo microcódigo de inicialização (Bootloader) é fundido em metal via Mask ROM 
+  de silício na fundição de fábrica. A BIOS/UEFI comprometida do computador é 
+  completamente incapaz de ler, extrair, rastrear ou sobrescrever o perímetro seguro.
+
+[ 4. CAMADA DE BLINDAGEM ANTISOFTWARE: BLOQUEIO CONTRA EDITORES HEX E FACTORY TOOL DEFIANCE ]
+
+• Objetivo: Anular o funcionamento de softwares de fabricantes, utilitários lógicos, 
+  editores hexadecimais (Hex Editors) ou ferramentas de injeção/diagnóstico que 
+  tentem violar ou modificar o chip.
+• Mecânica: Qualquer tentativa de modificação binária via ferramentas de software de 
+  baixo nível é abortada pela física do circuito. Como a zona de chaves usa memória 
+  OTP (One-Time Programmable) via queima irreversível de micro-fusíveis (eFuses), 
+  instruções de escrita lógica baseadas em software são termodinamicamente incapazes 
+  de reescrever os registros do chip. O Active Bus Spoofing intercepta as ferramentas 
+  lógicas e faz o utilitário hacker reportar sucesso, mas ler apenas dados nulos, 
+  fazendo-o editar o vento.
+
+[ 5. CAMADA DE IMUNIDADE MATERIAL: MATRIZ ANTI-GLITCHING, EXTRAÇÃO DRM E BLINDAGEM DE SRAM ]
+
+• Objetivo: Impedir ataques físicos por congelamento de memória (Cold-Boot), injeção 
+  de falhas elétricas (Glitching) e engenharia reversa atômica para roubo de chaves (DRM).
 • Proteção Anti-Glitching: Diferente de chips comerciais que falham abertos ou 
   pulam checagens de segurança quando submetidos a micro-oscilações de voltagem 
   (Voltage Fault Injection), a malha analógica do HSM monitora o limiar de 
-  impedância da placa. Qualquer tentativa de induzir uma falha elétrica ativa 
-  o circuito disruptivo: os eFuses internos são explodidos e a purga quântica 
-  por desvanecimento ativo evapora a semente criptográfica mestra.
-• Proteção Anti-ROM Dumping: A semente criptográfica do AIP não reside em células 
-  lógicas estáveis ou memória flash reescrevível. Ela é extraída ao vivo a partir 
-  do caos das imperfeições atômicas exclusivas do silício (PUF). Se o chip for 
-  dessoldado do chassi original para análise forense em laboratório, a mudança 
-  de pressão e temperatura deforma a estrutura atômica, alterando o resultado 
-  matemático e destruindo a chave na origem.
+  impedância da placa. Qualquer tentativa de induzir uma falha ativa o circuito 
+  disruptivo, explodindo os eFuses e disparando o desvanecimento quântico (Quantum 
+  Cold-Zeroization) nas células instáveis da SRAM. Os elétrons sofrem tunelamento, 
+  fazendo os dados ativos simplesmente evaporarem da realidade material sem deixar 
+  remanescência magnética para perícia de laboratório.
+• Proteção Anti-ROM Dumping (PUF Core): A identidade do AIP não reside em células 
+  estáticas. Ela é extraída ao vivo a partir do caos das imperfeições atômicas 
+  exclusivas do silício (PUF). Se o chip for dessoldado para análise forense, a 
+  mudança de pressão e temperatura altera as propriedades físicas do substrato, 
+  destruindo a chave na origem.
+
   
 ## Article #11
 
