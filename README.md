@@ -302,17 +302,18 @@ a raw, physical factory reset.</b>
    the parameter matrix is blocked unless a new physical reset is executed to cycle 
    a brand-new hardware token, completely neutralizing remote attackers.
 
-<b>AIP HARDWARE PERIMETER: DEEP INTERCEPTION SYSTEM AND SYSTEMIC DRM IMMUNITY</b>
+<b> AIP HARDWARE PERIMETER: DEEP INTERCEPTION SYSTEM AND GLOBAL IMMUNITY</b>
 
-This specification details the active defensive matrix of the AIP/ACPG adapter 
+This module specifies the active defensive matrix of the AIP/ACPG adapter 
 executing across the physical bus layer (PCIe/USB-C). The architecture combines 
 low-level electronic signaling manipulation with absolute material hardening to 
-neutralize advanced software exploits and military-grade physical attacks (DRM/Glitching).
+neutralize advanced software exploits, vendor diagnostic utilities, firmware hacks 
+(BIOS/UEFI), SRAM tampering, and military-grade physical attacks (DRM/Glitching).
 
 [ 1. FILE SYSTEM PROTECTION LAYER: FRAME INJECTION GATING ]
 
-• Objective: To safeguard the integrity of the host Operating System (e.g., Windows / Linux)
-  running on external media (Fideco NVMe SSD), preventing data corruption.
+• Objective: To safeguard the integrity of the host Operating System (e.g., Windows 
+  To Go / Linux) running on external media (Fideco NVMe SSD), preventing data corruption.
 • Mechanics: Upon tracking a quorum breach or perimeter violation, the HSM core 
   commandeers the signaling channels and injects phantom logical frames at Layer 2 
   (Link Layer), simulating "Device Safely Detached" or "USB Reset" status macros. 
@@ -330,23 +331,63 @@ neutralize advanced software exploits and military-grade physical attacks (DRM/G
 • Mechanics B (Active Bus Spoofing): If the CPU microcode attempts to map registers 
   via DMA, the AIP chip dynamically spoofs raw protocol hardware descriptors in runtime, 
   returning valid electrical handshakes but altering block mapping to display zero 
-  capacity (0 bytes available) or device-error noise.
+  capacity (0 bytes available) or device-error noise (0xFFFFFFFF).
 
-[ 3. MATERIAL IMMUTABILITY LAYER: ANTI-GLITCHING & ANTI-DRM MATRIX ]
+[ 3. FIRMWARE INVIOLABILITY LAYER: INFRASTRUCTURE CRYPTOGRAPHIC ISOLATION ]
 
-• Objective: To guarantee the absolute physical resilience of the adapter against 
-  advanced reverse-engineering and voltage fault injection loops used to bypass 
-  industrial or console DRM perimeters.
+• Objective: To guarantee absolute resilience even if the host chassis (PC or Router) 
+  undergoes a forced flashing of compromised firmware or a low-level UEFI/BIOS backdoor.
+• Mechanics: The AIP adapter executes as an isolated Co-Processor. Its validation 
+  keys and master seed are housed strictly within the hardware HSM enclave, with 
+  its bootloader track hardwired in metal via factory silicon Mask ROM. The compromised 
+  host BIOS/UEFI possesses zero physical routing to read, dump, trace, or overwrite the 
+  secure enclave perimeter.
+
+[ 4. LOGIC TOOL SHIELDING LAYER: HEX-EDITOR AND FACTORY TOOL DEFIANCE ]
+
+• Objective: To completely neutralize the execution of vendor diagnostic tools, 
+  factory flashing equipment, hex editors, or industrial microcode programmers trying 
+  to modify or scrap the chip.
+• Mechanics: Any binary modification attempt via low-level flashing tools or industrial 
+  provisioning hardware is blocked by the electrical architecture of the silicon. Because 
+  the key zones rely on One-Time Programmable (OTP) zones driven by the irreversible 
+  vaporization of micro-fuses (eFuses), software-defined write macros remain 
+  thermodynamically incapable of altering the chip's registers. Active Bus Spoofing 
+  intercepts logical queries, forcing the tool to report a successful process while 
+  reading nothing but absolute null lines.
+
+[ 5. ADVANCED OPTICAL FRONTIER: ANTI-PROBING MESH & WAVEGUIDE PATHWAYS ]
+
+• Objective: To block laboratory laser-based reverse engineering or physical micro-probing 
+  attacks aimed at tapping or scoping copper trace data.
+• Active Optical Anti-Probing Shield (Optical Tamper): The adapter's core is encased 
+  within an opaque resin matrix embedded with micro photon sensors. Any attempt at physical 
+  casing breach, mechanical drilling, or chemical stripping to expose data buses lets 
+  in ambient light, triggering immediate internal voltage surges to blow the eFuses 
+  and execute structural substrate destruction.
+• Isolated Photonic Data Pathways (Optical Isolation): The most critical quorum keys 
+  and state registers bypass metallic traces subject to electromagnetic induction scraping. 
+  The inner bus structures communicate via integrated microscopic optical waveguides, 
+  routing data via internal laser pulses at the speed of light, making physical eavesdropping 
+  impossible.
+
+[ 6. MATERIAL IMMUTABILITY LAYER: ANTI-GLITCHING, DRM SHIELD & SRAM HARDENING ]
+
+• Objective: To permanently block hardware-level memory freezing (Cold-Boot), voltage 
+  fault injection (Glitching), and side-channel forensic analysis for key scraping (DRM).
 • Anti-Glitching Enforcement: Unlike commercial hardware that fails open or skips 
   instruction verifiers when targeted by microscopic power-rail drops (Voltage Fault 
   Injection), the integrated HSM mesh continuously scans impedance thresholds. Any active 
   glitching offensive trips the analog defense array, blowing localized eFuses and 
-  triggering instant quantum zeroization to evaporate master validation keys.
-• Anti-ROM Dumping Shield: The root cryptographic secret does not reside across stable 
-  logical blocks or rewritable flash media. It is dynamically computed via Physical 
-  Unclonable Functions (PUF) from chaotic microscopic atomic variations inside the silicon. 
-  If the chip is desoldered for laboratory forensics, the material pressure change deforms 
-  the layout, shifting the mathematical output and destroying the key at the source.
+  triggering instant quantum zeroization across the unstable SRAM blocks. Electrons 
+  undergo quantum tunneling, causing active data sets to evaporate from physical existence, 
+  leaving zero residual trace for laboratory forensics.
+• Anti-ROM Dumping (PUF Core): AIP's identity does not reside across stable memory cells. 
+  It is dynamically computed via Physical Unclonable Functions (PUF) from chaotic 
+  microscopic atomic variations unique to the silicon layout. If the chip is desoldered 
+  for laboratory forensics, the material pressure change deforms the layout, shifting 
+  the mathematical output and destroying the key at the source.
+
   
 <b>[PORTUGUÊS]</b>
 
@@ -658,7 +699,7 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
 [ 1. CAMADA DE PROTEÇÃO DO SISTEMA DE ARQUIVOS: FRAME INJECTION GATING ]
 
 • Objetivo: Proteger a integridade do Sistema Operacional (Ex: Windows To Go / Linux) 
-  rodando na mídia externa (SSD NVMe), impedindo a corrupção de dados.
+  rodando na mídia externa (SSD NVMe Fideco), impedindo a corrupção de dados.
 • Mecânica: Ao rastrear uma quebra de quórum ou violação periférica, o chip HSM 
   assume o canal de sinalização e injeta quadros lógicos fantasmas na Camada 2 
   (Link Layer), simulando eventos de "Dispositivo Removido com Segurança" ou 
@@ -689,20 +730,34 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   de silício na fundição de fábrica. A BIOS/UEFI comprometida do computador é 
   completamente incapaz de ler, extrair, rastrear ou sobrescrever o perímetro seguro.
 
-[ 4. CAMADA DE BLINDAGEM ANTISOFTWARE: BLOQUEIO CONTRA EDITORES HEX E FACTORY TOOL DEFIANCE ]
+[ 4. CAMADA DE BLINDAGEM ANTISOFTWARE: BLOQUEIO CONTRA EDITORES HEX E EQUIPAMENTOS DE FÁBRICA ]
 
 • Objetivo: Anular o funcionamento de softwares de fabricantes, utilitários lógicos, 
-  editores hexadecimais (Hex Editors) ou ferramentas de injeção/diagnóstico que 
-  tentem violar ou modificar o chip.
-• Mecânica: Qualquer tentativa de modificação binária via ferramentas de software de 
-  baixo nível é abortada pela física do circuito. Como a zona de chaves usa memória 
-  OTP (One-Time Programmable) via queima irreversível de micro-fusíveis (eFuses), 
-  instruções de escrita lógica baseadas em software são termodinamicamente incapazes 
-  de reescrever os registros do chip. O Active Bus Spoofing intercepta as ferramentas 
-  lógicas e faz o utilitário hacker reportar sucesso, mas ler apenas dados nulos, 
-  fazendo-o editar o vento.
+  editores hexadecimais (Hex Editors) ou maquinários de gravação industrial (Factory Tools) 
+  que tentem violar ou modificar o chip.
+• Mecânica: Qualquer tentativa de modificação binária via ferramentas de software ou 
+  gravadores industriais de baixo nível é abortada pela física do circuito. Como a zona 
+  de chaves usa memória OTP via queima irreversível de micro-fusíveis (eFuses), instruções 
+  de escrita lógica baseadas em software são termodinamicamente incapazes de reescrever 
+  os registros do chip. O Active Bus Spoofing intercepta as ferramentas lógicas e faz o 
+  utilitário reportar sucesso, mas ler apenas dados nulos, fazendo o maquinário editar o vento.
 
-[ 5. CAMADA DE IMUNIDADE MATERIAL: MATRIZ ANTI-GLITCHING, EXTRAÇÃO DRM E BLINDAGEM DE SRAM ]
+[ 5. FRONTEIRA ÓPTICA AVANÇADA: BLINDAGEM ANTI-PROBING E GUIAS DE ONDA ]
+
+• Objetivo: Impedir ataques de engenharia reversa óptica por lasers em laboratório ou 
+  soldagem de micro-agulhas (sondas de escuta) nas trilhas físicas do barramento.
+• Proteção Anti-Probing (Tamper Óptico): O núcleo do adaptador é selado em uma matriz 
+  de resina opaca com sensores de fótons integrados. Qualquer tentativa de abertura 
+  física do chassi, perfuração mecânica ou raspagem ácida para expor os barramentos 
+  permite a entrada de luz ambiente, acionando instantaneamente o circuito de queima 
+  elétrica dos eFuses e a destruição química do substrato.
+• Tráfego Isolado por Laser (Optical Isolation): As chaves de quórum mais críticas 
+  e registradores de estado não trafegam por filamentos metálicos comuns sujeitos à 
+  leitura por indução eletromagnética. O barramento interno do HSM opera por guias de 
+  onda ópticas microscópicas, movendo dados através de pulsos de laser internos na 
+  velocidade da luz, tornando interceptações físicas impossíveis.
+
+[ 6. CAMADA DE IMUNIDADE MATERIAL: MATRIZ ANTI-GLITCHING, EXTRAÇÃO DRM E BLINDAGEM DE SRAM ]
 
 • Objetivo: Impedir ataques físicos por congelamento de memória (Cold-Boot), injeção 
   de falhas elétricas (Glitching) e engenharia reversa atômica para roubo de chaves (DRM).
