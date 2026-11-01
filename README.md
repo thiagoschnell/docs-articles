@@ -739,7 +739,7 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   de silício na fundição de fábrica. A BIOS/UEFI comprometida do computador é 
   completamente incapaz de ler, extrair, rastrear ou sobrescrever o perímetro seguro.
 
-[ 4. CAMADA DE BLINDAGEM ANTISOFTWARE: BLOQUEIO CONTRA EDITORES HEX E EQUIPAMENTOS DE FÁBRICA ]
+[ 4. CAMADA DE BLINDAGEM ANTISOFTWARE: BLOQUEIO CONTRA EDITORES HEX E FACTORY TOOL DEFIANCE ]
 
 • Objetivo: Anular o funcionamento de softwares de fabricantes, utilitários lógicos, 
   editores hexadecimais (Hex Editors) ou maquinários de gravação industrial (Factory Tools) 
