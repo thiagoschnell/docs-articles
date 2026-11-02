@@ -401,6 +401,57 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
   for laboratory forensics, the material pressure change deforms the layout, shifting 
   the mathematical output and destroying the key at the source.
 
+[ 7. MATERIAL SOVEREIGNTY: RESILIENCE AGAINST LITHOGRAPHIC BACKDOORS ]
+
+• Objective: To permanently secure the perimeter against hidden factory enclaves 
+  (Vendor Silicon Backdoors), proprietary microcode telemetry embedded within host 
+  processors, and future physical bus interception hardware.
+• Mechanics: The AIP adapter operates under the doctrine of Unilateral Material 
+  Distrust. Secret factory-etched logic gates inside the host CPU microarchitecture 
+  are summarily isolated and blocked at the hardware layer via asynchronous clocking 
+  and edge IOMMU routing. If unreleased lab-grade interception rigs attempt to map 
+  or tap HSM registers through micro-probing or focused electromagnetic pulses, the 
+  chip's analog mesh translates the micro-impedance shift as a hard intrusion loop. 
+  The module deploys PHY Layer Gating (severing the transmission track's electrical 
+  pathway) and triggers instant quantum tunneling zeroization across active SRAM matrices. 
+  The data vanishes from material existence before any spying hardware, present or 
+  future, can register a single bit of information.
+
+<b>AIP HARDWARE PERIMETER: REGISTER MASKING COUNTER-MEASURES (PUF CORE)</b>
+
+This submodule specifies the active architectural barriers deployed by the AIP/ACPG 
+framework against physical register-masking manipulation and hidden factory-fused 
+silicon segments (such as proprietary telemetry ROMs or manufacturing provisioning 
+fuses), executing independently of the host logical ISA (RISC-V, ARM, or x86).
+
+[ HISTORICAL FOUNDATION NOTE: THE SUPERMICRO / AMAZON AWS CASE (2018) ]
+
+The imperative requirement for strict peripheral hardware isolation was empirically 
+proven by the Bloomberg Businessweek investigation (October 2018). The report 
+detailed a massive hardware supply chain attack where microscopic malicious chips 
+were covertly integrated into Supermicro server motherboards, directly infiltrating 
+production data centers belonging to industry leaders like Amazon (AWS) and Apple. 
+This historical precedent cements the baseline core doctrine that host chassis 
+hardware cannot be trusted and may contain physical factory-fused backdoors.
+
+[ HARDWARE ADDRESS MASKING AND LEAK CONTAINMENT MECHANICS ]
+
+1. CPU LOGICAL FIREWALL INDEPENDENCE (PMP / INTERNAL ENCLAVE BYPASS):
+   The AIP/ACPG ecosystem rejects reliance on internal processor-defined logic 
+   firewalls (such as RISC-V Physical Memory Protection rules or legacy kernel rings). 
+   If a vendor embeds a hidden masked sub-circuit designed to generate deliberate 
+   access exceptions or execute phantom hardware memory dumps via DMA channels, 
+   the secure adapter contains the threat strictly through physical clock asynchrony.
+
+2. STATE EXTRACTION BLOCKADE (PHY LAYER RETALIATION ENFORCEMENT):
+   If a masked factory enclave within the host CPU attempts to launch an active 
+   register-scraping cycle against the secure HSM interface, it is summarily blinded 
+   by the hardwired edge IOMMU/VT-d layout. Should the intruder attempt to force 
+   command loops by injecting electrical noise into the trace lines, the AIP module 
+   triggers PHY Layer Gating: the solid-state circuit breaker instantly cuts voltage 
+   across the TX/RX tracks. The spying enclave retains its root privileges inside the 
+   host CPU, but loses all physical routing required to export collected data.
+
   
 <b>[PORTUGUÊS]</b>
 
@@ -799,6 +850,56 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   exclusivas do silício (PUF). Se o chip for dessoldado para análise forense, a 
   mudança de pressão e temperatura altera as propriedades físicas do substrato, 
   destruindo a chave na origem.
+  
+[ 7. SOBERANIA MATERIAL: RESILIÊNCIA CONTRA BACKDOORS LITOGRÁFICOS ]
+
+• Objetivo: Garantir a inviolabilidade do perímetro contra enclaves ocultos de 
+  fábrica (Vendor Silicon Backdoors), ROMs de telemetria proprietárias embutidas 
+  nos processadores e futuras tecnologias de interceptação física de barramento.
+• Mecânica: O adaptador AIP adota a premissa de Desconfiança Material Unilateral. 
+  Mecanismos secretos de fábrica gravados no silício da CPU hospedeira são sumariamente 
+  isolados e barrados na camada física por assincronia de clock e isolamento IOMMU. 
+  Se ferramentas de laboratório inéditas tentarem varrer ou interceptar os registros 
+  do HSM através de micro-sondas ou ataques eletromagnéticos direcionados, a malha 
+  analógica do chip traduz a perturbação como tentativa de violação: o circuito ativa 
+  o PHY Layer Gating (abrindo fisicamente a linha de transmissão elétrica) e dispara 
+  o desvanecimento quântico instantâneo na SRAM ativa. O dado desaparece da realidade 
+  material antes que qualquer hardware espião, presente ou futuro, consiga registrar 
+  o primeiro bit de informação.
+
+<b>AIP HARDWARE PERIMETER: IMUNIDADE CONTRA MASCARAMENTO DE REGISTRADORES (PUF CORE)</b>
+
+Este submódulo especifica as barreiras do AIP contra manipulações físicas de 
+endereçamento e áreas trancadas de fábrica (como fusing de provisionamento oculto 
+ou roms de telemetria), independentemente da arquitetura lógica utilizada (RISC-V, 
+ARM ou x86). 
+
+[ NOTA DE FUNDAÇÃO HISTÓRICA: O CASO SUPERMICRO / AMAZON AWS (2018) ]
+
+A necessidade de isolamento periférico estrito foi provada empiricamente pela 
+investigação da Bloomberg Businessweek (outubro de 2018). O relatório detalhou 
+um ataque massivo à cadeia de suprimentos (Supply Chain Attack) onde microchips 
+maliciosos microscópicos foram implantados nas placas-mãe de servidores da 
+Supermicro, infiltrando-se diretamente nos data centers de gigantes como Amazon 
+(AWS) e Apple. Esse precedente histórico valida a premissa de que o hardware do 
+chassi hospedeiro não é confiável e pode carregar backdoors físicos de fábrica.
+
+[ MECÂNICA DE CEGUEIRA DE ENDEREÇAMENTO ]
+
+1. INDEPENDÊNCIA DE FIREWALLS LOGICOS DE CPU (PMP / REGRAS DE ANEL):
+   O ecossistema AIP/ACPG não confia em firewalls lógicos internos da CPU do chassi 
+   (como as regras PMP do RISC-V ou anéis de privilégio). Se um fabricante embutir 
+   um circuito mascarado oculto que retorne exceções de acesso ou execute leituras 
+   fantasmas via DMA, a barreira do adaptador atua por assincronia material.
+
+2. BLOQUEIO DE EXTRAÇÃO DE ESTADO (PHY LAYER RETALIATION):
+   Se uma área oculta de fábrica na CPU hospedeira tentar disparar uma varredura 
+   de registradores contra o adaptador HSM, colide com a tabela IOMMU periférica 
+   blindada. Caso o intruso tente forçar comandos injetando ruído magnético na 
+   placa, o adaptador AIP executa o PHY Layer Gating: o disjuntor elétrico abre 
+   o circuito das linhas TX/RX instantaneamente. O ecossistema espião pode deter 
+   privilégios na CPU, mas é isolado e perde a capacidade física de exportar 
+   dados para o mundo externo.
 
   
 ## Article #11
