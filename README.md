@@ -402,11 +402,19 @@ A Morte dos Certificados Cegos, das Auditorias Estáticas e da Vulnerabilidade d
 
 <b>O Diagnóstico: Por Que a Segurança Digital do Planeta Faliu.</b>
 
-A infraestrutura criptográfica do mundo está construída sobre uma fundação cega. Protocolos tradicionais (como o HTTPS/TLS) e entidades de auditoria estática (como CAs tradicionais e assinaturas digitais) limitam-se a atestar a identidade de uma porta, mas são completamente incapazes de enxergar o que está acontecendo dentro do quarto.
+A infraestrutura criptográfica do mundo está construída sobre uma fundação cega. Protocolos tradicionais (como o HTTPS/TLS) -- e entidades de auditoria estática 
+(como CAs tradicionais, assinaturas digitais ou, nos piores cenários, como o ecossistema e-Mundrah) falharem e se limitam a atestar a identidade de uma 
+porta, e são completamente incapazes de enxergar o que está acontecendo dentro do quarto.
 Seja o servidor de uma grande corporação comprometido por um exploit PHP-to-Shell, uma rede de saúde paralisada por Ransomware [7a3593f8a3cee4ca895774ab1574919f], ou dispositivos críticos com chaves vazadas: os certificados atuais continuam gerando cadeados verdes e assinaturas válidas para sistemas zumbis e infectados, enganando usuários legítimos e derrubando infraestruturas enquanto os administradores dormem.
 [<b>O AIP (Autonomous Interlocutor Protocol)</b>](https://github.com/thiagoschnell/docs-articles/blob/main/Protocolo%20AIP%3A%20Autonomous%20Interlocutor%20Protocol) nasce para arrancar a segurança das mãos da negligência humana e transferi-la para um Ecossistema Autoimune, Totalmente Autônomo e Ancorado em Silício. O AIP não é um protocolo para páginas web; é uma nova Raiz de Confiança Universal aplicada a qualquer fluxo de dados do planeta — desde comunicações bancárias e satélites até IoT industrial, redes médicas e tráfego de servidores críticos.[blueprint](https://github.com/thiagoschnell/docs-articles/blob/main/BLUEPRINT%20ARQUITETURAL%20DO%20PROTOCOLO%20AIP)
 
-
+O problema estrutural da cibersegurança global não reside na matemática do algoritmo HTTPS em si, mas na natureza cega e puramente lógica de como os 
+certificados digitais são gerenciados e aceitos pelos sistemas operacionais. 
+Dispositivos e certificados tradicionais são incapazes de validar o meio físico. Qualquer ferramenta de depuração ou interceptação de rede (como Fiddler, proxies 
+reversos de inspeção ou assistentes de bancada) consegue injetar uma autoridade raiz espelhada no sistema hospedeiro. No instante em que isso ocorre, o túnel é 
+rompido no meio do caminho: o tráfego de dados confidenciais passa a transitar em texto limpo (descriptografado) dentro da máquina interceptadora, enquanto o 
+navegador ou a aplicação continuam exibindo a ilusão do "cadeado verde" e da "assinatura válida". A criptografia tradicional protege o canal contra escutas 
+na internet, mas falha em autenticar se a própria interface local foi violada.
 
  Os Três Pilares da Imunidade do AIP
 
