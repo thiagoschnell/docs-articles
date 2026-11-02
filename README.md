@@ -416,6 +416,21 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
   pathway) and triggers instant quantum tunneling zeroization across active SRAM matrices. 
   The data vanishes from material existence before any spying hardware, present or 
   future, can register a single bit of information.
+  
+[ 8. ABSOLUTE SOVEREIGNTY AND SUB-KERNEL EXECUTION ENVIRONMENT SIGHT LOCKOUT ]
+
+• Objective: To enforce absolute, unilateral hardware-level isolation. No hidden 
+  firmware layers, proprietary management engines, or sub-kernel execution cores within 
+  the host machine can claim control, debugging routes, or architectural privileges over the HSM.
+• Mechanics: The physical bus boundary isolated via rigid edge IOMMU/VT-d maps completely 
+  blindfolds the entire sub-kernel execution framework of the host processor. Coprocessors 
+  running factory-etched microcode, platform management systems, and hardware telemetry 
+  layers — which inherently execute outside the jurisdiction and view of the host OS Kernel — 
+  are summarily intercepted and locked out at the physical layer. If these hyper-privileged 
+  firmware cores launch side-channel logic probes or force unverified DMA register sweeps, 
+  the AIP module neutralizes the vector by deploying Active Bus Spoofing (returning stable 
+  null lines) or triggering instant line voltage severing. Physical laws permanently 
+  command logical microcode execution.
 
 <b>AIP HARDWARE PERIMETER: REGISTER MASKING COUNTER-MEASURES (PUF CORE)</b>
 
@@ -866,6 +881,21 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   o desvanecimento quântico instantâneo na SRAM ativa. O dado desaparece da realidade 
   material antes que qualquer hardware espião, presente ou futuro, consiga registrar 
   o primeiro bit de informação.
+
+ [ 8. SOBERANIA ABSOLUTA E CEGUEIRA DE AMBIENTES DE EXECUÇÃO SUB-KERNEL ]
+
+• Objetivo: Garantir isolamento de barramento unilateral e absoluto. Nenhuma camada 
+  de firmware oculta, subsistema proprietário ou motor de gerenciamento nativo da 
+  placa hospedeira detém controle, canais de depuração ou privilégios sobre o HSM.
+• Mecânica: O perímetro elétrico isolado por regras rígidas de IOMMU/VT-d cega toda 
+  a árvore de execução sub-kernel do processador principal. Subsistemas em nível de 
+  microcódigo imutável de fábrica e coprocessadores de telemetria integrados — que 
+  tradicionalmente operam de forma paralela e invisível ao Kernel do Sistema Operacional — 
+  são interceptados e isolados na borda do barramento físico. Ao tentarem forçar 
+  qualquer mapeamento de registradores privados, leituras forenses de canal lateral 
+  ou requisições não autorizadas de DMA, o ecossistema AIP sabota o vetor ativando o 
+  Active Bus Spoofing (retornando ruído estável) ou executa a ejeção material via corte 
+  de tensão elétrica. As diretrizes da física anulam qualquer arquitetura lógica de firmware.
 
 <b>AIP HARDWARE PERIMETER: IMUNIDADE CONTRA MASCARAMENTO DE REGISTRADORES (PUF CORE)</b>
 
