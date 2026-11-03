@@ -419,6 +419,8 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
   
 [ 8. ABSOLUTE SOVEREIGNTY AND SUB-KERNEL EXECUTION ENVIRONMENT SIGHT LOCKOUT ]
 
+• These areas are reserved specifically for secret manufacturer control and maintenance, 
+  falling within the scope of Proprietary Hardware Management Enclaves (such as telemetry micro-ROMs and hidden microcode).
 • Objective: To enforce absolute, unilateral hardware-level isolation. No hidden 
   firmware layers, proprietary management engines, or sub-kernel execution cores within 
   the host machine can claim control, debugging routes, or architectural privileges over the HSM.
@@ -883,7 +885,9 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   o primeiro bit de informação.
 
  [ 8. SOBERANIA ABSOLUTA E CEGUEIRA DE AMBIENTES DE EXECUÇÃO SUB-KERNEL ]
-
+ 
+• Essas áreas são reservadas especificamente para controle e manutenção secreta dos fabricantes,
+  elas entram no escopo de Proprietary Hardware Management Enclaves (como as micro-ROMs de telemetria e microcódigo oculto).
 • Objetivo: Garantir isolamento de barramento unilateral e absoluto. Nenhuma camada 
   de firmware oculta, subsistema proprietário ou motor de gerenciamento nativo da 
   placa hospedeira detém controle, canais de depuração ou privilégios sobre o HSM.
