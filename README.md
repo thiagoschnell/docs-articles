@@ -23,6 +23,10 @@ The framework operates in two disruptive modes using Memory Disaggregation over 
 
 <h3>RAM-to-IP Inversa (Reverse Memory Disaggregation / Edge-Crowdsourced VRAM Over Internet)</h3>
 
+[RELATÓRIO TÉCNICO](https://github.com/thiagoschnell/docs-articles/blob/main/RAM-to-IP%20Inversa%20(Edge-Crowdsourced%20VRAM%20Over%20Internet)) 
+
+[ARQUITETURA TÉCNICA COMPLETA](https://github.com/thiagoschnell/docs-articles/blob/main/ARQUITETURA%20COMPLETA:%20RAM-TO-IP%20INVERSA%20(EDGE-VRAM))
+
 No ecossistema de software pós-inteligência artificial, a segurança tradicional no lado do cliente entrou em colapso. O surgimento de agentes avançados de Protocolo de Contexto de Máquina (MCP), como o REA (Reverse Engineer Anything), permite a descompilação e clonagem automatizada e instantânea de qualquer software que resida estaticamente no armazenamento local ou na DRAM do cliente. Este artigo introduz uma estrutura arquitetural bidirecional e unificada, projetada para quebrar o acoplamento padrão entre o processamento local da CPU e a alocação de memória local, remodelando a proteção da propriedade intelectual e a escala da infraestrutura global de computação.
 O ecossistema opera em dois modos disruptivos através da Desagregação de Memória sobre IP:
 1. Modo Direto (Virtual Memory Encrypted Batching - VMEB): Protege softwares proprietários hospedando o binário compilado exclusivamente em um servidor remoto seguro. Um driver de kernel Ring 0 customizado no PC do usuário emula um barramento de memória local, puxando as instruções de execução via Wi-Fi através de um "Buffer Vertical" assíncrono (agrupando cerca de 1000 instruções antecipadamente para vencer a latência da rede). Conforme a CPU local executa cada instrução, um sanitizador em tempo de execução destrói imediatamente a linha de cache anterior. O agente REA fica completamente cego diante de um quebra-cabeça volátil e em constante mutação, com zero rastro no disco.
