@@ -19,6 +19,13 @@ The framework operates in two disruptive modes using Memory Disaggregation over 
 1. Direct Mode (Virtual Memory Encrypted Batching - VMEB): Protects proprietary software by hosting the compiled binary exclusively on a secure remote server. A custom Ring 0 kernel driver on the user's PC emulates a local memory bus, pulling execution instructions over Wi-Fi via an asynchronous "Vertical Buffer" (batching ~1000 instructions ahead to defeat network latency). As the local CPU executes each instruction, a runtime sanitizer immediately shreds the preceding cache line. The REA agent is left entirely blind, facing a volatile, constantly morphing puzzle with a zero-disk footprint.
 2. Reverse Mode (Edge-VRAM): Inverts the centralized datacenter paradigm challenged by tech leaders like Sam Altman. Instead of surrendering hardware sovereignty, the user locks a dedicated quota of local RAM (e.g., 10GB out of 16GB) via kernel-induced amnesia, hiding it from the host OS. This block is hot-plugged into cloud AI clusters as a native hardware expansion using an internet-optimized RoCEv2/QUIC network tunnel. AI models offload heavy tensor computations directly into the user’s physical RAM via remote DMA, enabling a decentralized "Memory Custody" economy where consumers are financially rewarded for renting out their idle silicon under their own rules.
 
+3.<code> +---------------------------------------------------------------------------------------+
+|                                 YOUR MACHINE (CLIENT)                                 |
+|                                                                                       |
+|  [ Channel 1: Memory Custody ] <--- (Raw Tensor Data / Ephemeral REA Instructions) ->|
+|  [ Channel 2: Visual Rendering ] <--- (Obfuscated Vector Graphic Instructions) -----> |
++---------------------------------------------------------------------------------------+</code>
+
 <b>[PORTUGUÊS]</b>
 
 <h3>RAM-to-IP Inversa (Reverse Memory Disaggregation / Edge-Crowdsourced VRAM Over Internet)</h3>
@@ -31,6 +38,13 @@ No ecossistema de software pós-inteligência artificial, a segurança tradicion
 O ecossistema opera em dois modos disruptivos através da Desagregação de Memória sobre IP:
 1. Modo Direto (Virtual Memory Encrypted Batching - VMEB): Protege softwares proprietários hospedando o binário compilado exclusivamente em um servidor remoto seguro. Um driver de kernel Ring 0 customizado no PC do usuário emula um barramento de memória local, puxando as instruções de execução via Wi-Fi através de um "Buffer Vertical" assíncrono (agrupando cerca de 1000 instruções antecipadamente para vencer a latência da rede). Conforme a CPU local executa cada instrução, um sanitizador em tempo de execução destrói imediatamente a linha de cache anterior. O agente REA fica completamente cego diante de um quebra-cabeça volátil e em constante mutação, com zero rastro no disco.
 2. Modo Inverso (Edge-VRAM): Inverte o paradigma de datacenters centralizados provocado por líderes tecnológicos como Sam Altman. Em vez de abrir mão da soberania do hardware, o usuário tranca uma cota dedicada da RAM local (ex: 10GB de 16GB) através de uma amnésia induzida por kernel, ocultando-a do SO hospedeiro. Este bloco é conectado diretamente a clusters de IA na nuvem como uma expansão de hardware nativa usando um túnel de rede RoCEv2/QUIC otimizado para a internet. Os modelos de IA descarregam computações pesadas de tensores diretamente na RAM física do usuário via DMA remoto, ativando uma economia descentralizada de "Custódia de Memória", onde os consumidores são recompensados financeiramente por alugar seu silício ocioso sob suas próprias regras.
+
+3.<code> +---------------------------------------------------------------------------------------+
+|                                  SUA MÁQUINA (CLIENTE)                                |
+|                                                                                       |
+|  [ Canal 1: Custódia de Memória ] <--- (Dados Crús de Tensores / Instruções REA) --->|
+|  [ Canal 2: Renderização Visual ] <--- (Instruções Gráficas Vetoriais / Canvas) ----> |
++---------------------------------------------------------------------------------------+</code>
 
 ## Article #12
 
