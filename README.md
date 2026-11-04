@@ -480,6 +480,14 @@ neutralize advanced software exploits, vendor diagnostic utilities, firmware hac
   null lines) or triggering instant line voltage severing. Physical laws permanently 
   command logical microcode execution.
 
+  
+[ 9. TEMPORAL IMMUNITY AND ENERGY AUTONOMY: FAIL-SECURE SUPPORT AND FORCED QUANTUM PURGE ]
+
+• Objective: Guarantee an absolute Fail-Secure state against electrical Denial of Service (DoS) attacks, state freezing (Warm Boot/Soft Reset), or abrupt power-cut attempts orchestrated by hostile subsystems of the host CPU (such as AMD PSP, Intel ME, or MSU).
+• Mechanics A (Autonomous Tantalum Capacitor Power Supply): The adapter operates under the premise that the host bus is untrusted and can cut slot power at any moment to attempt data capture via remanence. To neutralize this, the circuit integrates a Low ESR (Equivalent Series Resistance) Tantalum Capacitor isolated by a fast silicon blocking diode. If the PSP or MSU electrically disables the physical bus (PCIe/M.2/USB-C), the diode prevents current backflow into the motherboard. The capacitor takes over as an autonomous and exclusive power supply for the HSM Enclave, providing a critical survival window on a millisecond scale—thermodynamically sufficient time for the chip to execute its logical self-destruction routines in total isolation.
+• Mechanics B (Nanosecond Warm Boot Interception): If the host CPU (via PSP or MSU) attempts to force a Warm Boot or clock freeze to catch the AIP with exposed data without cutting the electrical bus, the adapter's analog circuit reacts within nanoseconds. The internal Silicon Time Anchor detects the frequency shift or external clock suspension and aborts any data retention. Instead of preserving the previous state (a common vulnerability in smartphones), the load switch de-energizes the logic gates of the unstable SRAM. This interruption forces electron tunneling and triggers instant quantum fading (Quantum Cold-Zeroization), pulverizing all administrative and quorum keys before the host's fast reboot cycle can process its first scanning instruction.
+
+
 <b>AIP HARDWARE PERIMETER: REGISTER MASKING COUNTER-MEASURES (PUF CORE)</b>
 
 This submodule specifies the active architectural barriers deployed by the AIP/ACPG 
@@ -946,6 +954,12 @@ adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Gli
   ou requisições não autorizadas de DMA, o ecossistema AIP sabota o vetor ativando o 
   Active Bus Spoofing (retornando ruído estável) ou executa a ejeção material via corte 
   de tensão elétrica. As diretrizes da física anulam qualquer arquitetura lógica de firmware.
+
+[ 9. IMUNIDADE TEMPORAL E AUTONOMIA ENERGÉTICA: SUPORTE FAIL-SECURE E PURGA QUÂNTICA FORÇADA ]
+
+• Objetivo: Garantir o estado de Fail-Secure absoluto contra ataques de negação de serviço elétrico (DoS), congelamento de estado (Warm Boot/Soft Reset) ou tentativas de corte abrupto de alimentação orquestrados por subsistemas hostis da CPU hospedeira (como o AMD PSP, Intel ME ou MSU).
+• Mecânica A (Alimentação Autônoma por Capacitor de Tântalo): O adaptador adota a premissa de que o barramento hospedeiro não é confiável e pode cortar a energia do slot a qualquer momento para tentar capturar dados por remanência. Para neutralizar isso, o circuito integra um Capacitor de Tântalo de Baixa ESR (Resistência de Série Equivalente) isolado por um diodo de bloqueio rápido de silício. Se o PSP ou a MSU desligarem eletricamente o barramento físico (PCIe/M.2/USB-C), o diodo impede o refluxo de corrente para a placa-mãe. O capacitor assume a alimentação autônoma e exclusiva do Enclave HSM, fornecendo uma janela crítica de sobrevivência na escala de milissegundos — tempo termodinamicamente suficiente para que o chip execute suas rotinas de autodestruição lógica em isolamento total.
+• Mecânica B (Interceptação de Warm Boot em Nanossegundos): Se a CPU hospedeira (via PSP ou MSU) tentar forçar um Warm Boot ou um congelamento de clock para tentar flagrar o AIP com dados expostos sem desligar o barramento elétrico, o circuito analógico do adaptador reage na velocidade dos nanossegundos. A Âncora Temporal de Silício interna detecta a mudança de frequência ou a suspensão do clock externo e aborta o reaproveitamento de dados. Em vez de preservar o estado anterior (vulnerabilidade comum em smartphones), o interruptor de carga desenergiza as comportas lógicas da SRAM instável. A interrupção força o tunelamento de elétrons e ativa o desvanecimento quântico instantâneo (Quantum Cold-Zeroization), pulverizando todas as chaves administrativas e de quórum antes que o ciclo de reinicialização rápida do hospedeiro consiga processar sua primeira instrução de varredura.
 
 <b>AIP HARDWARE PERIMETER: IMUNIDADE CONTRA MASCARAMENTO DE REGISTRADORES (PUF CORE)</b>
 
