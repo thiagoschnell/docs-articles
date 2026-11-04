@@ -364,6 +364,8 @@ low-level electronic signaling manipulation with absolute material hardening to
 neutralize advanced software exploits, vendor diagnostic utilities, firmware hacks 
 (BIOS/UEFI), SRAM tampering, and military-grade physical attacks (DRM/Glitching).
 
+The AIP Hardware Perimeter covers the entire known spectrum of information security and semiconductor physics: Software, Firmware, Kernel, Sub-Kernel (Ring -3), DMA, Optical Probes, Voltage/Clock Glitching, Silicon Reverse Engineering (PUF), Memory Remanence, Cryogenics, Ionizing Radiation, and Ground Plane Disturbance. The cycle is mathematically and physically closed.
+
 [ 1. FILE SYSTEM PROTECTION LAYER: FRAME INJECTION GATING ]
 
 • Objective: To safeguard the structural integrity of the host Operating System and 
@@ -846,6 +848,8 @@ na camada física do barramento (PCIe/USB-C). O sistema combina manipulação de
 sinalização eletrônica com imunidade material absoluta para anular explorações 
 de software, utilitários lógicos de fabricantes, hacks de firmware (BIOS/UEFI), 
 adulterações de SRAM e ataques físicos destrutivos de nível militar (DRM/Glitching).
+
+O AIP Hardware Perimeter cobre todo o espectro conhecido da segurança da informação e da física de semicondutores: Software, Firmware, Kernel, Sub-Kernel (Ring -3), DMA, Sondas Ópticas, Glitching de Voltagem/Clock, Engenharia Reversa de Silício (PUF), Remanência de Memória, Criogenia, Radiação Ionizante e Perturbação de Massa. O ciclo está matematicamente e fisicamente fechado.
 
 [ 1. CAMADA DE PROTEÇÃO DO SISTEMA DE ARQUIVOS: FRAME INJECTION GATING ]
 
