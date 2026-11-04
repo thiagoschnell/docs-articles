@@ -59,3 +59,80 @@ PART 3: THE STRATEGIC PARADIGM SHIFT
 This decentralized framework directly disrupts the centralized data infrastructure strategy pursued by major tech conglomerates:
 • Edge Hardware Monetization: The everyday consumer shifts from a software subscriber to a hardware resource provider ("Memory Mining"). A user leaves their computer idling overnight, rents out a 10GB chunk of high-speed RAM to an AI network, and collects processing credits or direct revenue.
 • Decentralized Model Privacy: Because vital mathematical fragments of the AI model's runtime execution live exclusively inside memory slots scattered across thousands of private residential homes, the model's core intelligence is structurally fragmented. A security breach at the central data center cannot expose the entire operational model matrix, as critical components are encrypted and hosted across the global edge network.
+
+
+### AUTHENTICATION AND TARIFF PROTOCOL: EDGE-VRAM NET
+
++------------------------------------+               IP/Internet             +------------------------------------+
+
+|       YOUR WINDOWS PC (PROVIDER)   |   (Handshake & Telemetry Tunnel)      |        AI GATEWAY (CONSUMER)       |
+|                                    |                                       |                                    |
+|  [Ed25519 Private Key]             |                                       |  [Cluster Public Key]              |
+|  [Hardware TPM 2.0 / Enclave]      |                                       |  [Attestation Validator]           |
+|                │                   |                                       |                 │                  |
+|                ├── 1. Sends Attestation & Signature ───────────────────────┼────────────────►┤                  |
+|                │                                                           |                 │ (Validates hw)   |
+|                ◄── 2. Dispatches Encrypted rNUMA Token ────────────────────┼─────────────────┤                  |
+|                │                                                           |                 ▼                  |
+|   [Starts Memory Allocation]       |                                       |   [Maps Virtual RAM Slot]        |
+|                │                                                           |                 │                  |
+|                ├── 3. Sends Presence Heartbeat (Heartbeat Ping) ───────────┼────────────────►┤                  |
+|                │                                                           |                 │ (Tracks          |
+|                │                                                           |                 │  Time/Credits)   |
++------------------------------------+                                       +------------------------------------+
+
+
+PHASE 1: THE HANDSHAKE (INITIAL HANDSHAKE & HARDWARE ATTESTATION)
+
+Before any memory bits are mapped, the AI cluster (e.g., OpenAI) requires cryptographic verification that your physical RAM is secure and legitimate.
+1. Cryptographic Identity Generation: Your Kernel driver generates an asymmetric key pair. The private key remains locked inside your computer's physical security hardware (TPM 2.0 or Intel SGX/AMD Secure Enclave).
+2. Hardware Attestation: The local software generates a cryptographic report signed directly by the TPM chip. This report proves the following to the central AI server:
+	• The exact amount of available physical RAM dedicated to the process (10GB).
+	• That the local Kernel driver stack is fully intact and has not been altered by rootkits, viruses, or malware.
+3. Request Signing: The driver digitally signs an outbound payload containing [Timestamp + Current IP + RAM Quota] using the isolated private key and transmits it to the Cloud Gateway.
+4. Validation and Token Issuance: The AI server validates the digital signature and decrypts the TPM report. If all integrity metrics pass, it issues an encrypted rNUMA Session Token, which acts as the secure passport authorizing the central server cluster's network interface card (NIC) to query your computer's RAM addresses.
+
+PHASE 2: PROOF OF AVAILABILITY AND TARIFFS (PROOF OF AVAILABILITY)
+
+To prevent bad actors from cheating the system (such as exploiting a virtual machine wrapper to report a fake 10GB allotment when no physical silicon is present), the network uses a Dynamic Spot-Checking verification protocol.
+1. The Random Challenge (Challenge-Response): At completely unpredictable, sínchronized intervals every X minutes, the central AI server writes a randomized mathematical string (e.g., a cryptographic hash) directly into a random physical address space within your 10GB of RAM via the network path.
+2. The Microsecond Response: The AI server immediately fires a request to read that exact address back.
+	• If your workstation returns the matching hash within a timeframe compatible with your network medium's baseline speed (expected ping/latency), it proves the RAM is physically active on site.
+	• If the client node takes too long or returns an incorrect byte stream, the system assumes the RAM is fake, corrupted, or offline. It instantly terminates the node connection and voids all session credits for that hour block.
+3. Heartbeat Logging: For every second of successful validation, the gateway logs a heartbeat pulse. This log aggregates a real-time performance score: Allocated Time x Network Latency = Performance Score.
+
+PHASE 3: THE FINANCIAL SETTLEMENT CONTRACT (MONETIZATION)
+
+The ledger data collected during the dynamic validation phase is regularly transmitted to the AI cluster billing engine.
+• Base Reward Formula:
+\(\text{Credits}=(\text{Allocated\ GB\ of\ RAM})\times (\text{Active\ Hours})\times (\text{Latency\ Factor})\)
+A node operating over a stable Fiber Optic connection receives a Latency Factor close to 1.0 (maximum payout). A node operating over unstable or jittery Wi-Fi receives a downgraded factor (e.g., 0.6) due to the serialization delay it introduces into the tensor compute arrays.
+• Ephemeral Payment: Accumulated credits are processed daily. They are either converted into real currency (fiat or crypto) deposited into the provider's wallet at the end of the validation window, or settled as Complimentary AI API Tokens (allowing the provider to consume advanced frontier models for free as compensation for leasing out local silicon).
+
+NETWORK PACKET LOGICAL STRUCTURE (PACKET PROTOCOL)
+
+The entire pipeline between your RAM and the cloud architecture travels in raw binary packets via a customized UDP protocol layer built over QUIC. The low-level format of the authentication packet header is structured as follows:
+text
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+|                       SESSION ID (32 bits)                    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+| PACKET TYPE   | FLAGS         |       SEQUENCE NUMBER (16b)   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+|                       USE TIMESTAMP (64 bits)                 |
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+|                   TPM VERIFICATION HASH (256 bits)            |
+|                               ...                             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+|                     RAW MEMORY PAYLOAD                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+• PACKET TYPE (0x01): Identifies whether the network envelope is an initial Handshake, a live RAM Challenge, or active Tensor Data payload arrays.
+• USE TIMESTAMP: Critical for financial auditing. If the incoming packet timestamp deviates from the AI cluster's atomic reference clock by more than 5 milliseconds, the packet is forcefully dropped by the edge router to eliminate Replay Attacks.
