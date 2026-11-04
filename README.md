@@ -8,7 +8,7 @@ Turning Consumer PCs into Edge-VRAM Infrastructure and Anti-REA Architecture
  
 <b>[ENGLISH]</b>
 
-<h3>RAM-to-IP Inverse (Reverse Memory Disaggregation / Edge-Crowdsourced VRAM Over Internet)</h3>
+<h3>Inverse RAM-to-IP (Reverse Memory Disaggregation / Edge-Crowdsourced VRAM Over Internet)</h3>
 
 [TECHNICAL REPORT](https://github.com/thiagoschnell/docs-articles/blob/main/REVERSE%20RAM-TO-IP%20(Edge-Crowdsourced%20VRAM%20Over%20Internet)) 
 
