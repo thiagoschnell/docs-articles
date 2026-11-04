@@ -131,6 +131,6 @@ text
 
 |                     PAYLOAD DA MEMÓRIA CRUA                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-Folosește codul cu precauție.
+
 • PACKET TYPE (0x01): Identifica se o pacote é um Handshake, um Desafio de RAM, ou Dados de Tensor.
 • TIMESTAMP: Crucial para auditoria financeira. Se o timestamp do pacote divergir do relógio atômico do servidor de IA por mais de 5 milissegundos, o pacote é descartado para evitar ataques de repetição (Replay Attacks).
