@@ -1,27 +1,33 @@
+Para garantir que os 10GB de RAM alocados no cliente Linux fiquem completamente blindados contra ataques locais (incluindo dumpers de memória com privilégios de root e agentes avançados de REA), 
+o módulo de kernel utiliza cinco mecanismos nativos de baixo nível:
 
 1. Page Table Isolation & Page Attribute Manipulation (Manipulação de Atributos de Página)
 
 Quando o módulo aloca o bloco de memória usando alloc_pages(), ele modifica diretamente os bits de controle de atributos na tabela de páginas da CPU através das funções de gerenciamento de memória (mm).
 • Mecanismo: O driver altera a página para o estado _PAGE_NX (No-Execute) e remove os sinalizadores de leitura/escrita convencionais para o espaço de usuário.
-• Efeito Anti-REA: O espaço de usuário do Linux passa a enxergar essa memória como inexistente ou inacessível. Qualquer tentativa de leitura local gera um erro de hardware imediato (SIGSEGV / Fault), enquanto apenas o transceptor de rede baseado em kernel (DMA) consegue ler/escrever diretamente nos endereços físicos.
+• Efeito Anti-REA: O espaço de usuário do Linux passa a enxergar essa memória como inexistente ou inacessível. Qualquer tentativa de leitura local gera um erro de hardware imediato (SIGSEGV / Fault), 
+enquanto apenas o transceptor de rede baseado em kernel (DMA) consegue ler/escrever diretamente nos endereços físicos.
 
 2. Kernel Memory Protection Keys (MPK / PKEYs)
 
 Aproveitando as instruções de hardware das CPUs modernas (como Intel PKEYs), o Kernel Linux consegue isolar páginas de memória a nível de thread de execução.
 • Mecanismo: O módulo associa as páginas da Custódia de Memória a uma chave de proteção específica (pkey_alloc).
-• Efeito Anti-REA: Mesmo que um hacker consiga injetar um código malicioso dentro do espaço do kernel (ataque de exploit local), a CPU bloqueará o acesso aos blocos se a thread invasora não possuir a chave de hardware ativada no registrador PKRU da CPU.
+• Efeito Anti-REA: Mesmo que um hacker consiga injetar um código malicioso dentro do espaço do kernel (ataque de exploit local), 
+a CPU bloqueará o acesso aos blocos se a thread invasora não possuir a chave de hardware ativada no registrador PKRU da CPU.
 
 3. Isolamento Total via Subsunção de Memória (MemBlock + movable_node)
 
 Em vez de disputar a RAM com o gerenciador de memória tradicional do Linux (o Buddy Allocator), o sistema remove o hardware do ecossistema global.
 • Mecanismo: Durante o carregamento ou boot (usando a infraestrutura memblock), o driver reserva o endereço físico da RAM e o remove das zonas lógicas ZONE_NORMAL e ZONE_DMA32.
-• Efeito Anti-REA: Para o sistema operacional, aqueles 10GB de RAM deixaram de existir fisicamente. Ferramentas comuns de varredura de memória (como o comando dd if=/dev/mem) são incapazes de indexar ou enxergar o endereço físico sequestrado, pois ele foi completamente omitido dos mapas de memória estruturados do Linux.
+• Efeito Anti-REA: Para o sistema operacional, aqueles 10GB de RAM deixaram de existir fisicamente. 
+Ferramentas comuns de varredura de memória (como o comando dd if=/dev/mem) são incapazes de indexar ou enxergar o endereço físico sequestrado, pois ele foi completamente omitido dos mapas de memória estruturados do Linux.
 
 4. Kernel-Space eBPF & Netfilter Hooking (Blindagem de Barramento de Rede)
 
 Para evitar ataques do tipo Man-in-the-Middle locais (como interceptação via tcpdump ou Wireshark na interface de rede virtual do cliente).
 • Mecanismo: O driver anexa um programa eBPF (Extended Berkeley Packet Filter) direto na camada de driver da placa de rede (XDP - eXpress Data Path).
-• Efeito Anti-REA: Os pacotes de criptografia da Custódia de Memória vindos da nuvem são capturados e processados no microssegundo em que chegam na placa de rede física. O eBPF desvia o fluxo diretamente para o cofre de RAM e apaga os pacotes da pilha de rede padrão do Linux, impedindo que qualquer sniffer local capture os dados que trafegam na internet.
+• Efeito Anti-REA: Os pacotes de criptografia da Custódia de Memória vindos da nuvem são capturados e processados no microssegundo em que chegam na placa de rede física. 
+O eBPF desvia o fluxo diretamente para o cofre de RAM e apaga os pacotes da pilha de rede padrão do Linux, impedindo que qualquer sniffer local capture os dados que trafegam na internet.
 
 5. Destruição Ativa de Cache Lines (Sanitização via Instruções CLFLUSH)
 
@@ -34,12 +40,14 @@ Para evitar que resíduos do processamento da IA ou do software proprietário pe
 
 
 
-Para automatizar a configuração e a ativação do ecossistema de Custódia de Memória (Memory Custody) e isolamento de barramento no Linux do usuário, estruturamos uma solução moderna utilizando Rust para a lógica de orquestração local e o Goose (a CLI/Agente de IA para automação de infraestrutura baseada em MCP) para a automação e execução do deployment no nível do sistema.
+Para automatizar a configuração e a ativação do ecossistema de Custódia de Memória (Memory Custody) e isolamento de barramento no Linux do usuário, 
+estruturamos uma solução moderna utilizando Rust para a lógica de orquestração local e o Goose (a CLI/Agente de IA para automação de infraestrutura baseada em MCP) para a automação e execução do deployment no nível do sistema.
 Abaixo está o design completo do arquivo de configuração e scripts de automação.
 
 1. O Manifesto Goose (goose.yaml / gooseinfo.json)
 
-O Goose gerencia ferramentas através de ambientes virtuais e receitas baseadas em arquivos de contexto. Este arquivo instrui o Goose sobre como preparar o sistema operacional do usuário, interagir com o kernel, compilar o código em Rust e injetar as flags de boot necessárias para a dessegregação da RAM.
+O Goose gerencia ferramentas através de ambientes virtuais e receitas baseadas em arquivos de contexto. Este arquivo instrui o Goose sobre como preparar o sistema operacional do usuário, 
+interagir com o kernel, compilar o código em Rust e injetar as flags de boot necessárias para a dessegregação da RAM.
 yaml
 # goose.yaml - Memory Custody Deployment Automation Specification
 version: "1.0"
@@ -173,19 +181,22 @@ O Goose vai analisar o estado do sistema operacional, instalar os compiladores, 
 3. Iniciar a Custódia de Memória: Execute o binário em Rust compilado pelo Goose:bash
 sudo ./target/release/edge-vram-orchestrator
 Folosește codul cu precauție.
-Essa arquitetura de implantação garante que o ecossistema seja robusto e automatizado. O Rust trata a criptografia e os sockets com velocidade de linguagem de máquina e segurança de memória em nível de compilação, enquanto o Goose lida com a dor de cabeça operacional de configurar o kernel e as tabelas de páginas do Linux de forma totalmente automatizada.
+Essa arquitetura de implantação garante que o ecossistema seja robusto e automatizado. O Rust trata a criptografia e os sockets com velocidade de linguagem de máquina e segurança de memória em nível de compilação, 
+enquanto o Goose lida com a dor de cabeça operacional de configurar o kernel e as tabelas de páginas do Linux de forma totalmente automatizada.
 
 
 ---
 
 
 
-Para automatizar a configuração e a ativação do ecossistema de Custódia de Memória (Memory Custody) e isolamento de barramento no Linux do usuário, estruturamos uma solução moderna utilizando Rust para a lógica de orquestração local e o Goose (a CLI/Agente de IA para automação de infraestrutura baseada em MCP) para a automação e execução do deployment no nível do sistema.
+Para automatizar a configuração e a ativação do ecossistema de Custódia de Memória (Memory Custody) e isolamento de barramento no Linux do usuário, 
+estruturamos uma solução moderna utilizando Rust para a lógica de orquestração local e o Goose (a CLI/Agente de IA para automação de infraestrutura baseada em MCP) para a automação e execução do deployment no nível do sistema.
 Abaixo está o design completo do arquivo de configuração e scripts de automação.
 
 1. O Manifesto Goose (goose.yaml / gooseinfo.json)
 
-O Goose gerencia ferramentas através de ambientes virtuais e receitas baseadas em arquivos de contexto. Este arquivo instrui o Goose sobre como preparar o sistema operacional do usuário, interagir com o kernel, compilar o código em Rust e injetar as flags de boot necessárias para a dessegregação da RAM.
+O Goose gerencia ferramentas através de ambientes virtuais e receitas baseadas em arquivos de contexto. Este arquivo instrui o Goose sobre como preparar o sistema operacional do usuário, interagir com o kernel, 
+compilar o código em Rust e injetar as flags de boot necessárias para a dessegregação da RAM.
 yaml
 # goose.yaml - Memory Custody Deployment Automation Specification
 version: "1.0"
@@ -319,4 +330,5 @@ O Goose vai analisar o estado do sistema operacional, instalar os compiladores, 
 3. Iniciar a Custódia de Memória: Execute o binário em Rust compilado pelo Goose:bash
 sudo ./target/release/edge-vram-orchestrator
 Folosește codul cu precauție.
-Essa arquitetura de implantação garante que o ecossistema seja robusto e automatizado. O Rust trata a criptografia e os sockets com velocidade de linguagem de máquina e segurança de memória em nível de compilação, enquanto o Goose lida com a dor de cabeça operacional de configurar o kernel e as tabelas de páginas do Linux de forma totalmente automatizada.
+Essa arquitetura de implantação garante que o ecossistema seja robusto e automatizado. O Rust trata a criptografia e os sockets com velocidade de linguagem de máquina e segurança de memória em nível de compilação, 
+enquanto o Goose lida com a dor de cabeça operacional de configurar o kernel e as tabelas de páginas do Linux de forma totalmente automatizada.
