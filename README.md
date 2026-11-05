@@ -14,6 +14,8 @@ Turning Consumer PCs into Edge-VRAM Infrastructure and Anti-REA Architecture
 
 [COMPLETE TECHNICAL ARCHITECTURE](https://github.com/thiagoschnell/docs-articles/blob/main/COMPLETE%20TECHNICAL%20ARCHITECTURE:%20REVERSE%20RAM-TO-IP%20(EDGE-VRAM))
 
+[TECHNICAL SPECIFICATION: EDGE-VRAM PROVISIONING (Advanced Linux Kernel Mechanisms for Memory Custody with Rust & Goose)](https://github.com/thiagoschnell/docs-articles/blob/main/TECHNICAL%20SPECIFICATION%3A%20EDGE-VRAM%20PROVISIONING)
+
 In the post-AI software ecosystem, traditional client-side security has collapsed. The emergence of advanced Machine Context Protocol (MCP) agents, such as REA (Reverse Engineer Anything), allows for the instantaneous, automated decompilation and cloning of any software that resides statically in a client’s local storage or DRAM. This paper introduces a unified, bidirectional architectural framework designed to break the standard coupling between local CPU processing and local memory allocation, reshaping how intellectual property is protected and how global compute infrastructure is scaled.
 The framework operates in two disruptive modes using Memory Disaggregation over IP:
 1. Direct Mode (Virtual Memory Encrypted Batching - VMEB): Protects proprietary software by hosting the compiled binary exclusively on a secure remote server. A custom Ring 0 kernel driver on the user's PC emulates a local memory bus, pulling execution instructions over Wi-Fi via an asynchronous "Vertical Buffer" (batching ~1000 instructions ahead to defeat network latency). As the local CPU executes each instruction, a runtime sanitizer immediately shreds the preceding cache line. The REA agent is left entirely blind, facing a volatile, constantly morphing puzzle with a zero-disk footprint.
