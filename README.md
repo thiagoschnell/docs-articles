@@ -14,7 +14,7 @@ Turning Consumer PCs into Edge-VRAM Infrastructure and Anti-REA Architecture
 
 [COMPLETE TECHNICAL ARCHITECTURE](https://github.com/thiagoschnell/docs-articles/blob/main/COMPLETE%20TECHNICAL%20ARCHITECTURE:%20REVERSE%20RAM-TO-IP%20(EDGE-VRAM))
 
-[TECHNICAL SPECIFICATION: EDGE-VRAM PROVISIONING <b>(Advanced Linux Kernel Mechanisms for Memory Custody with Rust & Goose)</b>](https://github.com/thiagoschnell/docs-articles/blob/main/TECHNICAL%20SPECIFICATION%3A%20EDGE-VRAM%20PROVISIONING)
+[TECHNICAL SPECIFICATION: EDGE-VRAM PROVISIONING <b>(Advanced Linux Kernel Mechanisms Orchestration with Rust & Goose)</b>](https://github.com/thiagoschnell/docs-articles/blob/main/TECHNICAL%20SPECIFICATION%3A%20EDGE-VRAM%20PROVISIONING)
 
 In the post-AI software ecosystem, traditional client-side security has collapsed. The emergence of advanced Machine Context Protocol (MCP) agents, such as REA (Reverse Engineer Anything), allows for the instantaneous, automated decompilation and cloning of any software that resides statically in a client’s local storage or DRAM. This paper introduces a unified, bidirectional architectural framework designed to break the standard coupling between local CPU processing and local memory allocation, reshaping how intellectual property is protected and how global compute infrastructure is scaled.
 The framework operates in two disruptive modes using Memory Disaggregation over IP:
@@ -81,7 +81,7 @@ To enforce absolute cryptographic isolation against high-privileged local advers
 
 [ARQUITETURA TÉCNICA COMPLETA](https://github.com/thiagoschnell/docs-articles/blob/main/ARQUITETURA%20COMPLETA:%20RAM-TO-IP%20INVERSA%20(EDGE-VRAM))
 
-[ESPECIFICAÇÃO TÉCNICA: PROVISIONAMENTO EDGE-VRAM <b>(Mecanismos Avançados do Kernel Linux para Custódia de Memória com Orquestração em Rust e Automação de IA via Goose)</b>](https://github.com/thiagoschnell/docs-articles/blob/main/ESPECIFICA%C3%87%C3%83O%20T%C3%89CNICA%3A%20PROVISIONAMENTO%20EDGE-VRAM)
+[ESPECIFICAÇÃO TÉCNICA: PROVISIONAMENTO EDGE-VRAM <b>(Mecanismos Avançados do Kernel Linux com Orquestração em Rust e Goose)</b>](https://github.com/thiagoschnell/docs-articles/blob/main/ESPECIFICA%C3%87%C3%83O%20T%C3%89CNICA%3A%20PROVISIONAMENTO%20EDGE-VRAM)
 
 No ecossistema de software pós-inteligência artificial, a segurança tradicional no lado do cliente entrou em colapso. O surgimento de agentes avançados de Protocolo de Contexto de Máquina (MCP), como o REA (Reverse Engineer Anything), permite a descompilação e clonagem automatizada e instantânea de qualquer software que resida estaticamente no armazenamento local ou na DRAM do cliente. Este artigo introduz uma estrutura arquitetural bidirecional e unificada, projetada para quebrar o acoplamento padrão entre o processamento local da CPU e a alocação de memória local, remodelando a proteção da propriedade intelectual e a escala da infraestrutura global de computação.
 O ecossistema opera em dois modos disruptivos através da Desagregação de Memória sobre IP:
