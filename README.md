@@ -62,6 +62,15 @@ For your decentralized over-the-internet deployment to succeed:
 • The AI Provider Cluster (Server-side) must run exclusively on Linux.
 • The Consumer Node (Client-side) can run on Windows or Linux, but the Linux Client build will provide significantly lower network overhead latency and unmatched structural defense against local memory scraping and automated AI inspection.
 
+Kernel-Level Hardening Framework for Linux Memory Custody
+
+To enforce absolute cryptographic isolation against high-privileged local adversaries and automated REA agents, the Linux Kernel Module implements a hardware-enforced defensive matrix:
+• Page Table Stripping: Leverages architectural page attribute modifications (_PAGE_NX) to decouple the physical DRAM node from the OS page mapper, rendering the address space invisible to user-space utilities.
+• Hardware PKEY Allocation: Restricts execution boundaries utilizing Intel/AMD Memory Protection Keys (MPKs), dynamically locking the PKRU register to prevent unauthenticated kernel threads from scraping the workspace.
+• MemBlock Subsumption: Bypasses the standard Buddy Allocator entirely by carving out physical block ranges during boot sequences, omitting the physical addresses from /dev/mem maps.
+• XDP eBPF Ingestion: Intercepts inbound rNUMA/QUIC network packets at the eXpress Data Path (XDP) layer, copying payloads directly via DMA into the isolated memory vault and bypassing the OS network subsystem to block local packet-sniffing hooks (e.g., tcpdump).
+• Active Cache Line Purging: Invokes hardware-level assembly primitives (CLFLUSH and MFENCE) immediately following compute lifecycles, ensuring spent instruction residues are instantly cleared from CPU L1/L2/L3 caches.
+
 <b>[PORTUGUÊS]</b>
 
 <h3>RAM-to-IP Inversa (Reverse Memory Disaggregation / Edge-Crowdsourced VRAM Over Internet)</h3>
