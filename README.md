@@ -60,7 +60,6 @@ Even though Windows is the primary deployment target—since everyday consumers 
 
 Technical Summary of the Blueprint
 
-For your decentralized over-the-internet deployment to succeed:
 • The AI Provider Cluster (Server-side) must run exclusively on Linux.
 • The Consumer Node (Client-side) can run on Windows or Linux, but the Linux Client build will provide significantly lower network overhead latency and unmatched structural defense against local memory scraping and automated AI inspection.
 
@@ -127,7 +126,6 @@ Embora o Windows seja o alvo principal (onde os usuários comuns têm PCs potent
 
 Resumo Técnico do Blueprint
 
-Para o seu projeto ser bem-sucedido na internet:
 • A Operadora de IA (Servidor) deve rodar obrigatoriamente em Linux.
 • O Usuário Provedor (Cliente) rodará em Windows ou Linux, mas a versão Linux Cliente terá uma latência muito menor e será infinitamente mais blindada contra ataques de interceptação de memória local.
 
