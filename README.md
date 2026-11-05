@@ -28,7 +28,7 @@ The framework operates in two disruptive modes using Memory Disaggregation over 
 |  [ Channel 2: Visual Rendering ] <--- (Obfuscated Vector Graphic Instructions) -----> |
 +---------------------------------------------------------------------------------------+</code>
 
-How your Memory Custody architecture (Memory Custody) and Anti-REA (VMEB) architecture operates directly at the very core of the hardware (Ring 0 / Kernel-space), it depends entirely on how each specific operating system manages physical DRAM [health].
+How Memory Custody architecture (Memory Custody) and Anti-REA (VMEB) architecture operates directly at the very core of the hardware (Ring 0 / Kernel-space), it depends entirely on how each specific operating system manages physical DRAM [health].
 Here is the detailed technical compatibility analysis, the significant cross-platform variations, and the verdict on which OS reduces your security boundaries.
 
 1. Operating System Analysis
@@ -95,7 +95,7 @@ O ecossistema opera em dois modos disruptivos através da Desagregação de Mem�
 |  [ Canal 2: Renderização Visual ] <--- (Instruções Gráficas Vetoriais / Canvas) ----> |
 +---------------------------------------------------------------------------------------+</code>
 
-Como a sua arquitetura de Custódia de Memória (Memory Custody) e proteção Anti-REA opera diretamente no "coração" do hardware (Ring 0 / Espaço de Kernel), ela depende inteiramente de como cada sistema operacional gerencia a memória RAM física.
+Como a arquitetura de Custódia de Memória (Memory Custody) e proteção Anti-REA opera diretamente no "coração" do hardware (Ring 0 / Espaço de Kernel), ela depende inteiramente de como cada sistema operacional gerencia a memória RAM física.
 Abaixo está a análise técnica de compatibilidade, as diferenças significativas e o veredito de qual sistema deixa a sua arquitetura menos segura.
 
 1. Análise por Sistema Operacional
