@@ -131,6 +131,15 @@ Para o seu projeto ser bem-sucedido na internet:
 • A Operadora de IA (Servidor) deve rodar obrigatoriamente em Linux.
 • O Usuário Provedor (Cliente) rodará em Windows ou Linux, mas a versão Linux Cliente terá uma latência muito menor e será infinitamente mais blindada contra ataques de interceptação de memória local.
 
+Framework de Blindagem em Nível de Kernel para Custódia de Memória Linux
+
+Para impor um isolamento criptográfico absoluto contra adversários locais altamente privilegiados e agentes automatizados de REA, o Módulo de Kernel Linux implementa uma matriz defensiva forçada por hardware:
+• Manipulação de Atributos de Página (Page Table Stripping): Alavanca modificações arquiteturais de atributos de página (_PAGE_NX) para desacoplar o nó físico de DRAM do mapeador de páginas do SO, tornando o espaço de endereço invisível para utilitários do espaço de usuário (user-space).
+• Alocação de PKEYs por Hardware: Restringe os limites de execução utilizando Chaves de Proteção de Memória (MPKs) da Intel/AMD, bloqueando dinamicamente o registrador PKRU para impedir que threads não autenticadas do kernel extraiam dados do espaço de trabalho.
+• Subsunção via MemBlock: Ignora completamente o Buddy Allocator padrão ao isolar intervalos de blocos físicos durante as sequências de boot, omitindo os endereços físicos dos mapas do dispositivo /dev/mem.
+• Ingestão via XDP eBPF: Intercepta pacotes de rede rNUMA/QUIC de entrada na camada eXpress Data Path (XDP), copiando os payloads diretamente via DMA para o cofre de memória isolado e contornando o subsistema de rede do SO para bloquear ganchos locais de interceptação de pacotes (como o tcpdump).
+• Limpeza Ativa de Cache Lines: Invoca primitivas de assembly em nível de hardware (CLFLUSH e MFENCE) imediatamente após os ciclos de vida de computação, garantindo que resíduos de instruções gastas sejam limpos instantaneamente dos caches L1/L2/L3 da CPU.
+
 
 ## Article #12
 
