@@ -10,6 +10,10 @@ Why a Dedicated and Isolated HSM Channel Protects Data at Rest, Yet Execution Re
  
 <h3>The Limits of Predictive Architecture: How Far a Dedicated Physical HSM Goes Against Self System RAM Exposure</h3>
 
+[TECHNICAL REPORT](https://github.com/thiagoschnell/docs-articles/blob/main/Security%20Architecture%20Technical%20Report%3A%20Analysis%20of%20Ring%20-3%20(Intel%20ME)%20Bypass%20and%20Mitigation) 
+
+[COMPLETE TECHNICAL ARCHITECTURE](https://github.com/thiagoschnell/docs-articles/blob/main/Technical%20Report%3A%20Implementation%20of%20a%20Dedicated%20Physical%20HSM%20via%20Isolated%20Channel%20and%20the%20Limits%20of%20Predictive%20Architecture)
+
 The Dedicated Physical HSM with Isolated Channel and GPIO Button definitively solves data-at-rest protection, eliminates reliance on the motherboard's internal TPM chip, and blocks silent remote attacks. While the deterministic nature of the x86 architecture makes the key's passage through RAM unavoidable during active execution, ephemeral per-session rotation combined with immediate memory sanitization neutralizes the persistence of any capture, delivering enterprise/military-grade security on consumer hardware
 
 <b>[PORTUGUÊS]</b>
