@@ -2,17 +2,21 @@
 
 ## Article #14
 
+<b>[ENGLISH]</b>
+
 <h3>External HSM vs. Ring -3 (x86_64 Architecture - Intel ME / AMD PSP) </h3>
 
 Why a Dedicated and Isolated HSM Channel Protects Data at Rest, Yet Execution Remains Predictable.
  
-<b>[ENGLISH]</b>
-
 <h3>The Limits of Predictive Architecture: How Far a Dedicated Physical HSM Goes Against Self System RAM Exposure</h3>
 
 The Dedicated Physical HSM with Isolated Channel and GPIO Button definitively solves data-at-rest protection, eliminates reliance on the motherboard's internal TPM chip, and blocks silent remote attacks. While the deterministic nature of the x86 architecture makes the key's passage through RAM unavoidable during active execution, ephemeral per-session rotation combined with immediate memory sanitization neutralizes the persistence of any capture, delivering enterprise/military-grade security on consumer hardware
 
 <b>[PORTUGUÊS]</b>
+
+<h3>HSM Externo vs. Ring -3 (x86_64 Architecture - Intel ME / AMD PSP) </h3>
+
+Por Que o Canal HSM Dedicado e Isolado Protege o Repouso, Mas a Execução Continua Previsível.
 
 <h3>Os Limites da Arquitetura Preditiva: Até Onde Vai um HSM Físico Dedicado Diante da própria Exposição na Memória RAM</h3>
 
