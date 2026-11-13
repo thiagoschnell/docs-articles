@@ -12,7 +12,7 @@ Why a Dedicated and Isolated HSM Channel Protects Data at Rest, Yet Execution Re
 
 [TECHNICAL REPORT](https://github.com/thiagoschnell/docs-articles/blob/main/Security%20Architecture%20Technical%20Report%3A%20Analysis%20of%20Ring%20-3%20(Intel%20ME)%20Bypass%20and%20Mitigation) 
 
-[COMPLETE TECHNICAL ARCHITECTURE](https://github.com/thiagoschnell/docs-articles/blob/main/Technical%20Report%3A%20Implementation%20of%20a%20Dedicated%20Physical%20HSM%20via%20Isolated%20Channel%20and%20the%20Limits%20of%20Predictive%20Architecture)
+[COMPLETE TECHNICAL IMPLEMENTATION ARCHITECTURE](https://github.com/thiagoschnell/docs-articles/blob/main/Technical%20Report%3A%20Implementation%20of%20a%20Dedicated%20Physical%20HSM%20via%20Isolated%20Channel%20and%20the%20Limits%20of%20Predictive%20Architecture)
 
 The Dedicated Physical HSM with Isolated Channel and GPIO Button definitively solves data-at-rest protection, eliminates reliance on the motherboard's internal TPM chip, and blocks silent remote attacks. While the deterministic nature of the x86 architecture makes the key's passage through RAM unavoidable during active execution, ephemeral per-session rotation combined with immediate memory sanitization neutralizes the persistence of any capture, delivering enterprise/military-grade security on consumer hardware
 
@@ -23,6 +23,10 @@ The Dedicated Physical HSM with Isolated Channel and GPIO Button definitively so
 Por Que o Canal HSM Dedicado e Isolado Protege o Repouso, Mas a Execução Continua Previsível.
 
 <h3>Os Limites da Arquitetura Preditiva: Até Onde Vai um HSM Físico Dedicado Diante da própria Exposição na Memória RAM</h3>
+
+[RELATÓRIO TÉCNICO](https://github.com/thiagoschnell/docs-articles/blob/main/Relat%C3%B3rio%20T%C3%A9cnico%20de%20Arquitetura%20de%20Seguran%C3%A7a%3A%20An%C3%A1lise%20de%20Contorno%20e%20Mitiga%C3%A7%C3%A3o%20do%20Ring%20-3%20(Intel%20ME)) 
+
+[ARQUITETURA COMPLETA DE IMPLEMENTAÇÃO TÉCNICA](https://github.com/thiagoschnell/docs-articles/blob/main/Relat%C3%B3rio%20T%C3%A9cnico%3A%20Implementa%C3%A7%C3%A3o%20de%20HSM%20F%C3%ADsico%20Dedicado%20via%20Canal%20Isolado%20e%20os%20Limites%20da%20Arquitetura%20Preditiva)
 
 O HSM Físico Dedicado com Canal Isolado e Botão GPIO resolve de forma definitiva a proteção dos dados em repouso, elimina a dependência do chip TPM interno da placa-mãe e bloqueia ataques remotos silenciosos. Embora o comportamento determinístico da arquitetura x86 torne inevitável a passagem da chave pela memória RAM durante o uso ativo, a rotação efêmera por sessão aliada à higienização imediata de memória neutraliza a persistência de qualquer captura, garantindo segurança de nível corporativo/militar sobre um hardware doméstico.
 
