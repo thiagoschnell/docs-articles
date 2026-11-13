@@ -2,9 +2,9 @@
 
 ## Article #14
 
-<h3>HSM Externo vs. Ring -3 (x86_64 Architecture - Intel ME / AMD PSP) </h3>
+<h3>External HSM vs. Ring -3 (x86_64 Architecture - Intel ME / AMD PSP) </h3>
 
-Por Que o Canal HSM Dedicado e Isolado Protege o Repouso, Mas a Execução Continua Previsível.
+Why a Dedicated and Isolated HSM Channel Protects Data at Rest, Yet Execution Remains Predictable.
  
 <b>[ENGLISH]</b>
 
