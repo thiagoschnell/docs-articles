@@ -1,0 +1,112 @@
+Target Platform Analyzed: Dell G15 5520 (12th Gen Intel, 24 GB RAM, NVIDIA RTX 3050, USB-C 3.2 Gen 2 without Thunderbolt)
+Available Auxiliary Hardware: Raspberry Pi 3 (ARM, no Intel ME), USB-C NVMe Adapter, 16 GB microSD Card
+Investigation Objective: Evaluate physical, cryptographic, and architectural mechanisms to isolate data, keys, and processing against the hardware privilege of Ring -3 (Intel Management Engine).
+
+1. Problem Foundation: The Ring -3 Hierarchy
+
+In modern processors based on the x86 architecture, system control is divided into privilege rings (Protection Rings). The operating system and user applications operate between Rings 0 and 3, 
+while the motherboard management firmware operates below the kernel:
+• Ring -3 (Intel ME / AMD PSP): An autonomous microcomputer embedded inside the motherboard chipset (PCH). It features its own processing core, internal memory, embedded operating system (based on MINIX), 
+and unrestricted access to network, video, USB, and main system RAM controllers via DMA (Direct Memory Access).
+• The Deterministic Bottleneck (Von Neumann Architecture): For the CPU to perform any calculation or display data on the screen, the content must reside unencrypted in system RAM and core registers. 
+Because the memory controller resides on the same silicon governed by the chipset, any active data in RAM becomes visible to Ring -3 in real time.
+
+2. Tested Hypotheses and Reasons for Failure (The Setbacks)
+
+During the investigation, several software, cryptographic, and peripheral approaches were conceptually tested against Ring -3. Below is the breakdown of each hypothesis and the technical reason why they do not prevent real-time reading:
+
+2.1. Pre-Boot Multifactor Authentication (TPM + PIN / LUKS2 + Argon2id)
+
+• The Hypothesis: Require a numeric PIN prior to operating system boot (BitLocker + PIN on Windows or systemd-cryptenroll on Linux) to split the Volume Master Key (VMK) between the TPM chip and the user's memory.
+• What Works: Protects 100% of data at rest (PC powered off or hibernating). While the system awaits the PIN at the pre-boot screen, no key exists in system RAM or inside the TPM chip. 
+It also defeats physical bus-eavesdropping attacks on the motherboard (TPM Sniffing).
+• The Setback: As soon as the user enters the PIN and the operating system loads, the complete master key is assembled and transferred into main system RAM to decrypt SSD blocks. 
+From that moment on, Ring -3 regains full visibility over the active key and open files.
+
+2.2. fTPM (Firmware TPM / Intel PTT) vs. dTPM (Dedicated TPM Chip)
+
+• The Hypothesis: Use a discrete physical TPM chip soldered to the motherboard (dTPM) or an external hardware token (such as a YubiKey) to prevent the key from being stored inside Intel's silicon (fTPM/Intel PTT).
+• What Works: Both the YubiKey and dTPM prevent the key from being extracted from inside the security chip while the system is powered off.
+• The Setback: A TPM chip is merely a slow vault (communicating via SPI/I2C or USB at megabytes per second), incapable of encrypting system RAM in real time (which demands tens of gigabytes per second). 
+To read the drive, the TPM or YubiKey must deliver the key across the motherboard buses to the CPU. The moment the key traverses the motherboard and enters RAM, Ring -3 intercepts it.
+
+2.3. Thunderbolt Bus / External DMA and External Boot (Windows To Go / Live Linux)
+
+• The Hypothesis: Use a USB-C or Thunderbolt NVMe adapter (available on the RTX 3060 variant of the G15) to run an isolated external operating system and block chipset access.
+• What Works: Completely isolates the external OS from the internal SSD (provided the internal SSD is protected by BitLocker/LUKS).
+• The Setback: The Thunderbolt controller and USB ports are managed internally by the chipset where Ring -3 resides. DMA isolation (Intel VT-d / IOMMU) protects system memory against malicious external devices, 
+but it does not hide system memory from the chipset itself. An OS booting over Thunderbolt still operates at Ring 0, remaining subordinate to Ring -3.
+
+2.4. Hardened and Amnesic Operating Systems (Qubes OS and Tails OS)
+
+• The Hypothesis: Use Qubes OS (VM isolation via the Xen hypervisor) or Tails OS (100% RAM execution with memory wiping upon shutdown).
+• What Works: Qubes OS prevents malware in one window from contaminating the rest of the system. Tails OS overwrites all system RAM with zeros the exact second the drive is unplugged, defeating physical RAM-freezing attacks (Cold Boot Attacks).
+• The Setback: During active use, Qubes virtual machines and Tails' RAM filesystem (tmpfs) reside in the Dell G15's physical RAM in plaintext to be processed by the CPU, remaining visible to Ring -3.
+
+2.5. Encryption Inside CPU Registers (TRESOR and Loop-Amnesia)
+
+• The Hypothesis: Modify the Linux kernel to store the AES-256 key exclusively inside internal processor registers—debug registers (DR0–DR3) in TRESOR or model-specific registers (MSRs) in Loop-Amnesia—preventing the key from ever touching physical RAM sticks.
+• What Works: Defeats physical RAM-stick readout attacks and external DMA attacks.
+• The Setback:
+	1. Silicon Interrupts: When Ring -2 (SMM) or Ring -3 pauses CPU cores for power or hardware management, processor microcode saves the state of internal registers into hidden memory regions (SMRAM), exposing their contents.
+	2. Unencrypted Working Data: Even with the key hidden in registers, open files and screen framebuffers remain in plaintext in RAM.
+	3. Modern Incompatibility: Breaks on modern hybrid processors (such as the G15's 12th Gen Intel CPU mixing P-Cores and E-Cores) and remains vulnerable to side-channel attacks (Spectre/Meltdown).
+
+2.6. Key Wrapping and On-Demand Decryption
+
+• The Hypothesis: Keep the master key encrypted in RAM and decrypt it only during the exact microsecond a data block needs to be read.
+• The Setback: The processor accesses RAM billions of times per second. During the exact microsecond the key is decrypted to perform the AES calculation, 
+it exists in plaintext inside the CPU/RAM. Because Ring -3 runs continuously in parallel and forensic tools locate AES keys instantly via mathematical patterns (Key Schedule and high entropy), interception occurs at the moment of execution.
+
+3. Advanced and Complex Options to Bypass Ring -3
+
+To effectively defeat or neutralize Ring -3, one must abandon traditional software-only defenses and turn to hardware engineering, advanced mathematics, or physical isolation:
+
+3.1. Silicon Confidential Computing (Trusted Execution Environments - TEE)
+
+• Technologies: AMD SEV-SNP, Intel TDX, Apple Secure Enclave, and Microsoft Pluton.
+• How It Works: The processor embeds a physical AES cryptographic engine directly inside the memory controller. Each Virtual Machine receives a unique key generated and locked inside silicon fuses (eFuses / PUF). Data is decrypted solely inside the CPU's internal cache during computation and re-encrypted before reaching physical RAM sticks.
+• Limitation: Requires server-grade processors (AMD EPYC or Intel Xeon) or confidential cloud instances. It is not available for VMs on the Dell G15's consumer hardware.
+
+3.2. Fully Homomorphic Encryption (FHE)
+
+• Technologies: Libraries such as Zama Concrete and Microsoft SEAL.
+• How It Works: Allows the processor to execute computations and algorithms directly on encrypted data without ever decrypting it, not even inside the CPU core. 
+The processor manipulates mathematically scrambled data and returns an encrypted result.
+• Limitation: It is the only mathematical solution 100% immune to Ring -3, but it carries an extreme computational penalty (thousands of times slower than standard execution), making it impractical for running full operating systems today.
+
+3.3. Firmware Amputation (me_cleaner + Coreboot)
+
+• How It Works: Involves opening the laptop, attaching an external hardware programmer (CH341A) directly to the physical SPI BIOS chip on the motherboard, dumping the firmware, 
+stripping out all Intel ME network and OS modules using me_cleaner (leaving only ~60 KB of basic initialization code), and replacing the BIOS with open-source Coreboot.
+• Limitation on the Dell G15: Modern Dell laptops ship with Intel Boot Guard permanently fused into the processor. Any 1-bit modification to the BIOS chip causes cryptographic signature verification to fail, permanently bricking the motherboard.
+
+3.4. Migration to Open Silicon (RISC-V / OpenPOWER)
+
+• How It Works: Replace the x86 architecture with boards and processors based on RISC-V or IBM OpenPOWER, where chip schematics, microcode, and firmware are 100% open-source and auditable, eliminating hidden management coprocessors.
+
+4. Consolidated Practical Solution: Hybrid HSM + Air-Gap Architecture
+
+Given the physical constraints of the Dell G15 5520 (which has Boot Guard locked, though it fortunately lacks the corporate remote management module Intel vPro / AMT), 
+the most secure practical architecture uses the Raspberry Pi 3 (ARM processor, completely free of Intel ME) as an external root of trust:
+
+Components of the Final Architecture
+
+1. Offline Vault / Dedicated HSM (Raspberry Pi 3):
+	• Wi-Fi and Bluetooth radios disabled at the firmware level (dtoverlay=disable-wifi and dtoverlay=disable-bt).
+	• Stores the master cryptographic seed (/etc/hsm_token/master_seed.key) and the session counter.
+2. Mechanical Physical Confirmation (GPIO Push-Button):
+	• A physical push-button wired to Pins 9 (GND) and 11 (GPIO 17) on the Raspberry Pi 3 requires manual human pressing within 15 seconds before any key is released over the cable. This neutralizes silent remote attacks originating from the laptop.
+3. Automatic Session-Based Key Rotation (Forward Secrecy):
+	• Each time the vault/VM is unlocked on the Dell G15 (via LUKS2 on Linux or VeraCrypt on Windows), the Pi 3 delivers the current session key alongside the next session's key.
+	• The host script writes the new key to a free slot, deletes the current key, and confirms rotation back to the Pi 3. If a key is captured from RAM during active use, it is already expired and useless for the next session.
+4. Host Memory Hygiene (Dell G15):
+	• Leveraging the 24 GB of RAM with Swap disabled (swapoff) to prevent key leakage onto the internal SSD.
+	• A closing trigger (Dead Man's Switch) that unmounts the volume and flushes page caches (drop_caches) upon session termination.
+	• Network Air-Gap (Optional): Physical removal of the M.2 Wi-Fi card from the Dell G15 to completely blind any chipset-level data exfiltration attempts.
+
+5. Technical Conclusion
+
+It is physically impossible to prevent Ring -3 from viewing active data in main RAM on a traditional x86 processor while the system is running. However, 
+by separating the plane of authority (Raspberry Pi 3 without Ring -3) from the plane of execution (Dell G15), enforcing mechanical confirmation via GPIO, 
+applying ephemeral per-session key rotation, and isolating network interfaces, the practical risk of remote or persistent compromise is reduced to zero.
