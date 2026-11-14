@@ -17,48 +17,57 @@ Why a Dedicated and Isolated HSM Channel Protects Data at Rest, Yet Execution Re
 The Dedicated Physical HSM with Isolated Channel and GPIO Button definitively solves data-at-rest protection, eliminates reliance on the motherboard's internal TPM chip, and blocks silent remote attacks. While the deterministic nature of the x86 architecture makes the key's passage through RAM unavoidable during active execution, ephemeral per-session rotation combined with immediate memory sanitization neutralizes the persistence of any capture, delivering enterprise/military-grade security on consumer hardware
 
 
-1. What Is Ring -3 and Why Does It Exist?
+### 1. What Is Ring -3 and Why Does It Exist?
 
-In the x86 privilege hierarchy, Ring -3 is an autonomous physical coprocessor embedded inside the motherboard chipset (PCH). It runs its own micro-operating system (MINIX in Intel's case) with direct hardware access to system RAM (DMA), the network interface controller (NIC), USB ports, and the integrated graphics engine.
-• Basic Function (Present on all processors): Manages power states, powers CPU cores on and off, controls cooling fans, and verifies BIOS cryptographic signatures at boot (Intel Boot Guard).
-• Advanced Function (Enterprise lines only): Out-of-Band (OOB) remote management, allowing IT administrators to repair, wipe, or control keyboard/video/mouse (KVM) over the network even when the operating system is crashed or powered off.
+In the x86 privilege hierarchy, **Ring -3** is an autonomous physical coprocessor embedded inside the motherboard chipset (PCH). It runs its own micro-operating system (MINIX in Intel's case) with direct hardware access to system RAM (**DMA**), the network interface controller (NIC), USB ports, and the integrated graphics engine.
 
-2. Which Processors Have Remote Control and What Are the Limits?
+* **Basic Function (Present on all processors):** Manages power states, powers CPU cores on and off, controls cooling fans, and verifies BIOS cryptographic signatures at boot (*Intel Boot Guard*).
+* **Advanced Function (Enterprise lines only):** Out-of-Band (OOB) remote management, allowing IT administrators to repair, wipe, or control keyboard/video/mouse (KVM) over the network even when the operating system is crashed or powered off.
 
-The presence of the management coprocessor is universal on modern x86 chips (since ~2008), but remote control capabilities vary drastically by product tier:
+---
 
-Feature	Consumer / Gaming Processors (e.g., Dell G15, Standard Core i5/i7, Standard Ryzen)	Enterprise Processors (Intel vPro / AMD Ryzen PRO)
-Present Firmware	Intel ME (Basic / Consumer SKU) or basic AMD PSP.	Intel ME (Full Corporate SKU + Intel AMT) or AMD DASH / PRO.
-Remote Control (KVM / OOB)	Non-existent. The web server and remote KVM modules are stripped from the firmware binary.	Active in silicon. Supports KVM-over-IP, remote ISO mounting, and remote power cycling.
-Network Exposure	Zero ports opened by the chipset.	Listens on TCP ports 16992/16993 (HTTP/HTTPS) and 16994/16995 (Redirection) once provisioned.
-Scope Limits	Restricted strictly to local motherboard management.	Operates over LAN or over the internet if configured with a TLS tunnel (CIRA).
+### 2. Which Processors Have Remote Control and What Are the Limits?
 
+The presence of the management coprocessor is universal on modern x86 chips (since ~2008), but **remote control capabilities** vary drastically by product tier:
 
-3. What Is Required to Activate and Unlock Deeper Access?
+| Feature | Consumer / Gaming Processors (e.g., Dell G15, Standard Core i5/i7, Standard Ryzen) | Enterprise Processors (Intel vPro / AMD Ryzen PRO) |
+| :--- | :--- | :--- |
+| **Present Firmware** | Intel ME (Basic / *Consumer* SKU) or basic AMD PSP. | **Intel ME (Full Corporate SKU + Intel AMT)** or **AMD DASH / PRO**. |
+| **Remote Control (KVM / OOB)** | **Non-existent.** The web server and remote KVM modules are stripped from the firmware binary. | **Active in silicon.** Supports KVM-over-IP, remote ISO mounting, and remote power cycling. |
+| **Network Exposure** | Zero ports opened by the chipset. | Listens on **TCP ports 16992/16993** (HTTP/HTTPS) and **16994/16995** (Redirection) once provisioned. |
+| **Scope Limits** | Restricted strictly to local motherboard management. | Operates over LAN or over the internet if configured with a TLS tunnel (*CIRA*). |
 
-Even on a corporate laptop equipped with Intel vPro, remote access ships unprovisioned (disabled) from the factory. Unlocking full remote control requires four physical and logical steps:
-1. Compatible Hardware: A vPro processor, a compatible enterprise chipset (e.g., Q-series or W-series), and a supported Intel network adapter (third-party Wi-Fi or Ethernet chips cannot route traffic to Ring -3).
-2. Physical BIOS Access (MEBx): During boot, the administrator must press Ctrl + P to enter the Intel MEBx (Management Engine BIOS Extension) menu.
-3. Mandatory Password Change: The system enforces changing the default password (admin) to a complex password before unlocking provisioning options.
-4. Network & Certificate Provisioning: Enabling Intel AMT, selecting the control mode (Admin Control Mode—which bypasses on-screen user consent prompts), and installing TLS certificates for external connections.
+---
 
-4. Exploit Analysis: Would an Attacker Gain Total Control?
+### 3. What Is Required to Activate and Unlock Deeper Access?
 
-Yes—if an exploit compromises Ring -3, the attacker achieves absolute, invisible control over the machine. Because Ring -3 sits below the OS kernel (Ring 0) and the hypervisor (Ring -1), no antivirus, EDR, or full OS reinstallation can detect or remove the infection.
+Even on a corporate laptop equipped with **Intel vPro**, remote access ships **unprovisioned (disabled) from the factory**. Unlocking full remote control requires four physical and logical steps:
 
-Notable Historical Exploits and Mechanics
+1. **Compatible Hardware:** A vPro processor, a compatible enterprise chipset (e.g., Q-series or W-series), and a supported Intel network adapter (third-party Wi-Fi or Ethernet chips cannot route traffic to Ring -3).
+2. **Physical BIOS Access (MEBx):** During boot, the administrator must press `Ctrl + P` to enter the **Intel MEBx** (*Management Engine BIOS Extension*) menu.
+3. **Mandatory Password Change:** The system enforces changing the default password (`admin`) to a complex password before unlocking provisioning options.
+4. **Network & Certificate Provisioning:** Enabling **Intel AMT**, selecting the control mode (*Admin Control Mode*—which bypasses on-screen user consent prompts), and installing TLS certificates for external connections.
 
-• CVE-2017-5689 (Silent Bob is Silent): The most infamous Intel ME vulnerability. A logic flaw in Intel AMT's HTTP authentication allowed any network attacker (or internet scanner, if ports 16992/16993 were exposed) to send an empty response header and log in as a full administrator without a password. (Affected only vPro machines with AMT enabled).
-• CVE-2017-5705 (ME 11 Buffer Overflows): Allowed arbitrary code execution inside Intel ME's MINIX operating system. Unlike Silent Bob, this flaw also existed in consumer CPUs, but exploiting it required prior local kernel access (Ring 0) or physical access via USB/SPI hardware.
-• CVE-2020-8705 (Intel Boot Guard Bypass / Initialization Flaws): Vulnerabilities in early ME memory initialization allowed researchers to extract internal cryptographic keys and inject persistent code into the firmware before the main OS booted.
-• AMD Sinkclose (CVE-2023-31315): While targeting Ring -2 (SMM) on AMD processors, it allows an attacker who has already compromised the kernel (Ring 0) to write persistent code into protected firmware memory, surviving OS reinstallations and interacting with the AMD PSP (Ring -3).
+---
 
-Post-Exploitation Capabilities at Ring -3
+### 4. Exploit Analysis: Would an Attacker Gain Total Control?
 
-• Immortal Persistence: Writes malware directly into the motherboard's SPI flash chip; even replacing the SSD will not remove the implant.
-• Total Invisibility: Intercepts keystrokes, captures screen framebuffers, and dumps system RAM via DMA directly through the network card, bypassing OS firewalls.
-• Defense Neutralization: Can disable Secure Boot or patch kernel memory on the fly.
+**Yes—if an exploit compromises Ring -3, the attacker achieves absolute, invisible control over the machine.** Because Ring -3 sits below the OS kernel (Ring 0) and the hypervisor (Ring -1), no antivirus, EDR, or full OS reinstallation can detect or remove the infection.
 
+#### Notable Historical Exploits and Mechanics
+
+* **CVE-2017-5689 (*Silent Bob is Silent*):** The most infamous Intel ME vulnerability. A logic flaw in Intel AMT's HTTP authentication allowed any network attacker (or internet scanner, if ports 16992/16993 were exposed) to send an empty response header and log in as a full administrator without a password. *(Affected only vPro machines with AMT enabled).*
+* **CVE-2017-5705 (ME 11 Buffer Overflows):** Allowed arbitrary code execution inside Intel ME's MINIX operating system. Unlike *Silent Bob*, this flaw also existed in consumer CPUs, but exploiting it required prior local kernel access (Ring 0) or physical access via USB/SPI hardware.
+* **CVE-2020-8705 (Intel Boot Guard Bypass / Initialization Flaws):** Vulnerabilities in early ME memory initialization allowed researchers to extract internal cryptographic keys and inject persistent code into the firmware before the main OS booted.
+* **AMD Sinkclose (CVE-2023-31315):** While targeting **Ring -2 (SMM)** on AMD processors, it allows an attacker who has already compromised the kernel (Ring 0) to write persistent code into protected firmware memory, surviving OS reinstallations and interacting with the **AMD PSP (Ring -3)**.
+
+#### Post-Exploitation Capabilities at Ring -3
+
+* **Immortal Persistence:** Writes malware directly into the motherboard's SPI flash chip; even replacing the SSD will not remove the implant.
+* **Total Invisibility:** Intercepts keystrokes, captures screen framebuffers, and dumps system RAM via DMA directly through the network card, bypassing OS firewalls.
+* **Defense Neutralization:** Can disable Secure Boot or patch kernel memory on the fly.
+
+<br>
 
 <b>[PORTUGUÊS]</b>
 
@@ -75,48 +84,58 @@ Por Que o Canal HSM Dedicado e Isolado Protege o Repouso, Mas a Execução Conti
 O HSM Físico Dedicado com Canal Isolado e Botão GPIO resolve de forma definitiva a proteção dos dados em repouso, elimina a dependência do chip TPM interno da placa-mãe e bloqueia ataques remotos silenciosos. Embora o comportamento determinístico da arquitetura x86 torne inevitável a passagem da chave pela memória RAM durante o uso ativo, a rotação efêmera por sessão aliada à higienização imediata de memória neutraliza a persistência de qualquer captura, garantindo segurança de nível corporativo/militar sobre um hardware doméstico.
 
 
-1. O que é o Ring -3 e por que ele existe?
 
-Na hierarquia de privilégios x86, o Ring -3 é um coprocessador físico independente soldado dentro do chipset (PCH) da placa-mãe. Ele roda seu próprio micro-sistema operacional (MINIX no caso da Intel) com acesso direto à memória RAM (DMA), placa de rede, portas USB e chip gráfico.
-• Função básica (Em todos os processadores): Gerenciar energia, ligar/desligar os núcleos da CPU, controlar ventiladores e verificar a assinatura da BIOS no boot (Intel Boot Guard).
-• Função avançada (Apenas linhas corporativas): Gerenciamento remoto fora de banda (Out-of-Band - OOB), permitindo que equipes de TI consertem, formatem ou controlem o teclado/vídeo de um computador pela rede mesmo se o Windows estiver travado ou desligado.
+### 1. O que é o Ring -3 e por que ele existe?
 
-2. Quais processadores têm controle remoto e quais os limites?
+Na hierarquia de privilégios x86, o **Ring -3** é um coprocessador físico independente soldado dentro do chipset (PCH) da placa-mãe. Ele roda seu próprio micro-sistema operacional (MINIX no caso da Intel) com acesso direto à memória RAM (DMA), placa de rede, portas USB e chip gráfico.
 
-A presença do coprocessador é universal desde ~2008, mas o poder de controle remoto varia drasticamente conforme a linha do processador:
+* **Função básica (Em todos os processadores):** Gerenciar energia, ligar/desligar os núcleos da CPU, controlar ventiladores e verificar a assinatura da BIOS no boot (*Intel Boot Guard*).
+* **Função avançada (Apenas linhas corporativas):** Gerenciamento remoto fora de banda (*Out-of-Band* - OOB), permitindo que equipes de TI consertem, formatem ou controlem o teclado/vídeo de um computador pela rede mesmo se o Windows estiver travado ou desligado.
 
-Característica	Processadores Domésticos / Gamers (Ex: Dell G15, Core i5/i7 comum, Ryzen comum)	Processadores Corporativos (Intel vPro / AMD Ryzen PRO)
-Firmware presente	Intel ME (versão básica / Consumer) ou AMD PSP básico.	Intel ME (versão completa + Intel AMT) ou AMD DASH / PRO.
-Controle Remoto (KVM / OOB)	Inexistente. Os módulos de servidor web e KVM remoto não vêm compilados no firmware.	Ativo no silício. Suporta KVM sobre IP, montagem de ISOs remotas e controle de energia.
-Exposição na Rede	Zero portas abertas pelo chipset.	Escuta nas portas TCP 16992/16993 (HTTP/HTTPS) e 16994/16995 (Redirecionamento) se ativado.
-Limites de Alcance	Restrito apenas à placa-mãe local.	Funciona na rede local (LAN) ou pela internet se configurado com túnel TLS (CIRA).
+---
 
+### 2. Quais processadores têm controle remoto e quais os limites?
 
-3. O que é preciso para ativar e liberar mais acesso?
+A presença do coprocessador é universal desde ~2008, mas o **poder de controle remoto** varia drasticamente conforme a linha do processador:
 
-Mesmo que você compre um notebook corporativo com Intel vPro, o acesso remoto vem desprovisionado (desativado) de fábrica. Para liberar o controle total, são necessários quatro passos físicos e lógicos:
-1. Hardware compatível: Processador vPro, chipset compatível (ex: série Q ou W) e placa de rede Intel específica (placas Wi-Fi ou Ethernet de terceiros não passam tráfego para o Ring -3).
-2. Acesso físico à BIOS (MEBx): Durante o boot, o administrador precisa pressionar Ctrl + P para entrar no menu Intel MEBx (Management Engine BIOS Extension).
-3. Troca de senha obrigatória: O sistema exige trocar a senha padrão (admin) por uma senha complexa para destravar o provisionamento.
-4. Configuração de Rede e Certificados: Ativar o Intel AMT, definir o modo de controle (Admin Control Mode — que dispensa permissão do usuário na tela) e configurar certificados TLS para acesso externo.
+| Característica | Processadores Domésticos / Gamers (Ex: Dell G15, Core i5/i7 comum, Ryzen comum) | Processadores Corporativos (Intel vPro / AMD Ryzen PRO) |
+| :--- | :--- | :--- |
+| **Firmware presente** | Intel ME (versão básica / *Consumer*) ou AMD PSP básico. | **Intel ME (versão completa + Intel AMT)** ou **AMD DASH / PRO**. |
+| **Controle Remoto (KVM / OOB)** | **Inexistente.** Os módulos de servidor web e KVM remoto não vêm compilados no firmware. | **Ativo no silício.** Suporta KVM sobre IP, montagem de ISOs remotas e controle de energia. |
+| **Exposição na Rede** | Zero portas abertas pelo chipset. | Escuta nas portas **TCP 16992/16993** (HTTP/HTTPS) e **16994/16995** (Redirecionamento) se ativado. |
+| **Limites de Alcance** | Restrito apenas à placa-mãe local. | Funciona na rede local (LAN) ou pela internet se configurado com túnel TLS (*CIRA*). |
 
-4. Análise de Exploits: Um invasor teria acesso total?
+---
 
-Sim, se um exploit atingir o Ring -3, o invasor conquista o controle absoluto e invisível da máquina. Como o Ring -3 está abaixo do kernel (Ring 0) e do hipervisor (Ring -1), nenhum antivírus, EDR ou reinstalação do Windows/Linux consegue detectar ou remover a infecção.
+### 3. O que é preciso para ativar e liberar mais acesso?
 
-Principais Exploits Históricos e Como Funcionam
+Mesmo que você compre um notebook corporativo com **Intel vPro**, o acesso remoto vem **desprovisionado (desativado) de fábrica**. Para liberar o controle total, são necessários quatro passos físicos e lógicos:
 
-• CVE-2017-5689 (Silent Bob is Silent): A falha mais famosa do Intel ME. Um erro lógico na autenticação HTTP do Intel AMT permitia que qualquer atacante na rede (ou na internet, se as portas 16992/16993 estivessem expostas) enviasse um cabeçalho de resposta vazio e fizesse login como administrador total sem senha. (Afetou apenas máquinas vPro com AMT ativado).
-• CVE-2017-5705 (Falhas de Buffer Overflow no ME 11): Permitiu execução de código arbitrário dentro do sistema MINIX do Intel ME. Diferente do Silent Bob, essa falha existia também em máquinas domésticas, mas exigia acesso local prévio (Ring 0) ou acesso físico via porta USB/SPI para explorar.
-• CVE-2020-8705 (Intel Boot Guard Bypass / Falhas de Inicialização): Falhas na verificação inicial da memória interna do ME permitiram que pesquisadores extraíssem chaves internas e injetassem código persistente no firmware antes do sistema operacional carregar.
-• AMD Sinkclose (CVE-2023-31315): Embora atinja o Ring -2 (SMM) dos processadores AMD, permite que um atacante que já tenha invadido o kernel (Ring 0) grave código persistente na memória protegida do firmware, sobrevivendo até à formatação do disco e interagindo com o AMD PSP (Ring -3).
+1. **Hardware compatível:** Processador vPro, chipset compatível (ex: série Q ou W) e placa de rede Intel específica (placas Wi-Fi ou Ethernet de terceiros não passam tráfego para o Ring -3).
+2. **Acesso físico à BIOS (MEBx):** Durante o boot, o administrador precisa pressionar `Ctrl + P` para entrar no menu **Intel MEBx** (*Management Engine BIOS Extension*).
+3. **Troca de senha obrigatória:** O sistema exige trocar a senha padrão (`admin`) por uma senha complexa para destravar o provisionamento.
+4. **Configuração de Rede e Certificados:** Ativar o **Intel AMT**, definir o modo de controle (*Admin Control Mode* — que dispensa permissão do usuário na tela) e configurar certificados TLS para acesso externo.
 
-O que um atacante faz após dominar o Ring -3?
+---
 
-• Persistência Imortal: Grava o malware direto no chip flash SPI da placa-mãe; mesmo trocando o SSD, o vírus volta.
-• Invisibilidade Total: Intercepta teclas, lê a tela e despeja a memória RAM via DMA diretamente pela placa de rede, contornando firewalls do Windows/Linux.
-• Desativação de Defesas: Pode desabilitar o Secure Boot ou alterar a memória do kernel em tempo real.
+### 4. Análise de Exploits: Um invasor teria acesso total?
 
+**Sim, se um exploit atingir o Ring -3, o invasor conquista o controle absoluto e invisível da máquina.** Como o Ring -3 está abaixo do kernel (Ring 0) e do hipervisor (Ring -1), nenhum antivírus, EDR ou reinstalação do Windows/Linux consegue detectar ou remover a infecção.
+
+#### Principais Exploits Históricos e Como Funcionam
+
+* **CVE-2017-5689 (*Silent Bob is Silent*):** A falha mais famosa do Intel ME. Um erro lógico na autenticação HTTP do Intel AMT permitia que qualquer atacante na rede (ou na internet, se as portas 16992/16993 estivessem expostas) enviasse um cabeçalho de resposta vazio e fizesse login como administrador total sem senha. *(Afetou apenas máquinas vPro com AMT ativado).*
+* **CVE-2017-5705 (Falhas de Buffer Overflow no ME 11):** Permitiu execução de código arbitrário dentro do sistema MINIX do Intel ME. Diferente do *Silent Bob*, essa falha existia também em máquinas domésticas, mas exigia acesso local prévio (Ring 0) ou acesso físico via porta USB/SPI para explorar.
+* **CVE-2020-8705 (Intel Boot Guard Bypass / Falhas de Inicialização):** Falhas na verificação inicial da memória interna do ME permitiram que pesquisadores extraíssem chaves internas e injetassem código persistente no firmware antes do sistema operacional carregar.
+* **AMD Sinkclose (CVE-2023-31315):** Embora atinja o **Ring -2 (SMM)** dos processadores AMD, permite que um atacante que já tenha invadido o kernel (Ring 0) grave código persistente na memória protegida do firmware, sobrevivendo até à formatação do disco e interagindo com o **AMD PSP (Ring -3)**.
+
+#### O que um atacante faz após dominar o Ring -3?
+
+* **Persistência Imortal:** Grava o malware direto no chip flash SPI da placa-mãe; mesmo trocando o SSD, o vírus volta.
+* **Invisibilidade Total:** Intercepta teclas, lê a tela e despeja a memória RAM via DMA diretamente pela placa de rede, contornando firewalls do Windows/Linux.
+* **Desativação de Defesas:** Pode desabilitar o Secure Boot ou alterar a memória do kernel em tempo real.
+
+<br>
 
 ## Article #13
 
