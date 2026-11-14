@@ -160,6 +160,17 @@ To ensure the central core does not become a new single point of failure, inter-
 
 ---
 
+### 4. Comparison Table: Real-World Isolated Silicon Architectures
+
+| Project / Chip | Year Introduced | Silicon-Burned Signature | Dual Asymmetry | Open Source (No Hidden Ring -3)? |
+| :--- | :--- | :--- | :--- | :--- |
+| **Apple Secure Enclave** | **2013** (Apple A7 chip / M1 in 2020) | Yes (UID burned into fuses). | Yes (Dedicated CPU ↔ Enclave bus). | No (Apple proprietary, but no Intel ME). |
+| **Google OpenTitan** | **2019** (Announced) / **2023** (*Earl Grey* commercial silicon) | Yes (OTP eFuses + DICE). | Yes (Mutual SPDM / ECDH). | **Yes (100% Open Source).** |
+| **Microsoft Pluton** | **2020** (Announced) / **2022** (Ryzen 6000) | Yes (Unique on-die silicon keys). | Yes (Dedicated internal bus). | No (Firmware managed by Microsoft/OEM). |
+| **AMD SEV-SNP / Intel TDX** | **2021** (SEV-SNP / EPYC Milan) / **2023** (Intel TDX / 4th Gen Xeon) | Yes (VCEK / On-die keys). | Yes (Asymmetric attestation & injection). | No (Relies on vendor PSP/ME firmware). |
+
+---
+
 ### 4. Conclusion
 
 As long as commercial processors keep motherboard management and execution cores sharing the same unmediated memory bus, practical security must rely on external mitigations (such as **dedicated HSMs over isolated cables, physical GPIO buttons, and ephemeral key rotation**). The ultimate evolution beyond predictive architecture lies in **physically splitting the CPU**, transforming the TPM from a passive vault into the **central, unbypassable arbiter** of all internal silicon communication.
@@ -321,6 +332,17 @@ Para que o núcleo central não se torne um novo ponto único de falha, a comuni
 | **Lentidão de HSM Externo (Ex: Raspberry Pi)** | O Mediador Central opera integrado no silício (nanossegundos), eliminando gargalos de cabos USB ou Ethernet. |
 | **Previsibilidade de Chaves em Software** | As chaves de sessão são negociadas via dupla assimetria diretamente nos registradores fechados do silício. |
 | **Confiança Cega na Fabricante** | O Mediador Central utiliza lógica aberta e assinatura PUF auditável, impedindo *backdoors* ocultos. |
+
+---
+
+### 4. Tabela Comparativa: Arquiteturas Reais de Silício Isolado
+
+| Projeto / Chip | Ano de Introdução | Assinatura no Silício | Dupla Assimetria | Código Aberto (Sem Ring -3 Oculto)? |
+| :--- | :--- | :--- | :--- | :--- |
+| **Apple Secure Enclave** | **2013** (Chip Apple A7 / M1 em 2020) | Sim (UID gravado nos fusíveis). | Sim (Canal dedicado CPU ↔ Enclave). | Não (Proprietário da Apple, mas sem Intel ME). |
+| **Google OpenTitan** | **2019** (Anúncio) / **2023** (Silício comercial *Earl Grey*) | Sim (OTP eFuses + DICE). | Sim (SPDM / ECDH mútuo). | **Sim (100% Open Source).** |
+| **Microsoft Pluton** | **2020** (Anúncio) / **2022** (Ryzen 6000) | Sim (Chaves únicas no silício). | Sim (Canal dedicado interno). | Não (Firmware gerenciado pela Microsoft/OEM). |
+| **AMD SEV-SNP / Intel TDX** | **2021** (SEV-SNP / EPYC Milan) / **2023** (Intel TDX / Xeon 4ª Gen) | Sim (VCEK / Chaves no silício). | Sim (Atestação e injeção assimétrica). | Não (Depende do firmware PSP/ME da fabricante). |
 
 ---
 
