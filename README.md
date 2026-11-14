@@ -110,6 +110,61 @@ Conversely, consolidating the TPM inside the same management coprocessor central
 * **Against advanced firmware attacks and persistent espionage:** **fTPM** creates a single point of failure at Ring -3, making the vendor's closed-source firmware the critical link in the entire chain of trust. *(In both architectures, the strongest practical mitigation is enforcing **BitLocker/LUKS with a Pre-Boot PIN**, preventing the TPM from releasing the key autonomously).*
 
 
+## The Sensible Solution: Split-Core Processor Architecture with a Centralized Cryptographic Mediator
+
+Stacking software layers on top of a traditional processor merely builds a "50-story building" over a predictable foundation: because the CPU and chipset share the same physical memory bus, the decryption key inevitably ends up exposed in RAM during execution. Conversely, offloading real-time memory encryption to an external device (such as a Raspberry Pi) introduces severe bandwidth bottlenecks.
+
+The sensible, definitive architectural solution lies in **changing the physical topology of the processor itself**—splitting the CPU into two isolated domains and placing an **Open-Source TPM / Cryptographic Mediator** physically in the center as a mandatory hardware customs gate.
+
+---
+
+### 1. Topology of the Split CPU (*Disaggregated Security Architecture*)
+
+Instead of a single monolithic silicon die where hidden management (**Ring -3**) sees all system memory, the processor package (*Chiplet / SoC*) is divided into three distinct physical blocks:
+
+```text
+[ LEFT SIDE: Hostile World ]         [ CENTER: Silicon Customs Gate ]      [ RIGHT SIDE: Pure Enclave ]
+  (I/O, Network, USB, Chipset,         (Dedicated Open-Source TPM +          (Execution Cores +
+   Ring -3 / Intel ME)                  PUF Signature + Dual Asymmetry)       Private System RAM)
+              │                                    │                                    │
+              └──────────► Untrusted ─────────────►│◄─────────── Dedicated Bus ◄────────┘
+                           Bus                     │             (Nanoseconds)
+                                          (Validates, Signs &
+                                           Re-encrypts)
+```
+
+* **Left Side (Hostile Domain / I/O):** Houses all external interfaces (network cards, USB ports, storage controllers, and the management chipset). This side has **no physical traces and no DMA access** to the memory where sensitive data is processed.
+* **The Center (Cryptographic Mediator / Centralized TPM):** Acts as a hardware firewall operating at internal bus speeds (nanoseconds). No data or instruction crosses from the Left Side to the Right Side without being inspected, authenticated, and encrypted by this central core.
+* **Right Side (Pure Execution Enclave):** Contains dedicated compute cores and the private RAM controller. Completely blind to external networks and unreachable by Ring -3, this side processes data in absolute isolation and sends only final outputs (such as rendered framebuffers) back through the Central Mediator.
+
+---
+
+### 2. The Pillars Securing the Central Mediator
+
+To ensure the central core does not become a new single point of failure, inter-block communication relies on three physical and mathematical mechanisms:
+
+1. **Silicon-Burned Signatures (*eFuses / PUF*):** Both the Central Mediator and the Right-Side execution cores possess unique cryptographic identities physically etched into transistor manufacturing variations (*Physically Unclonable Function*). These keys can never be read by software or cloned.
+2. **Dual Asymmetry (*Mutual Asymmetric Handshake*):** Before opening any data channel, the Right Side and the Central Mediator perform a mutual asymmetric key exchange (such as dual ECDH) directly inside closed internal registers. Even if the Left Side (Ring -3) is fully compromised, it cannot spoof either identity or decrypt internal bus traffic.
+3. **Auditable Firmware (*Open-Source Silicon*):** Following the principles of projects like **OpenTitan** and the **RISC-V** architecture, the Central Mediator's logic must be 100% open-source, eliminating blind trust in proprietary, closed microcode.
+
+---
+
+### 3. How This Architecture Solves Every Bottleneck
+
+| Technical Challenge | Solution in the *Split-Core* Architecture |
+| :--- | :--- |
+| **RAM Exposure (Ring -3)** | The chipset/Ring -3 is isolated on the Left Side with zero physical connection to Right-Side private RAM. |
+| **External HSM Latency (e.g., Raspberry Pi)** | The Central Mediator operates on-die in nanoseconds, eliminating USB or Ethernet cable bottlenecks. |
+| **Software Key Predictability** | Session keys are negotiated via dual asymmetry directly inside closed silicon registers. |
+| **Blind Vendor Trust** | The Central Mediator runs open-source logic with auditable PUF signatures, preventing hidden backdoors. |
+
+---
+
+### 4. Conclusion
+
+As long as commercial processors keep motherboard management and execution cores sharing the same unmediated memory bus, practical security must rely on external mitigations (such as **dedicated HSMs over isolated cables, physical GPIO buttons, and ephemeral key rotation**). The ultimate evolution beyond predictive architecture lies in **physically splitting the CPU**, transforming the TPM from a passive vault into the **central, unbypassable arbiter** of all internal silicon communication.
+
+
 <br>
 
 <b>[PORTUGUÊS]</b>
@@ -218,6 +273,61 @@ Por outro lado, consolidar o TPM dentro do mesmo coprocessador de gerenciamento 
 
 * **Contra ladrões físicos (furto do notebook):** O **dTPM antigo** apresentava risco muito maior, pois permitia extrair a chave do BitLocker abrindo o chassi e lendo as trilhas da placa-mãe. Nesse cenário, o **fTPM (Intel PTT)** oferece proteção física superior.
 * **Contra ataques avançados de firmware e espionagem persistente:** O **fTPM** cria um ponto único de falha no Ring -3, tornando o código fechado da fabricante o elo crítico de toda a cadeia de confiança. *(Em ambos os casos, a melhor mitigação prática é configurar o **BitLocker/LUKS com PIN de pré-boot**, impedindo que o TPM libere a chave sozinho).*
+
+## A Solução Sensata: Arquitetura de Processador Dividido (*Split-Core*) com Mediador Criptográfico Centralizado
+
+Empilhar camadas de software sobre um processador tradicional apenas constrói um "prédio de 50 andares" sobre uma fundação previsível: como a CPU e o chipset compartilham o mesmo barramento físico de memória, a chave sempre acaba exposta na RAM durante a execução. Por outro lado, delegar a criptografia da memória para um dispositivo externo (como um Raspberry Pi) cria um gargalo severo de velocidade.
+
+A solução arquitetural sensata e definitiva consiste em **mudar a topologia física do próprio processador**, dividindo a CPU em dois domínios isolados e posicionando um **TPM/Mediador Criptográfico Open Source** fisicamente no centro como uma alfândega obrigatória.
+
+---
+
+### 1. A Topologia da CPU Dividida (*Disaggregated Security Architecture*)
+
+Em vez de um único silício monolítico onde o gerenciamento oculto (**Ring -3**) enxerga toda a memória, o pacote do processador (*Chiplet / SoC*) é dividido em três blocos físicos distintos:
+
+```text
+[ LADO ESQUERDO: Mundo Hostil ]      [ CENTRO: Alfândega de Silício ]      [ LADO DIREITO: Enclave Puro ]
+  (I/O, Rede, USB, Chipset,            (TPM Dedicado Open Source +           (Núcleos de Execução +
+   Ring -3 / Intel ME)                  Assinatura PUF + Dupla Assimetria)    Memória RAM Privada)
+              │                                    │                                    │
+              └──────────► Barramento ────────────►│◄─────────── Canal Dedicado ◄───────┘
+                           Não-Confiável           │             (Nanossegundos)
+                                          (Valida, Assina e
+                                           Re-criptografa)
+```
+
+* **Lado Esquerdo (Domínio Hostil / I/O):** Concentra todas as interfaces externas (placa de rede, portas USB, controladores de disco e o chipset de gerenciamento). Este lado **não possui trilhas físicas nem acesso DMA** à memória onde os dados sensíveis são processados.
+* **O Centro (Mediador Criptográfico / TPM Centralizado):** Atua como um firewall de hardware operando na velocidade do barramento interno (nanossegundos). Nenhum dado ou instrução cruza do Lado Esquerdo para o Lado Direito sem ser inspecionado, autenticado e criptografado por este núcleo central.
+* **Lado Direito (Enclave Puro de Execução):** Contém os núcleos de cálculo dedicados e o controlador da memória RAM privada. Totalmente cego para a rede externa e inacessível ao Ring -3, este lado processa os dados em segurança absoluta e envia apenas os resultados finais (como pixels já renderizados) através do Mediador Central.
+
+---
+
+### 2. Os Pilares que Blindam o Mediador Central
+
+Para que o núcleo central não se torne um novo ponto único de falha, a comunicação entre os blocos exige três mecanismos físicos e matemáticos:
+
+1. **Assinatura Gravada no Silício (*eFuses / PUF*):** O Mediador Central e os núcleos do Lado Direito possuem identidades criptográficas únicas gravadas fisicamente nas imperfeições dos transistores (*Physically Unclonable Function*). Essas chaves jamais podem ser lidas por software ou clonadas.
+2. **Dupla Assimetria (*Mutual Asymmetric Handshake*):** Antes de abrir qualquer canal de dados, o Lado Direito e o Mediador Central realizam uma autenticação assimétrica mútua (como ECDH duplo) diretamente nos registradores internos. Mesmo que o Lado Esquerdo (Ring -3) seja totalmente comprometido, ele não consegue falsificar a identidade de nenhum dos lados nem decifrar o tráfego interno.
+3. **Firmware Auditável (*Open-Source Silicon*):** Seguindo a filosofia de projetos como o **OpenTitan** e a arquitetura **RISC-V**, o código do Mediador Central deve ser 100% aberto, eliminando a necessidade de confiar cegamente em microcódigos proprietários fechados.
+
+---
+
+### 3. Por que Essa Arquitetura Resolve Todos os Gargalos
+
+| Desafio Técnico | Solução na Arquitetura *Split-Core* |
+| :--- | :--- |
+| **Exposição na Memória RAM (Ring -3)** | O chipset/Ring -3 fica isolado no Lado Esquerdo, sem conexão física com a RAM privada do Lado Direito. |
+| **Lentidão de HSM Externo (Ex: Raspberry Pi)** | O Mediador Central opera integrado no silício (nanossegundos), eliminando gargalos de cabos USB ou Ethernet. |
+| **Previsibilidade de Chaves em Software** | As chaves de sessão são negociadas via dupla assimetria diretamente nos registradores fechados do silício. |
+| **Confiança Cega na Fabricante** | O Mediador Central utiliza lógica aberta e assinatura PUF auditável, impedindo *backdoors* ocultos. |
+
+---
+
+### 4. Conclusão
+
+Enquanto os processadores comerciais mantiverem o gerenciamento da placa-mãe e os núcleos de execução compartilhando o mesmo barramento de memória sem mediação, a segurança dependerá de mitigações externas (como **HSMs dedicados via cabo isolado, botões físicos GPIO e rotação efêmera de chaves**). A evolução definitiva para o fim da arquitetura preditiva reside na **divisão física da CPU**, transformando o TPM de um simples cofre passivo no **árbitro central e intransponível** de toda a comunicação interna do silício.
+
 
 <br>
 
